@@ -4,22 +4,15 @@
  * and open the template in the editor.
  */
 package DAL;
-import java.sql.*;
 
-/**
- *
- * @author Computer
- */
-public class KhachHangDAL {
-    public void Insert(KhachHangDTO kh){
-        try{
-            Class.forName("oracle.jdbc.driver.OracleDriver");
-            Connection con =DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:orcl","test","password");
-            Statement stmt = con.createStatement();
-            String customer1 = "INSERT INTO CUSTOMER (ID, FULLNAME)" + "VALUES(kh.CustomerID,)";
-        }
-        catch(Exception e){
-            System.out.println(e);
-        }
-    }
-}
+import java.sql.Date;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
+import java.time.LocalDate;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
+import javax.swing.JOptionPane;
+/*import qlyhocvienttav.Controller.LoginViewController;
+import qlyhocvienttav.Model.DTO.Student; */
+
