@@ -37,12 +37,12 @@
             </TextField>
             <ImageView fitHeight="171.0" fitWidth="168.0" layoutX="193.0" layoutY="46.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../../images/LOGO.png" />
+                  <Image url="@images/LOGO.png" />
                </image>
             </ImageView>
             <ImageView fitHeight="77.0" fitWidth="132.0" layoutX="347.0" layoutY="634.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../../../Image/platinum.png" />
+                  <Image url="@images/platinum.png" />
                </image>
             </ImageView>
             <RadioButton layoutX="157.0" layoutY="337.0" mnemonicParsing="false" prefHeight="66.0" prefWidth="54.0" textFill="#797979">
