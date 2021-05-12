@@ -5,21 +5,36 @@
  */
 package doantest3;
 
-/*
-import javafx.fxml.FXMLLoader;
+import java.io.IOException;
 import javafx.application.Application;
-import javafx.event.ActionEvent;
-*/
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
+import javafx.stage.Stage;
 
 /**
  *
  * @author Computer
  */
-public class MainProject {
+public class MainProject extends Application{
 
-    //@Override
-    public static void main(String[] args) {
+    /*
+    Stage: Khung cửa sổ
+    Scene: nội dung trong khung màn hình
+    Dimension: kích thước 
+    */
        
+
+    @Override
+    public void start(Stage stage) throws Exception {
+      Parent root = FXMLLoader.load(getClass().getResource("./View/Login.fxml"));
+      Scene scene = new Scene(root);
+      stage.setScene(scene);
+      //Hiển thị 
+      stage.show();
+    }
+       public static void main(String[] args) throws IOException {
+           launch(args);
     }
     
 }
