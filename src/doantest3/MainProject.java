@@ -5,17 +5,21 @@
  */
 package doantest3;
 
+/*
+import javafx.fxml.FXMLLoader;
+import javafx.application.Application;
+import javafx.event.ActionEvent;
+*/
+
 /**
  *
  * @author Computer
  */
-public class DoAnTest3 {
+public class MainProject {
 
-    /**
-     * @param args the command line arguments
-     */
+    //@Override
     public static void main(String[] args) {
-        // TODO code application logic here
+       
     }
     
 }

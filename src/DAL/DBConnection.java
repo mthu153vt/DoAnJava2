@@ -23,12 +23,14 @@ public class DBConnection {
     }
     public Connection con;
     
+    // Ket noi voi database
     public boolean OpenConnection(){
         try {
             this.con = DriverManager.getConnection("jdbc:oracle:thin:@//localhost:1521/orcl","test","password");
             System.out.println("Connecting...");
             System.out.println("Connect to database successfull!");
         } catch (SQLException except) {
+            //Ngoai le, khi k ket noi duoc 
             JOptionPane.showMessageDialog(null,except.toString(),"Cant connect...", JOptionPane.ERROR_MESSAGE);
             return false;
         }
@@ -43,3 +45,19 @@ public class DBConnection {
         }
     }
 }
+
+/*
+    //Cach khac de ket noi database:
+    public class DBConnection{
+        public static Connection ConnectDb(){
+            try{
+                Class.forName("oracle.jdbc.OracleDriver");
+                Connection con = DriverManager.getConnection("jdbc:oracle:thin:@//localhost:1521/orcl,"test","password");
+                return con;
+            }catch(Exception e){
+                JOptionPane.showMessageDialog(null,e.toString(),"Cant connect",JOptionPane.ERROR_MESSAGE);
+        }
+    }
+}
+
+*/
