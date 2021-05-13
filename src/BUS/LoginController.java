@@ -40,7 +40,7 @@ public class LoginController implements Initializable {
 
     @FXML
     private void click_login(MouseEvent event) throws IOException {
-        Parent loginPage = FXMLLoader.load(getClass().getResource("/GUIs/Login.fxml"));
+        Parent loginPage = FXMLLoader.load(getClass().getResource("./GUIs/Login.fxml"));
         
          border_pane.setCenter(loginPage);
     }
