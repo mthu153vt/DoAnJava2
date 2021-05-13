@@ -18,39 +18,61 @@ package DTO;
 )*/
 
 public class DrinkDTO {
-    private String DrinkID;
+    private int DrinkID;
     private String drinkname;
-    private String price;
-    
-    public DrinkDTO(String DrinkID, String drinkname, String price){
+    private int price;
+
+    public DrinkDTO() {}
+
+    public DrinkDTO(int DrinkID, String drinkname, int price) {
         this.DrinkID = DrinkID;
         this.drinkname = drinkname;
         this.price = price;
     }
 
-    public String getDrinkID() {
+    /**
+     * @return the DrinkID
+     */
+    public int getDrinkID() {
         return DrinkID;
     }
 
-    public void setDrinkID(String DrinkID) {
+    /**
+     * @param DrinkID the DrinkID to set
+     */
+    public void setDrinkID(int DrinkID) {
         this.DrinkID = DrinkID;
     }
 
+    /**
+     * @return the drinkname
+     */
     public String getDrinkname() {
         return drinkname;
     }
 
-
+    /**
+     * @param drinkname the drinkname to set
+     */
     public void setDrinkname(String drinkname) {
         this.drinkname = drinkname;
     }
 
-    public String getPrice() {
+    /**
+     * @return the price
+     */
+    public int getPrice() {
         return price;
     }
 
-    public void setPrice(String price) {
+    /**
+     * @param price the price to set
+     */
+    public void setPrice(int price) {
         this.price = price;
     }
+
+    
+    
     
 }

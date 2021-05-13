@@ -23,88 +23,141 @@ package DTO;
 )*/
 
 public class BillDTO {
-    private String BillID;
-    private String FoodID;
-    private String DrinkID;
-    private String CustomerID;
-    private String ReservationID;
+    private int BillID;
+    private int FoodID;
+    private int DrinkID;
+    private int CustomerID;
+    private int ReservationID;
     private String billdate;
     private String paymentmethod;
-    private String total;
-    
-    public BillDTO(String BillID, String FoodID, String DrinkID, String CustomerID, String ReservationID, String billdate, String paymentmethod,String total){
+    private int total;
+
+    public BillDTO() {
+    }
+
+    public BillDTO(int BillID, int FoodID, int DrinkID, int CustomerID, int ReservationID, String billdate, String paymentmethod, int total) {
         this.BillID = BillID;
-        this.CustomerID = CustomerID;
-        this.DrinkID = DrinkID;
         this.FoodID = FoodID;
+        this.DrinkID = DrinkID;
+        this.CustomerID = CustomerID;
         this.ReservationID = ReservationID;
         this.billdate = billdate;
         this.paymentmethod = paymentmethod;
         this.total = total;
     }
 
-    public String getBillID() {
+    /**
+     * @return the BillID
+     */
+    public int getBillID() {
         return BillID;
     }
 
-    public void setBillID(String BillID) {
+    /**
+     * @param BillID the BillID to set
+     */
+    public void setBillID(int BillID) {
         this.BillID = BillID;
     }
 
-    public String getFoodID() {
+    /**
+     * @return the FoodID
+     */
+    public int getFoodID() {
         return FoodID;
     }
 
-    public void setFoodID(String FoodID) {
+    /**
+     * @param FoodID the FoodID to set
+     */
+    public void setFoodID(int FoodID) {
         this.FoodID = FoodID;
     }
 
-    public String getDrinkID() {
+    /**
+     * @return the DrinkID
+     */
+    public int getDrinkID() {
         return DrinkID;
     }
 
-    public void setDrinkID(String DrinkID) {
+    /**
+     * @param DrinkID the DrinkID to set
+     */
+    public void setDrinkID(int DrinkID) {
         this.DrinkID = DrinkID;
     }
 
-    public String getCustomerID() {
+    /**
+     * @return the CustomerID
+     */
+    public int getCustomerID() {
         return CustomerID;
     }
 
-    public void setCustomerID(String CustomerID) {
+    /**
+     * @param CustomerID the CustomerID to set
+     */
+    public void setCustomerID(int CustomerID) {
         this.CustomerID = CustomerID;
     }
 
-    public String getReservationID() {
+    /**
+     * @return the ReservationID
+     */
+    public int getReservationID() {
         return ReservationID;
     }
 
-    public void setReservationID(String ReservationID) {
+    /**
+     * @param ReservationID the ReservationID to set
+     */
+    public void setReservationID(int ReservationID) {
         this.ReservationID = ReservationID;
     }
 
+    /**
+     * @return the billdate
+     */
     public String getBilldate() {
         return billdate;
     }
 
+    /**
+     * @param billdate the billdate to set
+     */
     public void setBilldate(String billdate) {
         this.billdate = billdate;
     }
 
+    /**
+     * @return the paymentmethod
+     */
     public String getPaymentmethod() {
         return paymentmethod;
     }
 
+    /**
+     * @param paymentmethod the paymentmethod to set
+     */
     public void setPaymentmethod(String paymentmethod) {
         this.paymentmethod = paymentmethod;
     }
 
-    public String getTotal() {
+    /**
+     * @return the total
+     */
+    public int getTotal() {
         return total;
     }
 
-    public void setTotal(String total) {
+    /**
+     * @param total the total to set
+     */
+    public void setTotal(int total) {
         this.total = total;
     }
+    
+    
         
 }

@@ -19,37 +19,60 @@ package DTO;
 )*/
 
 public class STableDTO {
-    private String TableID;
+    private int TableID;
     private String tabletype;
     private String status;
-    
-    public STableDTO(String TableID, String tabletype, String status){
+
+    public STableDTO() {
+    }
+
+    public STableDTO(int TableID, String tabletype, String status) {
         this.TableID = TableID;
         this.tabletype = tabletype;
         this.status = status;
     }
 
-    public String getTableID() {
+    /**
+     * @return the TableID
+     */
+    public int getTableID() {
         return TableID;
     }
 
-    public void setTableID(String TableID) {
+    /**
+     * @param TableID the TableID to set
+     */
+    public void setTableID(int TableID) {
         this.TableID = TableID;
     }
 
+    /**
+     * @return the tabletype
+     */
     public String getTabletype() {
         return tabletype;
     }
-    
+
+    /**
+     * @param tabletype the tabletype to set
+     */
     public void setTabletype(String tabletype) {
         this.tabletype = tabletype;
     }
 
+    /**
+     * @return the status
+     */
     public String getStatus() {
         return status;
     }
 
+    /**
+     * @param status the status to set
+     */
     public void setStatus(String status) {
         this.status = status;
     }
+    
+    
 }

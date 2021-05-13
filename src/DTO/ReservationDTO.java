@@ -19,38 +19,77 @@ package DTO;
 )*/
 
 public class ReservationDTO {
-    private String ReservationID ;
-    private String CustomerID;
+    private int ReservationID ;
+    private int CustomerID;
     private String bookingdate;
-    
-    public ReservationDTO(String ReservationID, String CustomerID, String bookingdate){
+    private int TableID;
+
+    public ReservationDTO() {
+    }
+
+    public ReservationDTO(int ReservationID, int CustomerID, String bookingdate, int TableID) {
         this.ReservationID = ReservationID;
         this.CustomerID = CustomerID;
         this.bookingdate = bookingdate;
+        this.TableID = TableID;
     }
 
-    public String getReservationID() {
+    /**
+     * @return the ReservationID
+     */
+    public int getReservationID() {
         return ReservationID;
     }
 
-    public void setReservationID(String ReservationID) {
+    /**
+     * @param ReservationID the ReservationID to set
+     */
+    public void setReservationID(int ReservationID) {
         this.ReservationID = ReservationID;
     }
 
-    public String getCustomerID() {
+    /**
+     * @return the CustomerID
+     */
+    public int getCustomerID() {
         return CustomerID;
     }
 
-    public void setCustomerID(String CustomerID) {
+    /**
+     * @param CustomerID the CustomerID to set
+     */
+    public void setCustomerID(int CustomerID) {
         this.CustomerID = CustomerID;
     }
 
+    /**
+     * @return the bookingdate
+     */
     public String getBookingdate() {
         return bookingdate;
     }
 
+    /**
+     * @param bookingdate the bookingdate to set
+     */
     public void setBookingdate(String bookingdate) {
         this.bookingdate = bookingdate;
     }
+
+    /**
+     * @return the TableID
+     */
+    public int getTableID() {
+        return TableID;
+    }
+
+    /**
+     * @param TableID the TableID to set
+     */
+    public void setTableID(int TableID) {
+        this.TableID = TableID;
+    }
+    
+    
          
 }

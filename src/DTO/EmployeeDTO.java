@@ -21,99 +21,161 @@ package DTO;
     USERNAME        VARCHAR2(20) NOT NULL,*/
 
 public class EmployeeDTO {
-    private String EmployeeID;
+    private int EmployeeID;
     private String fullname;
     private String gender;
     private String address;
-    private String numberphone;
-    private String salary;
+    private int numberphone;
+    private int salary;
     private String dateofbirth;
     private String datestartworking;
     private String username;
-    
-    public EmployeeDTO(String EmployeeID,String fullname,String gender,String address, String numberphone, String salary,String dateofbirth,String datestartworking, String username){
-            this.EmployeeID = EmployeeID;
-            this.fullname = fullname;
-            this.gender = gender;
-            this.address = address;
-            this.numberphone = numberphone;
-            this.salary = salary;
-            this.dateofbirth = dateofbirth;
-            this.datestartworking = datestartworking;
-            this.username = username;
+
+    public EmployeeDTO() {
     }
 
-    public String getEmployeeID() {
+    public EmployeeDTO(int EmployeeID, String fullname, String gender, String address, int numberphone, int salary, String dateofbirth, String datestartworking, String username) {
+        this.EmployeeID = EmployeeID;
+        this.fullname = fullname;
+        this.gender = gender;
+        this.address = address;
+        this.numberphone = numberphone;
+        this.salary = salary;
+        this.dateofbirth = dateofbirth;
+        this.datestartworking = datestartworking;
+        this.username = username;
+    }
+
+    /**
+     * @return the EmployeeID
+     */
+    public int getEmployeeID() {
         return EmployeeID;
     }
 
-    public void setEmployeeID(String EmployeeID) {
+    /**
+     * @param EmployeeID the EmployeeID to set
+     */
+    public void setEmployeeID(int EmployeeID) {
         this.EmployeeID = EmployeeID;
     }
 
+    /**
+     * @return the fullname
+     */
     public String getFullname() {
         return fullname;
     }
 
+    /**
+     * @param fullname the fullname to set
+     */
     public void setFullname(String fullname) {
         this.fullname = fullname;
     }
 
-
+    /**
+     * @return the gender
+     */
     public String getGender() {
         return gender;
     }
 
+    /**
+     * @param gender the gender to set
+     */
     public void setGender(String gender) {
         this.gender = gender;
     }
 
+    /**
+     * @return the address
+     */
     public String getAddress() {
         return address;
     }
 
+    /**
+     * @param address the address to set
+     */
     public void setAddress(String address) {
         this.address = address;
     }
 
-    public String getNumberphone() {
+    /**
+     * @return the numberphone
+     */
+    public int getNumberphone() {
         return numberphone;
     }
 
-    public void setNumberphone(String numberphone) {
+    /**
+     * @param numberphone the numberphone to set
+     */
+    public void setNumberphone(int numberphone) {
         this.numberphone = numberphone;
     }
 
-    public String getSalary() {
+    /**
+     * @return the salary
+     */
+    public int getSalary() {
         return salary;
     }
 
-    public void setSalary(String salary) {
+    /**
+     * @param salary the salary to set
+     */
+    public void setSalary(int salary) {
         this.salary = salary;
     }
 
+    /**
+     * @return the dateofbirth
+     */
     public String getDateofbirth() {
         return dateofbirth;
     }
 
+    /**
+     * @param dateofbirth the dateofbirth to set
+     */
     public void setDateofbirth(String dateofbirth) {
         this.dateofbirth = dateofbirth;
     }
 
+    /**
+     * @return the datestartworking
+     */
     public String getDatestartworking() {
         return datestartworking;
     }
 
+    /**
+     * @param datestartworking the datestartworking to set
+     */
     public void setDatestartworking(String datestartworking) {
         this.datestartworking = datestartworking;
     }
 
+    /**
+     * @return the username
+     */
     public String getUsername() {
         return username;
     }
 
+    /**
+     * @param username the username to set
+     */
     public void setUsername(String username) {
         this.username = username;
     }
+    
+    
+    
+    
+    
+    
 }
     

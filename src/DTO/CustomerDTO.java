@@ -5,87 +5,143 @@
  */
 package DTO;
 
+//CREATE TABLE CUSTOMER(
+//    CUSTOMER_ID        NUMBER NOT NULL,
+//    FULLNAME           VARCHAR2(30) NOT NULL,
+//    GENDER             VARCHAR2(6) NOT NULL,
+//    NUMBERPHONE	       NUMBER(11),
+//    MEMBERSHIPTIER     VARCHAR2(10) DEFAULT 'SILVER',
+//    MEMBERSHIPPOINT    NUMBER DEFAULT 0,
+//    USERNAME           VARCHAR2(20) NOT NULL,
+//    
+//    CONSTRAINT PK_CUSTOMER PRIMARY KEY (CUSTOMER_ID)
+//)
 /**
  *
  * @author Computer
  */
 public class CustomerDTO {
-    private String CustomerID;
+    private int CustomerID;
     private String fullname;
     private String gender;
-    private String numberphone;
+    private int numberphone;
     private String membershiptier;
-    private String membershippoint;
+    private int membershippoint;
     private String username;
-    
-    public CustomerDTO(String customerID,String fullname, String gender, String numberphone, String membershiptier, String membershipoint, String username){
-        this.CustomerID = customerID;
+
+    public CustomerDTO() {
+    }
+
+    public CustomerDTO(int CustomerID, String fullname, String gender, int numberphone, String membershiptier, int membershippoint, String username) {
+        this.CustomerID = CustomerID;
         this.fullname = fullname;
         this.gender = gender;
         this.numberphone = numberphone;
         this.membershiptier = membershiptier;
-        this.membershippoint = membershipoint;
+        this.membershippoint = membershippoint;
         this.username = username;
     }
 
-    public String getCustomerID() {
+    /**
+     * @return the CustomerID
+     */
+    public int getCustomerID() {
         return CustomerID;
     }
 
-    public void setCustomerID(String customerID) {
-        this.CustomerID = customerID;
+    /**
+     * @param CustomerID the CustomerID to set
+     */
+    public void setCustomerID(int CustomerID) {
+        this.CustomerID = CustomerID;
     }
 
+    /**
+     * @return the fullname
+     */
     public String getFullname() {
         return fullname;
     }
 
+    /**
+     * @param fullname the fullname to set
+     */
     public void setFullname(String fullname) {
         this.fullname = fullname;
     }
 
-
+    /**
+     * @return the gender
+     */
     public String getGender() {
         return gender;
     }
 
+    /**
+     * @param gender the gender to set
+     */
     public void setGender(String gender) {
         this.gender = gender;
     }
 
-    public String getNumberphone() {
+    /**
+     * @return the numberphone
+     */
+    public int getNumberphone() {
         return numberphone;
     }
 
-    public void setNumberphone(String numberphone) {
+    /**
+     * @param numberphone the numberphone to set
+     */
+    public void setNumberphone(int numberphone) {
         this.numberphone = numberphone;
     }
 
+    /**
+     * @return the membershiptier
+     */
     public String getMembershiptier() {
         return membershiptier;
     }
 
-
+    /**
+     * @param membershiptier the membershiptier to set
+     */
     public void setMembershiptier(String membershiptier) {
         this.membershiptier = membershiptier;
     }
 
-
-    public String getMembershippoint() {
+    /**
+     * @return the membershippoint
+     */
+    public int getMembershippoint() {
         return membershippoint;
     }
 
-    public void setMembershippoint(String membershippoint) {
+    /**
+     * @param membershippoint the membershippoint to set
+     */
+    public void setMembershippoint(int membershippoint) {
         this.membershippoint = membershippoint;
     }
 
+    /**
+     * @return the username
+     */
     public String getUsername() {
         return username;
     }
 
-
+    /**
+     * @param username the username to set
+     */
     public void setUsername(String username) {
         this.username = username;
     }
-}
 
+    
+    
+    
+    
+}

@@ -19,47 +19,77 @@ package DTO;
 )*/
 
 public class FoodDTO {
-    private String FoodID;
+    private int FoodID;
     private String foodname;
     private String describe;
-    private String price;
-    
-    public FoodDTO(String FoodID, String foodname, String describe, String price){
+    private int price;
+
+    public FoodDTO() {
+    }
+
+    public FoodDTO(int FoodID, String foodname, String describe, int price) {
         this.FoodID = FoodID;
         this.foodname = foodname;
         this.describe = describe;
         this.price = price;
     }
 
-    public String getFoodID() {
+    /**
+     * @return the FoodID
+     */
+    public int getFoodID() {
         return FoodID;
     }
 
-    public void setFoodID(String FoodID) {
+    /**
+     * @param FoodID the FoodID to set
+     */
+    public void setFoodID(int FoodID) {
         this.FoodID = FoodID;
     }
 
+    /**
+     * @return the foodname
+     */
     public String getFoodname() {
         return foodname;
     }
 
+    /**
+     * @param foodname the foodname to set
+     */
     public void setFoodname(String foodname) {
         this.foodname = foodname;
     }
 
+    /**
+     * @return the describe
+     */
     public String getDescribe() {
         return describe;
     }
 
+    /**
+     * @param describe the describe to set
+     */
     public void setDescribe(String describe) {
         this.describe = describe;
     }
 
-    public String getPrice() {
+    /**
+     * @return the price
+     */
+    public int getPrice() {
         return price;
     }
 
-    public void setPrice(String price) {
+    /**
+     * @param price the price to set
+     */
+    public void setPrice(int price) {
         this.price = price;
     }
+    
+    
+    
 }
