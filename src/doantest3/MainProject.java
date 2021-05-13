@@ -7,10 +7,10 @@ package doantest3;
 
 import java.io.IOException;
 import javafx.application.Application;
-import javafx.concurrent.Task;
-import javafx.event.ActionEvent;
+//import javafx.concurrent.Task;
+//import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
-import javafx.scene.Node;
+//import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
@@ -21,26 +21,21 @@ import javafx.stage.Stage;
  * @author Computer
  */
 public class MainProject extends Application{
-
-    
-    
     /*
     Stage: Khung cửa sổ
     Scene: nội dung trong khung màn hình
     Dimension: kích thước 
     */
-       
-
     @Override
-    public void start(Stage stage) throws Exception {
-      Parent root = FXMLLoader.load(getClass().getResource("Login.fxml"));
+    public void start(Stage stage) throws IOException {
+      Parent root = FXMLLoader.load(getClass().getResource("/GUIs/Login.fxml"));
       stage.setTitle("Login Page");
       Scene scene = new Scene(root);
       stage.setScene(scene);
       //Hiển thị 
       stage.show();
     }
-       public static void main(String[] args) throws IOException {
+       public static void main(String[] args){
            launch(args);
     }
        
