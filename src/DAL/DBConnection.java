@@ -14,10 +14,10 @@ import java.sql.DriverManager;
 import java.sql.SQLException;
 
 public class DBConnection {
-   /* String connectionURL= "jdbc:oracle:thin:@//localhost:1521/QLyNhaHang";
+    String connectionURL= "jdbc:oracle:thin:@//localhost:1521/QLyNhaHang";
     String username = "doan";
     String password = "12345";
-    ("jdbc:oracle:thin:@//localhost:1521/QLyNhaHang","doan","12345");*/
+   // ("jdbc:oracle:thin:@//localhost:1521/QLyNhaHang","doan","12345");*/
     
     public DBConnection() {
     }
@@ -26,7 +26,8 @@ public class DBConnection {
     // Ket noi voi database
     public boolean OpenConnection(){
         try {
-            this.con = DriverManager.getConnection("jdbc:oracle:thin:@//localhost:1521/orcl","test","password");
+            this.con = DriverManager.getConnection(connectionURL, username, password);
+           // this.con = DriverManager.getConnection("jdbc:oracle:thin:@//localhost:1521/orcl","test","password");
             System.out.println("Connecting...");
             System.out.println("Connect to database successfull!");
         } catch (SQLException except) {
@@ -44,6 +45,7 @@ public class DBConnection {
             Logger.getLogger(DBConnection.class.getName()).log(Level.SEVERE, null, except);
         }
     }
+    
 }
 
 /*

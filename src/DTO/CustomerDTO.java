@@ -10,7 +10,7 @@ package DTO;
  * @author Computer
  */
 public class CustomerDTO {
-    private String customerID;
+    private String CustomerID;
     private String fullname;
     private String gender;
     private String numberphone;
@@ -19,21 +19,21 @@ public class CustomerDTO {
     private String username;
     
     public CustomerDTO(String customerID,String fullname, String gender, String numberphone, String membershiptier, String membershipoint, String username){
-        this.customerID = customerID;
+        this.CustomerID = customerID;
         this.fullname = fullname;
         this.gender = gender;
         this.numberphone = numberphone;
         this.membershiptier = membershiptier;
-        this.membershippoint = membershippoint;
+        this.membershippoint = membershipoint;
         this.username = username;
     }
 
     public String getCustomerID() {
-        return customerID;
+        return CustomerID;
     }
 
     public void setCustomerID(String customerID) {
-        this.customerID = customerID;
+        this.CustomerID = customerID;
     }
 
     public String getFullname() {
@@ -88,3 +88,4 @@ public class CustomerDTO {
         this.username = username;
     }
 }
+
