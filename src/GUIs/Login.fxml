@@ -18,10 +18,10 @@
       </ImageView>
       <AnchorPane layoutX="320.0" layoutY="43.0" prefHeight="291.0" prefWidth="235.0">
          <children>
-            <PasswordField layoutX="19.0" layoutY="119.0" prefHeight="26.0" prefWidth="200.0" promptText="Password" />
+            <PasswordField fx:id="passtextField" layoutX="19.0" layoutY="119.0" prefHeight="26.0" prefWidth="200.0" promptText="Password" />
             <Button fx:id="btnLogin" layoutX="21.0" layoutY="166.0" mnemonicParsing="false" onMouseClicked="#click_login" prefHeight="32.0" prefWidth="195.0" text="LOG IN" />
             <Separator layoutX="19.0" layoutY="228.0" prefWidth="200.0" />
-            <TextField layoutX="18.0" layoutY="79.0" prefHeight="26.0" prefWidth="200.0" promptText="User Name" />
+            <TextField fx:id="usertextField" layoutX="18.0" layoutY="79.0" prefHeight="26.0" prefWidth="200.0" promptText="User Name" />
             <Text fill="#838383" layoutX="112.0" layoutY="225.0" strokeType="OUTSIDE" strokeWidth="0.0" text="or" />
             <Button fx:id="btnCreateAccount" contentDisplay="CENTER" layoutX="21.0" layoutY="244.0" mnemonicParsing="false" prefHeight="32.0" prefWidth="195.0" style="-fx-background-color: green;" text="CREAT NEW ACCOUNT" />
             <ImageView fitHeight="101.0" fitWidth="101.0" layoutX="62.0" layoutY="-36.0" pickOnBounds="true" preserveRatio="true">

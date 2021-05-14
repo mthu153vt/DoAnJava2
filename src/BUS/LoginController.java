@@ -6,8 +6,13 @@
 package BUS;
 
 import DAL.DBConnection;
+import com.jfoenix.controls.JFXPasswordField;
+import com.jfoenix.controls.JFXTextField;
 import java.io.IOException;
 import java.net.URL;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.util.ResourceBundle;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -30,6 +35,10 @@ public class LoginController implements Initializable {
     private Button btnCreateAccount;
     @FXML
     private BorderPane border_pane;
+    @FXML
+    private JFXTextField usertextField;
+    @FXML
+    private JFXPasswordField passtextField;
 
     /**
      * Initializes the controller class.
@@ -41,9 +50,6 @@ public class LoginController implements Initializable {
 
     @FXML
     private void click_login(MouseEvent event) throws IOException {
-        Parent loginPage = FXMLLoader.load(getClass().getResource("./GUIs/Login.fxml"));
-        
-         border_pane.setCenter(loginPage);
+    
     }
-    public static DBConnection connection = new DBConnection();
 }
