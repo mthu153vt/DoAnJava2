@@ -8,6 +8,7 @@ package BUS;
 import DAL.DBConnection;
 import com.jfoenix.controls.JFXPasswordField;
 import com.jfoenix.controls.JFXTextField;
+import doantest3.MainProject;
 import java.io.IOException;
 import java.net.URL;
 import java.sql.Connection;
@@ -40,9 +41,7 @@ public class LoginController implements Initializable {
     @FXML
     private JFXPasswordField passtextField;
 
-    /**
-     * Initializes the controller class.
-     */
+    
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
@@ -50,6 +49,7 @@ public class LoginController implements Initializable {
 
     @FXML
     private void click_login(MouseEvent event) throws IOException {
-    
+        
     }
+    public static DBConnection connection = new DBConnection();
 }
