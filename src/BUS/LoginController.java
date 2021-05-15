@@ -18,12 +18,15 @@ import java.util.ResourceBundle;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Node;
 import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.BorderPane;
+import javafx.stage.Stage;
 
 /**
  * FXML Controller class
@@ -49,6 +52,27 @@ public class LoginController implements Initializable {
 
     @FXML
     private void click_login(MouseEvent event) throws IOException {
+        String username = usertextField.getText();
+        String password = passtextField.getText();
+        String role = "";
+        if (username.equals("admin") && password.equals("admin")){
+            role = "Admin";
+        }else if (username.equals("employee") && password.equals("employee")){
+            role = "employee";
+        }else if (username.equals("customer") && password.equals("customer")){
+            role = "customer";
+        }else {
+            return;
+        }
+       // if ( connection.OpenConnection()){
+            ((Node) (event.getSource())).getScene().getWindow().hide();
+            Stage stage = new Stage();
+            Parent root = FXMLLoader.load(getClass().getResource("../GUIs/" +role + ".fxml"));
+            Scene scene = new Scene(root);
+            stage.setScene(scene);
+            stage.show();
+        //}
+        
         
     }
     public static DBConnection connection = new DBConnection();
