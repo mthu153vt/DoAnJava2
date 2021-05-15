@@ -20,6 +20,8 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.control.Button;
+import javafx.scene.control.PasswordField;
+import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.BorderPane;
 
@@ -35,11 +37,9 @@ public class LoginController implements Initializable {
     @FXML
     private Button btnCreateAccount;
     @FXML
-    private BorderPane border_pane;
+    private TextField usertextField;
     @FXML
-    private JFXTextField usertextField;
-    @FXML
-    private JFXPasswordField passtextField;
+    private PasswordField passtextField;
 
     
     @Override
