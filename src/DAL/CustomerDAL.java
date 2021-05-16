@@ -75,7 +75,7 @@ public class CustomerDAL {
     public boolean Update(String ID ,CustomerDTO customer) {
         try {
             Object arg[]= {customer.getFullname(), customer.getGender(),customer.getNumberphone(), customer.getMembershiptier(), 
-                customer.getMembershippoint(),customer.getCustomerID()};
+                customer.getMembershippoint(),ID};
             String sql;
             sql = String.format("UPDATE CUSTOMER SET Fullname = '%s', Gender = '%s', Numberphone = '%d', Membershiptier = '%s', Membershippoint = '%d' WHERE CustomerID = '%d'", arg);
             Statement statement = LoginController.connection.con.createStatement();
