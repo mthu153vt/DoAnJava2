@@ -8,6 +8,7 @@ package DAL;
 import BUS.LoginController;
 import DTO.EmployeeDTO;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 
 import java.sql.SQLException;
 import java.sql.Statement;
@@ -82,8 +83,41 @@ public class EmployeeDAL {
         }catch (SQLException e){
             e.printStackTrace();
         }
-        return false;
+        return false;    
+    }
+    
+    public void LoadData(){
+        try{
+        Statement statement = LoginController.connection.con.createStatement();
+        ResultSet rs = statement.executeQuery("SELECT * FROM user");
         
+        while(rs.next())
+        {
+            EmployeeDTO employee =  new EmployeeDTO();
+            employee.setEmployeeID(rs.getInt(1));
+            employee.setFullname(rs.getString(2));
+            employee.setGender(rs.getString(3));
+            employee.setAddress(rs.getString(4));
+            employee.setNumberphone(rs.getInt(5));
+            employee.setSalary(rs.getInt(6));
+            employee.setDateofbirth(rs.getString(7));
+            employee.setDatestartworking(rs.getString(8));
+            
+            Data.add(employee);
+        }
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+        }
+    }
+    
+    public ObservableList<EmployeeDTO> GetData(){
+        try{
+            LoadData();
+        }catch (Exception ex){
+            JOptionPane.showMessageDialog(null,ex.toString(),"Error at GetData() function", JOptionPane.ERROR_MESSAGE);
+        }
+        
+        return this.Data;
     }
     
 }
