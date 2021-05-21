@@ -60,7 +60,7 @@ public class LoginController implements Initializable {
         }else if (username.equals("employee") && password.equals("employee")){
             role = "employee";
         }else if (username.equals("customer") && password.equals("customer")){
-            role = "customer";
+            role = "Customer";
         }else {
             return;
         }

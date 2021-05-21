@@ -1,114 +1,89 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.ListView?>
-<?import javafx.scene.control.RadioButton?>
-<?import javafx.scene.control.Slider?>
+<?import javafx.scene.control.Tab?>
+<?import javafx.scene.control.TabPane?>
 <?import javafx.scene.control.TextField?>
-<?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
 
 <AnchorPane id="AnchorPane" prefHeight="1080.0" prefWidth="1920.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1">
    <children>
       <AnchorPane layoutX="74.0" layoutY="106.0" prefHeight="775.0" prefWidth="596.0">
          <children>
-            <TextField layoutX="66.0" layoutY="242.0" prefHeight="71.0" prefWidth="415.0" promptText="Customer name" style="-fx-border-radius: 20; -fx-background-radius: 20;">
-               <font>
-                  <Font size="36.0" />
-               </font>
-            </TextField>
-            <TextField layoutX="64.0" layoutY="426.0" prefHeight="71.0" prefWidth="415.0" promptText="Phone Number" style="-fx-background-radius: 20;">
-               <font>
-                  <Font size="36.0" />
-               </font>
-            </TextField>
-            <TextField layoutX="63.0" layoutY="523.0" prefHeight="71.0" prefWidth="415.0" promptText="User Name" style="-fx-background-radius: 20;">
-               <font>
-                  <Font size="36.0" />
-               </font>
-            </TextField>
-            <TextField layoutX="64.0" layoutY="632.0" prefHeight="77.0" prefWidth="275.0" promptText="Point" style="-fx-background-radius: 20;">
-               <font>
-                  <Font size="36.0" />
-               </font>
-            </TextField>
-            <ImageView fitHeight="171.0" fitWidth="168.0" layoutX="193.0" layoutY="46.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@images/LOGO.png" />
-               </image>
-            </ImageView>
-            <ImageView fitHeight="77.0" fitWidth="132.0" layoutX="347.0" layoutY="634.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@images/platinum.png" />
-               </image>
-            </ImageView>
-            <RadioButton layoutX="157.0" layoutY="337.0" mnemonicParsing="false" prefHeight="66.0" prefWidth="54.0" textFill="#797979">
-               <font>
-                  <Font size="36.0" />
-               </font>
-            </RadioButton>
-            <ImageView fitHeight="51.0" fitWidth="63.0" layoutX="211.0" layoutY="343.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@images/male_48px.png" />
-               </image>
-            </ImageView>
-            <RadioButton layoutX="293.0" layoutY="338.0" mnemonicParsing="false" prefHeight="66.0" prefWidth="54.0" textFill="#797979">
-               <font>
-                  <Font size="36.0" />
-               </font>
-            </RadioButton>
-            <ImageView fitHeight="51.0" fitWidth="63.0" layoutX="347.0" layoutY="344.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@images/female_48px.png" />
-               </image>
-            </ImageView>
-            <Button alignment="CENTER" contentDisplay="CENTER" layoutX="65.0" layoutY="740.0" mnemonicParsing="false" prefHeight="77.0" prefWidth="185.0" style="-fx-border-radius: 20; -fx-background-radius: 20; -fx-background-color: orange;" text="Edit" textFill="WHITE">
-               <font>
-                  <Font size="36.0" />
-               </font>
-               <padding>
-                  <Insets right="15.0" />
-               </padding>
-            </Button>
-            <Button alignment="BASELINE_LEFT" layoutX="292.0" layoutY="740.0" mnemonicParsing="false" prefHeight="77.0" prefWidth="185.0" style="-fx-border-radius: 20; -fx-background-radius: 20; -fx-background-color: red;" text="Delete" textFill="WHITE">
-               <font>
-                  <Font size="36.0" />
-               </font>
-            </Button>
-            <ImageView fitHeight="31.0" fitWidth="30.0" layoutX="187.0" layoutY="764.0" pickOnBounds="true" preserveRatio="true" style="-fx-effect: innershadow( gaussian , white , 7 , 1 , 1 , 1 );;">
-               <image>
-                  <Image url="@images/pencil_26px.png" />
-               </image>
-            </ImageView>
-            <ImageView fitHeight="31.0" fitWidth="30.0" layoutX="427.0" layoutY="764.0" pickOnBounds="true" preserveRatio="true" style="-fx-effect: innershadow( gaussian , white , 7 , 1 , 1 , 1 );;">
-               <image>
-                  <Image url="@images/delete_bin_30px.png" />
-               </image>
-            </ImageView>
+            <TabPane layoutX="20.0" layoutY="12.0" prefHeight="834.0" prefWidth="1714.0" tabClosingPolicy="UNAVAILABLE">
+              <tabs>
+                <Tab style="-fx-pref-width: 250; -fx-font-size: 20px;" text="CUSTOMER">
+                  <content>
+                    <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="712.0" prefWidth="1714.0">
+                           <children>
+                              <Button fx:id="btn_delete_customer" layoutX="972.0" layoutY="688.0" mnemonicParsing="false" prefHeight="42.0" prefWidth="312.0" style="-fx-background-color: orange; -fx-font-size: 18px; -fx-font-weight: bold;" text="DELETE CURRENT USER" />
+                              <Button fx:id="btn_apply_edit_cus" layoutX="1321.0" layoutY="689.0" mnemonicParsing="false" prefHeight="42.0" prefWidth="312.0" style="-fx-background-color: green; -fx-font-size: 18px; -fx-font-weight: bold;" text="APPLY EDIT" />
+                              <ListView fx:id="ls_customer" layoutX="24.0" layoutY="24.0" prefHeight="652.0" prefWidth="536.0" style="-fx-background-color: GRAY;" />
+                              <TextField fx:id="txt_customerid" layoutX="777.0" layoutY="98.0" prefHeight="48.0" prefWidth="337.0" />
+                              <Text layoutX="690.0" layoutY="144.0" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-font-size: 30PX; -fx-font-weight: bold;" text="ID" textAlignment="RIGHT" wrappingWidth="67.31644630432129" />
+                              <TextField fx:id="txt_customer_user_name" layoutX="766.0" layoutY="245.0" prefHeight="48.0" prefWidth="337.0" />
+                              <Text layoutX="583.0" layoutY="286.0" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-font-size: 30PX; -fx-font-weight: bold;" text="USERNAME" textAlignment="RIGHT" wrappingWidth="171.3164463043213" />
+                              <TextField fx:id="txt_customer_name" layoutX="772.0" layoutY="395.0" prefHeight="48.0" prefWidth="337.0" />
+                              <Text layoutX="589.0" layoutY="436.0" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-font-size: 30PX; -fx-font-weight: bold;" text="NAME" textAlignment="RIGHT" wrappingWidth="171.3164463043213" />
+                              <TextField fx:id="txt_customer_gender" layoutX="1362.0" layoutY="92.0" prefHeight="48.0" prefWidth="337.0" />
+                              <Text layoutX="1179.0" layoutY="133.0" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-font-size: 30PX; -fx-font-weight: bold;" text="GENDER" textAlignment="RIGHT" wrappingWidth="171.3164463043213" />
+                              <TextField fx:id="txt_customer_birthday" layoutX="1353.0" layoutY="244.0" prefHeight="48.0" prefWidth="337.0" />
+                              <Text layoutX="1170.0" layoutY="285.0" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-font-size: 30PX; -fx-font-weight: bold;" text="BIRTHDAY" textAlignment="RIGHT" wrappingWidth="171.3164463043213" />
+                              <TextField fx:id="txt_customer_point" layoutX="1360.0" layoutY="396.0" prefHeight="48.0" prefWidth="337.0" />
+                              <Text layoutX="1177.0" layoutY="437.0" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-font-size: 30PX; -fx-font-weight: bold;" text="POINT" textAlignment="RIGHT" wrappingWidth="171.3164463043213" />
+                           </children></AnchorPane>
+                  </content>
+                </Tab>
+                <Tab style="-fx-pref-width: 250; -fx-font-size: 20px;" text="EMPLOYEE">
+                  <content>                   
+                    <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="712.0" prefWidth="1714.0">
+                           <children>
+                              <Button fx:id="btn_delete_emp" layoutX="671.0" layoutY="688.0" mnemonicParsing="false" prefHeight="42.0" prefWidth="312.0" style="-fx-background-color: orange; -fx-font-size: 18px; -fx-font-weight: bold;" text="DELETE CURRENT EMPLOYEE" />
+                              <Button fx:id="btn_apply_edit_emp" layoutX="1321.0" layoutY="689.0" mnemonicParsing="false" prefHeight="42.0" prefWidth="312.0" style="-fx-background-color: green; -fx-font-size: 18px; -fx-font-weight: bold;" text="APPLY EDIT" />
+                              <ListView fx:id="ls_employee" layoutX="24.0" layoutY="24.0" prefHeight="652.0" prefWidth="536.0" style="-fx-background-color: GRAY;" />
+                              <TextField fx:id="txt_emp_id" layoutX="777.0" layoutY="98.0" prefHeight="48.0" prefWidth="337.0" />
+                              <Text layoutX="690.0" layoutY="144.0" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-font-size: 30PX; -fx-font-weight: bold;" text="ID" textAlignment="RIGHT" wrappingWidth="67.31644630432129" />
+                              <TextField fx:id="txt_emp_name" layoutX="766.0" layoutY="245.0" prefHeight="48.0" prefWidth="337.0" />
+                              <Text layoutX="583.0" layoutY="286.0" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-font-size: 30PX; -fx-font-weight: bold;" text="NAME" textAlignment="RIGHT" wrappingWidth="171.3164463043213" />
+                              <TextField fx:id="txt_emp_birthday" layoutX="772.0" layoutY="395.0" prefHeight="48.0" prefWidth="337.0" />
+                              <Text layoutX="589.0" layoutY="436.0" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-font-size: 30PX; -fx-font-weight: bold;" text="BIRTHDAY" textAlignment="RIGHT" wrappingWidth="171.3164463043213" />
+                              <TextField fx:id="txt_emp_gender" layoutX="1362.0" layoutY="92.0" prefHeight="48.0" prefWidth="337.0" />
+                              <Text layoutX="1179.0" layoutY="133.0" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-font-size: 30PX; -fx-font-weight: bold;" text="GENDER" textAlignment="RIGHT" wrappingWidth="171.3164463043213" />
+                              <TextField fx:id="txt_start_date" layoutX="1353.0" layoutY="244.0" prefHeight="48.0" prefWidth="337.0" />
+                              <Text layoutX="1125.0" layoutY="291.0" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-font-size: 30PX; -fx-font-weight: bold;" text="START DATE" textAlignment="RIGHT" wrappingWidth="218.3164463043213" />
+                              <TextField fx:id="txt_salary" layoutX="1360.0" layoutY="396.0" prefHeight="48.0" prefWidth="337.0" />
+                              <Text layoutX="1177.0" layoutY="437.0" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-font-size: 30PX; -fx-font-weight: bold;" text="SALARY" textAlignment="RIGHT" wrappingWidth="171.3164463043213" />
+                              <Button fx:id="btn_add_emp" layoutX="997.0" layoutY="689.0" mnemonicParsing="false" prefHeight="42.0" prefWidth="312.0" style="-fx-background-color: BLUE; -fx-font-size: 18px; -fx-font-weight: bold;" text="ADD NEW EMPLOYEE" />
+                           </children></AnchorPane>
+                  </content>              
+                </Tab>
+                  <Tab style="-fx-pref-width: 250; -fx-font-size: 20px;" text="FOOD">
+                     <content>
+                    <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="712.0" prefWidth="1714.0">
+                           <children>
+                              <Button fx:id="btn_delete_item" layoutX="634.0" layoutY="688.0" mnemonicParsing="false" prefHeight="42.0" prefWidth="312.0" style="-fx-background-color: orange; -fx-font-size: 18px; -fx-font-weight: bold;" text="DELETE CURRENT ITEM" />
+                              <Button fx:id="btn_apply_edit_item" layoutX="1319.0" layoutY="687.0" mnemonicParsing="false" prefHeight="42.0" prefWidth="312.0" style="-fx-background-color: green; -fx-font-size: 18px; -fx-font-weight: bold;" text="APPLY EDIT" />
+                              <ListView fx:id="ls_item" layoutX="24.0" layoutY="24.0" prefHeight="652.0" prefWidth="536.0" style="-fx-background-color: GRAY;" />
+                              <TextField fx:id="txt_item_id" layoutX="777.0" layoutY="98.0" prefHeight="48.0" prefWidth="327.0" />
+                              <Text layoutX="690.0" layoutY="144.0" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-font-size: 30PX; -fx-font-weight: bold;" text="ID" textAlignment="RIGHT" wrappingWidth="67.31644630432129" />
+                              <TextField fx:id="txt_item_name" layoutX="766.0" layoutY="245.0" prefHeight="48.0" prefWidth="337.0" />
+                              <Text layoutX="583.0" layoutY="286.0" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-font-size: 30PX; -fx-font-weight: bold;" text="NAME" textAlignment="RIGHT" wrappingWidth="171.3164463043213" />
+                              <TextField fx:id="txt_item_description" layoutX="772.0" layoutY="395.0" prefHeight="48.0" prefWidth="337.0" />
+                              <Text layoutX="555.0" layoutY="435.0" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-font-size: 30PX; -fx-font-weight: bold;" text="DESCRIPTION" textAlignment="RIGHT" wrappingWidth="205.3164463043213" />
+                              <TextField fx:id="txt_item_price" layoutX="773.0" layoutY="521.0" prefHeight="48.0" prefWidth="337.0" />
+                              <Text layoutX="556.0" layoutY="561.0" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-font-size: 30PX; -fx-font-weight: bold;" text="PRICE" textAlignment="RIGHT" wrappingWidth="205.3164463043213" />
+                              <ImageView fx:id="img_item" fitHeight="480.0" fitWidth="332.0" layoutX="1288.0" layoutY="86.0" pickOnBounds="true" preserveRatio="true" />
+                              <Button fx:id="btn_add_item" layoutX="974.0" layoutY="687.0" mnemonicParsing="false" prefHeight="42.0" prefWidth="312.0" style="-fx-background-color: BLUE; -fx-font-size: 18px; -fx-font-weight: bold;" text="ADD NEW ITEM" />
+                           </children></AnchorPane>
+                     </content>
+                  </Tab>
+              </tabs>
+            </TabPane>
          </children>
       </AnchorPane>
-      <AnchorPane layoutX="770.0" layoutY="125.0" prefHeight="248.0" prefWidth="1038.0">
-         <children>
-            <TextField alignment="CENTER" layoutX="1.0" layoutY="4.0" prefHeight="253.0" prefWidth="421.0" promptText="4B" style="-fx-background-color: green; -fx-prompt-text-fill: white;">
-               <font>
-                  <Font name="System Bold" size="100.0" />
-               </font>
-            </TextField>
-            <TextField alignment="CENTER" layoutX="437.0" layoutY="1.0" prefHeight="253.0" prefWidth="591.0" promptText="DAY/MONTH/YEAR TIME" style="-fx-background-color: blue; -fx-prompt-text-fill: white;">
-               <font>
-                  <Font name="System Bold" size="39.0" />
-               </font>
-            </TextField>
-         </children>
-      </AnchorPane>
-      <AnchorPane layoutX="774.0" layoutY="392.0" prefHeight="564.0" prefWidth="1008.0">
-         <children>
-            <Slider layoutX="1010.0" layoutY="14.0" orientation="VERTICAL" prefHeight="502.0" prefWidth="30.0" />
-            <ListView layoutX="9.0" layoutY="17.0" prefHeight="498.0" prefWidth="1008.0" style="-fx-background-color: #e6e6e6;" />
-         </children>
-      </AnchorPane>
+      <Button fx:id="btn_log_out" layoutX="100.0" layoutY="998.0" mnemonicParsing="false" prefHeight="42.0" prefWidth="312.0" style="-fx-background-color: RED; -fx-font-size: 18px; -fx-font-weight: bold;" text="LOG OUT" />
    </children>
 </AnchorPane>
