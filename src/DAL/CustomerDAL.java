@@ -32,7 +32,7 @@ public class CustomerDAL {
             String acc_sql;
             acc_sql = String.format("INSERT INTO ACCOUNT(USERNAME, ACCOUNTROLE) VALUES ('%s', 'customer')", arg_acc);
             String cus_sql;
-            cus_sql = String.format("INSERT INTO CUSTOMER VALUES (CUSTOMERID_SEQ1.nextval,'%s','%s','%d','%s','%d','%s')", arg_cus);
+            cus_sql = String.format("INSERT INTO CUSTOMER VALUES (CUSTOMERID_SEQ.nextval,'%s','%s','%d','%s','%d','%s')", arg_cus);
             
             Statement statement = LoginController.connection.con.createStatement();
             
