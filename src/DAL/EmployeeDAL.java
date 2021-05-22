@@ -89,11 +89,12 @@ public class EmployeeDAL {
     public void LoadData(){
         try{
         Statement statement = LoginController.connection.con.createStatement();
-        ResultSet rs = statement.executeQuery("SELECT * FROM user");
+        ResultSet rs = statement.executeQuery("SELECT * FROM EMPLOYEE");
         
         while(rs.next())
         {
             EmployeeDTO employee =  new EmployeeDTO();
+            
             employee.setEmployeeID(rs.getInt(1));
             employee.setFullname(rs.getString(2));
             employee.setGender(rs.getString(3));
@@ -102,6 +103,7 @@ public class EmployeeDAL {
             employee.setSalary(rs.getInt(6));
             employee.setDateofbirth(rs.getString(7));
             employee.setDatestartworking(rs.getString(8));
+            employee.setUsername(rs.getString(9));
             
             Data.add(employee);
         }
@@ -114,7 +116,8 @@ public class EmployeeDAL {
         try{
             LoadData();
         }catch (Exception ex){
-            JOptionPane.showMessageDialog(null,ex.toString(),"Error at GetData() function", JOptionPane.ERROR_MESSAGE);
+            //JOptionPane.showMessageDialog(null,ex.toString(),"Error at GetData() function", JOptionPane.ERROR_MESSAGE);
+            ex.printStackTrace();
         }
         
         return this.Data;
