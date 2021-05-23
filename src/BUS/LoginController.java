@@ -15,6 +15,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.ResourceBundle;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -50,8 +51,10 @@ public class LoginController implements Initializable {
         // TODO
     }    
 
+    public static DBConnection connection = new DBConnection();
+
     @FXML
-    private void click_login(MouseEvent event) throws IOException {
+    private void buttonlogin(ActionEvent event) throws IOException {
         String username = usertextField.getText();
         String password = passtextField.getText();
         String role = "";
@@ -64,6 +67,7 @@ public class LoginController implements Initializable {
         }else {
             return;
         }
+        
        // if ( connection.OpenConnection()){
             ((Node) (event.getSource())).getScene().getWindow().hide();
             Stage stage = new Stage();
@@ -72,8 +76,5 @@ public class LoginController implements Initializable {
             stage.setScene(scene);
             stage.show();
         //}
-        
-        
     }
-    public static DBConnection connection = new DBConnection();
 }

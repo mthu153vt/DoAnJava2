@@ -3,15 +3,13 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package GUIs;
+package BUS;
 
 import DAL.EmployeeDAL;
 import DTO.EmployeeDTO;
-import java.io.IOException;
 import java.net.URL;
+import java.sql.SQLException;
 import java.util.ResourceBundle;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -19,9 +17,12 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.ListView;
+import javafx.scene.control.Tab;
 import javafx.scene.control.TextField;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.text.Text;
+import javax.swing.JOptionPane;
 
 /**
  * FXML Controller class
@@ -30,6 +31,8 @@ import javafx.scene.input.MouseEvent;
  */
 public class AdminController implements Initializable {
 
+    @FXML
+    private Tab tab_customer;
     @FXML
     private Button btn_delete_customer;
     @FXML
@@ -49,13 +52,13 @@ public class AdminController implements Initializable {
     @FXML
     private TextField txt_customer_point;
     @FXML
+    private Tab tab_employee;
+    @FXML
     private Button btn_delete_emp;
     @FXML
     private Button btn_apply_edit_emp;
     @FXML
-    private ListView<EmployeeDTO> ls_employee; 
-    @FXML
-    private TextField txt_emp_id;
+    private ListView<EmployeeDTO> ls_employee;
     @FXML
     private TextField txt_emp_name;
     @FXML
@@ -68,6 +71,12 @@ public class AdminController implements Initializable {
     private TextField txt_salary;
     @FXML
     private Button btn_add_emp;
+    @FXML
+    private TextField txt_emp_address;
+    @FXML
+    private TextField txt_emp_numberphone;
+    @FXML
+    private Tab tab_food;
     @FXML
     private Button btn_delete_item;
     @FXML
@@ -87,9 +96,10 @@ public class AdminController implements Initializable {
     @FXML
     private Button btn_add_item;
     @FXML
-    private Button btn_log_out;
+    private ImageView img_logo;
+    @FXML
+    private Text txt_title;
 
-    
     ObservableList<EmployeeDTO> emp_data = FXCollections.observableArrayList();
     EmployeeDAL emp_dal = new EmployeeDAL();
     
@@ -102,44 +112,84 @@ public class AdminController implements Initializable {
         e1 = new EmployeeDTO(10, "hello", "nam", "123abc", 012333, 2044444, "11112000", "20102012", "employee");
         emp_data.add(e1);
         ls_employee.setItems(emp_data);
-          
     }    
 
     
+
     @FXML
     private void displayEmp(MouseEvent event) {
         EmployeeDTO employee  = ls_employee.getSelectionModel().getSelectedItem();
         
-        txt_emp_id.setText(Double.toString(employee.getEmployeeID()));
         txt_emp_name.setText(employee.getFullname());
         txt_emp_birthday.setText(employee.getDateofbirth());
+        txt_emp_address.setText(employee.getAddress());
         txt_emp_gender.setText(employee.getGender());
         txt_start_date.setText(employee.getDatestartworking());
         txt_salary.setText(Double.toString(employee.getSalary()));
+        txt_emp_numberphone.setText(Double.toString(employee.getNumberphone()));
     }
     
     @FXML
-    private void deleteButtonEmp(ActionEvent event) {
+    private void Action_Con_DelEmp(ActionEvent event) throws SQLException {
+        
+        EmployeeDTO emp = ls_employee.getSelectionModel().getSelectedItem();
+        emp_dal.Delete(emp);
+        emp_data = emp_dal.GetData();
     }
 
     @FXML
-    private void editButtonEmp(ActionEvent event) {
+    private void Action_Con_EditEmp(ActionEvent event) {
+        if (CheckInputEmp()){
+        EmployeeDTO emp = getEmployeeFromGUI();
+        EmployeeDTO empid = ls_employee.getSelectionModel().getSelectedItem();
+        emp_dal.Update(emp, empid.getEmployeeID());
+        emp_data = emp_dal.GetData();
+       }
     }
 
     @FXML
-    private void addButtonEmp(ActionEvent event) {
-    }
-
-    @FXML
-    private void logoutButton(ActionEvent event) {
+    private void Action_Con_AddEmp(ActionEvent event) throws SQLException {
+       if (CheckInputEmp()){
+        EmployeeDTO emp = getEmployeeFromGUI();
+        emp_dal.Insert(emp);
+        emp_data = emp_dal.GetData();
+       }
     }
     
-    private EmployeeDTO getEmpFromGUI(){
+   
+    
+    private EmployeeDTO getEmployeeFromGUI(){
         EmployeeDTO emp;
-        emp = new EmployeeDTO(Integer.parseInt(txt_emp_id.getText()),txt_emp_name.getText(), txt_emp_gender.getText(), " ", 0, Integer.parseInt(txt_salary.getText()),txt_emp_birthday.getText(), txt_start_date.getText(), " " );
+        emp = new EmployeeDTO(0,txt_emp_name.getText(), txt_emp_gender.getText(),txt_emp_address.getText(), Integer.parseInt(txt_emp_numberphone.getText()), Integer.parseInt(txt_salary.getText()),txt_emp_birthday.getText(), txt_start_date.getText(), " " );
         
         return emp;
     }
+
+    
+    private boolean CheckInputEmp(){
+        
+        String input[] = {txt_emp_name.getText(),txt_emp_birthday.getText(),txt_emp_address.getText(),txt_emp_gender.getText(),txt_start_date.getText(), txt_salary.getText(), txt_emp_numberphone.getText()};
+        String property[] = {"NAME", "BIRTHDAY", "ADDRESS", "GENDER", "START DAY", "SALARY", "NUMBERPHONE"};
+        for (int i = 0 ; i< input.length; i++){
+            if (input[i] == null || input[i].equals("")){
+                String ErrorStr = property[i] + " is empty";
+                JOptionPane.showMessageDialog(null,ErrorStr,"Error", JOptionPane.ERROR_MESSAGE);
+                return false;
+            }
+        }
+        return true;
+    }
     
     
+    @FXML
+    private void Action_Con_DelItem(ActionEvent event) {
+    }
+
+    @FXML
+    private void Action_Con_DelCus(ActionEvent event) {
+    }
+    
+    @FXML
+    private void Action_logout_Emp(ActionEvent event) {
+    }
 }

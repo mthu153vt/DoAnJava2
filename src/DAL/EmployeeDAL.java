@@ -63,10 +63,10 @@ public class EmployeeDAL {
         return false;
     }
 
-    public boolean Update(EmployeeDTO employee) {
+    public boolean Update(EmployeeDTO employee, int id) {
         try{    
             String emp_sql;
-            emp_sql = String.format("UPDATE EMPLOYEE SET FULLNAME=?, GENDER=?, ADDRESS=?, NUMBERPHONE=?, SALARY=?, DATEOFBIRTH=?, DATESTARTWORKING=?  WHERE EMPLOYEE_ID = ?");
+            emp_sql = String.format("UPDATE EMPLOYEE SET FULLNAME=?, GENDER=?, ADDRESS=?, NUMBERPHONE=?, SALARY=?, DATEOFBIRTH=TO_DATE(?,'DD-MM-YYYY), DATESTARTWORKING=(?,'DD-MM-YYYY)  WHERE EMPLOYEE_ID = ?");
             PreparedStatement pres = LoginController.connection.con.prepareStatement(emp_sql);
             pres.setString(1, employee.getFullname());
             pres.setString(2, employee.getGender());
@@ -75,7 +75,7 @@ public class EmployeeDAL {
             pres.setInt(5, employee.getSalary());
             pres.setString(6, employee.getDateofbirth());
             pres.setString(7, employee.getDatestartworking());
-            pres.setInt(8, employee.getEmployeeID());
+            pres.setInt(8, id);
             
             int rows_emp = pres.executeUpdate();
             if(rows_emp > 0)

@@ -25,8 +25,8 @@ public class DBConnection {
     
     public boolean OpenConnection(){
         try {
-           //this.con = DriverManager.getConnection(connectionURL, username, password);
-           this.con = DriverManager.getConnection("jdbc:oracle:thin:@//localhost:1521/orcl","test","password");
+           this.con = DriverManager.getConnection(connectionURL, username, password);
+           //this.con = DriverManager.getConnection("jdbc:oracle:thin:@//localhost:1521/orcl","test","password");
             System.out.println("Connecting...");
             System.out.println("Connect to database successfull!");
         } catch (SQLException except) {
