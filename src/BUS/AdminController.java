@@ -110,7 +110,7 @@ public class AdminController implements Initializable {
 
         EmployeeDTO e1, e2;
         e1 = new EmployeeDTO(10, "hello", "nam", "123abc", 012333, 2044444, "11-11-2000", "20-10-2012", "employee");
-        e2 = new EmployeeDTO(20, "hi", "nu", "2abc", 0154444545, 200003, "11-08-1999", "29-11-2015", "admin");
+        e2 = new EmployeeDTO(20, "hi", "nu", "2abc", 900000, 200003, "11-08-1999", "29-11-2015", "admin");
         
         emp_data.addAll(e1, e2);
         ls_employee.setItems(emp_data);

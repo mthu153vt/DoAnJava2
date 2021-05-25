@@ -32,7 +32,7 @@ public class EmployeeDAL {
             pres.setString(1, employee.getFullname());
             pres.setString(2, employee.getGender());
             pres.setString(3, employee.getAddress());
-            pres.setInt(4, employee.getNumberphone());
+            pres.setString(4, employee.getNumberphone());
             pres.setInt(5, employee.getSalary());
             pres.setString(6, employee.getDateofbirth());
             pres.setString(7, employee.getDatestartworking());
@@ -74,7 +74,7 @@ public class EmployeeDAL {
             pres.setString(1, employee.getFullname());
             pres.setString(2, employee.getGender());
             pres.setString(3, employee.getAddress());
-            pres.setInt(4, employee.getNumberphone());
+            pres.setString(4, employee.getNumberphone());
             pres.setInt(5, employee.getSalary());
             pres.setString(6, employee.getDateofbirth());
             pres.setString(7, employee.getDatestartworking());
@@ -103,7 +103,7 @@ public class EmployeeDAL {
             employee.setFullname(rs.getString(2));
             employee.setGender(rs.getString(3));
             employee.setAddress(rs.getString(4));
-            employee.setNumberphone(rs.getInt(5));
+            employee.setNumberphone(rs.getString(5));
             employee.setSalary(rs.getInt(6));
             employee.setDateofbirth(rs.getDate(7).toString());
             employee.setDatestartworking(rs.getDate(8).toString());
