@@ -69,23 +69,42 @@ public class AccountDAL {
     }
     
     
-    public boolean Update(String username, String password) {
+    public boolean Update(AccountDTO account, String username) {
         try {
-            Object arg_acc[] = {username, password};
+            String acc_sql;
+            acc_sql = String.format("UPDATE ACCOUNT SET USERNAME =?, PASSWORD=? WHERE USERNAME = ?");
+            PreparedStatement pres = LoginController.connection.con.prepareStatement(acc_sql);
             
-            String sql;
-            sql = String.format("UPDATE ACCOUNT SET password = '%s' WHERE username = '%d'", arg_acc);
+            pres.setString(1, account.getUsername());
+            pres.setString(2, account.getPassword());
+            pres.setString(3, username);
             
-            Statement statement = LoginController.connection.con.createStatement();
-            int rows = statement.executeUpdate(sql);
-            if (rows > 0){
-                System.out.println("Update successfull");
-            }
-        } catch (SQLException ex) {
-            JOptionPane.showMessageDialog(null,ex.toString(),"Error", JOptionPane.ERROR_MESSAGE);
+            int rows = pres.executeUpdate();
+            if(rows > 0)
+                return true;
+        }catch (SQLException e){
+            JOptionPane.showMessageDialog(null,e.toString(),"Error", JOptionPane.ERROR_MESSAGE);
             return false;
         }
-        return true;
+        return false;    
+    }
+    
+    
+    public boolean Delete(AccountDTO account) {
+        try{    
+            String acc_sql;
+            acc_sql = String.format("DELETE FROM ACCOUNT WHERE USERNAME = ?");
+            PreparedStatement pres = LoginController.connection.con.prepareStatement(acc_sql);
+             pres.setString(1, account.getUsername());
+            
+            int rows = pres.executeUpdate();
+            if(rows > 0)
+                return true;
+        }catch (SQLException e){
+            JOptionPane.showMessageDialog(null,e.toString(),"Error", JOptionPane.ERROR_MESSAGE);
+            return false;
+        }
+        return false;
     }
     
     
