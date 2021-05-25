@@ -7,6 +7,7 @@ package DAL;
 
 import BUS.LoginController;
 import DTO.AccountDTO;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
@@ -20,9 +21,7 @@ import javax.swing.JOptionPane;
  */
 public class AccountDAL {
 
-    /**
-     * @param args the command line arguments
-     */
+    
     public AccountDAL(){};
     ObservableList<AccountDTO> Data = FXCollections.observableArrayList();
     
@@ -51,26 +50,24 @@ public class AccountDAL {
     
     public boolean Insert(AccountDTO account) {
         try {
-            Object arg_acc[] = {account.getUsername(), account.getPassword(), account.getAccountrole()};
-            
             String acc_sql;
-            acc_sql = String.format("INSERT INTO ACCOUNT VALUES ('%s', '%s', '%s')", arg_acc);
+            acc_sql = String.format("INSERT INTO ACCOUNT VALUES (?,?,?)");
+            PreparedStatement pres = LoginController.connection.con.prepareStatement(acc_sql);
             
-            Statement statement = LoginController.connection.con.createStatement();
-            
-            int rows_acc = statement.executeUpdate(acc_sql);
-            
-            if (rows_acc > 0){
-                System.out.println("Insert successfull");
-            }else {
-                System.out.println("Insert fail");
-            }
-        } catch (SQLException ex) {
-            JOptionPane.showMessageDialog(null,ex.toString(),"Error!", JOptionPane.ERROR_MESSAGE);
+            pres.setString(1, account.getUsername());
+            pres.setString(2, account.getPassword());
+            pres.setString(3, account.getAccountrole());
+ 
+            int rows = pres.executeUpdate();
+            if(rows > 0)
+                return true;
+        }catch (SQLException e){
+            JOptionPane.showMessageDialog(null,e.toString(),"Error", JOptionPane.ERROR_MESSAGE);
             return false;
         }
-        return true;
+        return false;
     }
+    
     
     public boolean Update(String username, String password) {
         try {
@@ -91,7 +88,5 @@ public class AccountDAL {
         return true;
     }
     
-    public static void main(String args[]) {
-        // TODO code application logic here
-    }
+    
 }
