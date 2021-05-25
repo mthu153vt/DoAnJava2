@@ -108,9 +108,11 @@ public class AdminController implements Initializable {
 //        emp_data = emp_dal.GetData();
 //        ls_employee.setItems(emp_data);
 
-        EmployeeDTO e1;
-        e1 = new EmployeeDTO(10, "hello", "nam", "123abc", 012333, 2044444, "11112000", "20102012", "employee");
-        emp_data.add(e1);
+        EmployeeDTO e1, e2;
+        e1 = new EmployeeDTO(10, "hello", "nam", "123abc", 012333, 2044444, "11-11-2000", "20-10-2012", "employee");
+        e2 = new EmployeeDTO(20, "hi", "nu", "2abc", 0154444545, 200003, "11-08-1999", "29-11-2015", "admin");
+        
+        emp_data.addAll(e1, e2);
         ls_employee.setItems(emp_data);
     }    
 
@@ -156,15 +158,12 @@ public class AdminController implements Initializable {
        }
     }
     
-   
-    
     private EmployeeDTO getEmployeeFromGUI(){
         EmployeeDTO emp;
         emp = new EmployeeDTO(0,txt_emp_name.getText(), txt_emp_gender.getText(),txt_emp_address.getText(), Integer.parseInt(txt_emp_numberphone.getText()), Integer.parseInt(txt_salary.getText()),txt_emp_birthday.getText(), txt_start_date.getText(), " " );
         
         return emp;
     }
-
     
     private boolean CheckInputEmp(){
         
@@ -179,12 +178,26 @@ public class AdminController implements Initializable {
         }
         return true;
     }
-    
+//+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++   
     
     @FXML
     private void Action_Con_DelItem(ActionEvent event) {
     }
 
+    @FXML
+    private void Action_Con_EditItem(ActionEvent event) {
+    }
+
+    @FXML
+    private void displayItem(MouseEvent event) {
+    }
+
+    @FXML
+    private void Action_Con_AddItem(ActionEvent event) {
+    }
+    
+    
+    
     @FXML
     private void Action_Con_DelCus(ActionEvent event) {
     }

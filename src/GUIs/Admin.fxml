@@ -68,8 +68,8 @@
                     <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="712.0" prefWidth="1714.0">
                            <children>
                               <Button fx:id="btn_delete_item" layoutX="648.0" layoutY="686.0" mnemonicParsing="false" onAction="#Action_Con_DelItem" prefHeight="42.0" prefWidth="312.0" style="-fx-background-color: orange; -fx-font-size: 18px; -fx-font-weight: bold;" text="DELETE CURRENT ITEM" textFill="WHITE" />
-                              <Button fx:id="btn_apply_edit_item" layoutX="1319.0" layoutY="687.0" mnemonicParsing="false" prefHeight="42.0" prefWidth="312.0" style="-fx-background-color: green; -fx-font-size: 18px; -fx-font-weight: bold;" text="APPLY EDIT" textFill="WHITE" />
-                              <ListView fx:id="ls_item" layoutX="24.0" layoutY="24.0" prefHeight="652.0" prefWidth="536.0" style="-fx-background-color: GRAY;" />
+                              <Button fx:id="btn_apply_edit_item" layoutX="1319.0" layoutY="687.0" mnemonicParsing="false" onAction="#Action_Con_EditItem" prefHeight="42.0" prefWidth="312.0" style="-fx-background-color: green; -fx-font-size: 18px; -fx-font-weight: bold;" text="APPLY EDIT" textFill="WHITE" />
+                              <ListView fx:id="ls_item" layoutX="24.0" layoutY="24.0" onMouseClicked="#displayItem" prefHeight="652.0" prefWidth="536.0" style="-fx-background-color: GRAY;" />
                               <TextField fx:id="txt_item_id" layoutX="777.0" layoutY="98.0" prefHeight="48.0" prefWidth="327.0" />
                               <Text layoutX="690.0" layoutY="144.0" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-font-size: 30PX; -fx-font-weight: bold;" text="ID" textAlignment="RIGHT" wrappingWidth="67.31644630432129" />
                               <TextField fx:id="txt_item_name" layoutX="766.0" layoutY="245.0" prefHeight="48.0" prefWidth="337.0" />
@@ -79,7 +79,7 @@
                               <TextField fx:id="txt_item_price" layoutX="773.0" layoutY="521.0" prefHeight="48.0" prefWidth="337.0" />
                               <Text layoutX="556.0" layoutY="561.0" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-font-size: 30PX; -fx-font-weight: bold;" text="PRICE" textAlignment="RIGHT" wrappingWidth="205.3164463043213" />
                               <ImageView fx:id="img_item" fitHeight="480.0" fitWidth="434.0" layoutX="1186.0" layoutY="86.0" pickOnBounds="true" preserveRatio="true" />
-                              <Button fx:id="btn_add_item" layoutX="974.0" layoutY="687.0" mnemonicParsing="false" prefHeight="42.0" prefWidth="312.0" style="-fx-background-color: BLUE; -fx-font-size: 18px; -fx-font-weight: bold;" text="ADD NEW ITEM" textFill="WHITE" />
+                              <Button fx:id="btn_add_item" layoutX="974.0" layoutY="687.0" mnemonicParsing="false" onAction="#Action_Con_AddItem" prefHeight="42.0" prefWidth="312.0" style="-fx-background-color: BLUE; -fx-font-size: 18px; -fx-font-weight: bold;" text="ADD NEW ITEM" textFill="WHITE" />
                            </children></AnchorPane>
                      </content>
                   </Tab>

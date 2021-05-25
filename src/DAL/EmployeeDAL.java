@@ -38,11 +38,12 @@ public class EmployeeDAL {
             pres.setString(7, employee.getDatestartworking());
             pres.setString(8, "employee");
             
-            int rows_emp = pres.executeUpdate();
-            if(rows_emp > 0)
+            int rows = pres.executeUpdate();
+            if(rows > 0)
                 return true;
         }catch (SQLException e){
-            e.printStackTrace();
+            JOptionPane.showMessageDialog(null,e.toString(),"Error", JOptionPane.ERROR_MESSAGE);
+            return false;
         }
         return false;
     }
@@ -54,11 +55,12 @@ public class EmployeeDAL {
             PreparedStatement pres = LoginController.connection.con.prepareStatement(emp_sql);
             pres.setInt(1, employee.getEmployeeID());
             
-            int rows_emp = pres.executeUpdate();
-            if(rows_emp > 0)
+            int rows = pres.executeUpdate();
+            if(rows > 0)
                 return true;
         }catch (SQLException e){
-            e.printStackTrace();
+            JOptionPane.showMessageDialog(null,e.toString(),"Error", JOptionPane.ERROR_MESSAGE);
+            return false;
         }
         return false;
     }
@@ -68,6 +70,7 @@ public class EmployeeDAL {
             String emp_sql;
             emp_sql = String.format("UPDATE EMPLOYEE SET FULLNAME=?, GENDER=?, ADDRESS=?, NUMBERPHONE=?, SALARY=?, DATEOFBIRTH=TO_DATE(?,'DD-MM-YYYY), DATESTARTWORKING=(?,'DD-MM-YYYY)  WHERE EMPLOYEE_ID = ?");
             PreparedStatement pres = LoginController.connection.con.prepareStatement(emp_sql);
+            
             pres.setString(1, employee.getFullname());
             pres.setString(2, employee.getGender());
             pres.setString(3, employee.getAddress());
@@ -77,11 +80,12 @@ public class EmployeeDAL {
             pres.setString(7, employee.getDatestartworking());
             pres.setInt(8, id);
             
-            int rows_emp = pres.executeUpdate();
-            if(rows_emp > 0)
+            int rows = pres.executeUpdate();
+            if(rows > 0)
                 return true;
         }catch (SQLException e){
-            e.printStackTrace();
+            JOptionPane.showMessageDialog(null,e.toString(),"Error", JOptionPane.ERROR_MESSAGE);
+            return false;
         }
         return false;    
     }
@@ -101,24 +105,23 @@ public class EmployeeDAL {
             employee.setAddress(rs.getString(4));
             employee.setNumberphone(rs.getInt(5));
             employee.setSalary(rs.getInt(6));
-            employee.setDateofbirth(rs.getString(7));
-            employee.setDatestartworking(rs.getString(8));
+            employee.setDateofbirth(rs.getDate(7).toString());
+            employee.setDatestartworking(rs.getDate(8).toString());
             employee.setUsername(rs.getString(9));
             
             Data.add(employee);
         }
-        } catch (SQLException ex) {
-            ex.printStackTrace();
+        } catch (SQLException e){
+            JOptionPane.showMessageDialog(null,e.toString(),"Error", JOptionPane.ERROR_MESSAGE); 
         }
     }
     
     public ObservableList<EmployeeDTO> GetData(){
         try{
             LoadData();
-        }catch (Exception ex){
-            //JOptionPane.showMessageDialog(null,ex.toString(),"Error at GetData() function", JOptionPane.ERROR_MESSAGE);
-            ex.printStackTrace();
-        }
+        }catch (Exception e){
+            JOptionPane.showMessageDialog(null,e.toString(),"Error at GetData()", JOptionPane.ERROR_MESSAGE);
+        }  
         
         return this.Data;
     }
