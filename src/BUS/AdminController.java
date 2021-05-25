@@ -16,6 +16,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
+import javafx.scene.control.ListCell;
 import javafx.scene.control.ListView;
 import javafx.scene.control.Tab;
 import javafx.scene.control.TextField;
@@ -114,6 +115,19 @@ public class AdminController implements Initializable {
         
         emp_data.addAll(e1, e2);
         ls_employee.setItems(emp_data);
+        
+        ls_employee.setCellFactory(param -> new ListCell<EmployeeDTO>() {
+            @Override
+            protected void updateItem(EmployeeDTO e, boolean empty) {
+                super.updateItem(e, empty);
+
+                if (empty || e == null || e.getFullname() == null) {
+                    setText(null);
+                } else {
+                    setText("ID: " + e.getEmployeeID() + "          " +e.getFullname());
+                }
+            }
+        });
     }    
 
     
