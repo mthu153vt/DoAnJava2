@@ -109,8 +109,8 @@ public class AdminController implements Initializable {
 //        ls_employee.setItems(emp_data);
 
         EmployeeDTO e1, e2;
-        e1 = new EmployeeDTO(10, "hello", "nam", "123abc", 012333, 2044444, "11-11-2000", "20-10-2012", "employee");
-        e2 = new EmployeeDTO(20, "hi", "nu", "2abc", 900000, 200003, "11-08-1999", "29-11-2015", "admin");
+        e1 = new EmployeeDTO(10, "hello", "nam", "123abc", "0987651123", 2044444, "11-11-2000", "20-10-2012", "employee");
+        e2 = new EmployeeDTO(20, "hi", "nu", "2abc", "09000009", 200003, "11-08-1999", "29-11-2015", "admin");
         
         emp_data.addAll(e1, e2);
         ls_employee.setItems(emp_data);
@@ -128,7 +128,7 @@ public class AdminController implements Initializable {
         txt_emp_gender.setText(employee.getGender());
         txt_start_date.setText(employee.getDatestartworking());
         txt_salary.setText(Double.toString(employee.getSalary()));
-        txt_emp_numberphone.setText(Double.toString(employee.getNumberphone()));
+        txt_emp_numberphone.setText(employee.getNumberphone());
     }
     
     @FXML
@@ -160,7 +160,7 @@ public class AdminController implements Initializable {
     
     private EmployeeDTO getEmployeeFromGUI(){
         EmployeeDTO emp;
-        emp = new EmployeeDTO(0,txt_emp_name.getText(), txt_emp_gender.getText(),txt_emp_address.getText(), Integer.parseInt(txt_emp_numberphone.getText()), Integer.parseInt(txt_salary.getText()),txt_emp_birthday.getText(), txt_start_date.getText(), " " );
+        emp = new EmployeeDTO(0,txt_emp_name.getText(), txt_emp_gender.getText(),txt_emp_address.getText(), txt_emp_numberphone.getText(), Integer.parseInt(txt_salary.getText()),txt_emp_birthday.getText(), txt_start_date.getText(), " " );
         
         return emp;
     }
