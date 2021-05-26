@@ -106,15 +106,15 @@ public class AdminController implements Initializable {
     
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-//        emp_data = emp_dal.GetData();
-//        ls_employee.setItems(emp_data);
-
-        EmployeeDTO e1, e2;
-        e1 = new EmployeeDTO(10, "hello", "nam", "123abc", "0987651123", 2044444, "11-11-2000", "20-10-2012", "employee");
-        e2 = new EmployeeDTO(20, "hi", "nu", "2abc", "09000009", 200003, "11-08-1999", "29-11-2015", "admin");
-        
-        emp_data.addAll(e1, e2);
+        emp_data = emp_dal.GetData();
         ls_employee.setItems(emp_data);
+
+//        EmployeeDTO e1, e2;
+//        e1 = new EmployeeDTO(10, "hello", "nam", "123abc", "0987651123", 2044444, "11-11-2000", "20-10-2012", "employee");
+//        e2 = new EmployeeDTO(20, "hi", "nu", "2abc", "09000009", 200003, "11-08-1999", "29-11-2015", "admin");
+//        
+//        emp_data.addAll(e1, e2);
+//        ls_employee.setItems(emp_data);
         
         ls_employee.setCellFactory(param -> new ListCell<EmployeeDTO>() {
             @Override
@@ -141,7 +141,7 @@ public class AdminController implements Initializable {
         txt_emp_address.setText(employee.getAddress());
         txt_emp_gender.setText(employee.getGender());
         txt_start_date.setText(employee.getDatestartworking());
-        txt_salary.setText(Double.toString(employee.getSalary()));
+        txt_salary.setText(Integer.toString(employee.getSalary()));
         txt_emp_numberphone.setText(employee.getNumberphone());
     }
     

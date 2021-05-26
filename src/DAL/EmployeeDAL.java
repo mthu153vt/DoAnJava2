@@ -29,6 +29,7 @@ public class EmployeeDAL {
             String emp_sql;
             emp_sql = String.format("INSERT INTO EMPLOYEE VALUES (EMPLOYEEID_SEQ.nextval, ?,?,?,?,?,?,?,?)");
             PreparedStatement pres = LoginController.connection.con.prepareStatement(emp_sql);
+            
             pres.setString(1, employee.getFullname());
             pres.setString(2, employee.getGender());
             pres.setString(3, employee.getAddress());
@@ -92,9 +93,10 @@ public class EmployeeDAL {
     
     public void LoadData(){
         try{
+        this.Data.clear();    
         Statement statement = LoginController.connection.con.createStatement();
         ResultSet rs = statement.executeQuery("SELECT * FROM EMPLOYEE");
-        
+        //ResultSet rs = statement.executeQuery("SELECT EMPLOYEE_ID, FULLNAME, GENDER,ADDRESS,NUMBERPHONE,SALARY FROM EMPLOYEE");
         while(rs.next())
         {
             EmployeeDTO employee =  new EmployeeDTO();
