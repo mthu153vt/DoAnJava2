@@ -68,13 +68,13 @@ public class LoginController implements Initializable {
             return;
         }
         
-       // if ( connection.OpenConnection()){
+        if ( connection.OpenConnection()){
             ((Node) (event.getSource())).getScene().getWindow().hide();
             Stage stage = new Stage();
             Parent root = FXMLLoader.load(getClass().getResource("../GUIs/" +role + ".fxml"));
             Scene scene = new Scene(root);
             stage.setScene(scene);
             stage.show();
-        //}
+        }
     }
 }

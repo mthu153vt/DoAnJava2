@@ -27,9 +27,9 @@ public class EmployeeDAL {
     public boolean Insert(EmployeeDTO employee) {
         try{
             String emp_sql;
-            emp_sql = String.format("INSERT INTO EMPLOYEE VALUES (EMPLOYEEID_SEQ.nextval, ?,?,?,?,?,?,?,?)");
+            emp_sql = String.format("INSERT INTO EMPLOYEE VALUES (EMPLOYEEID_SEQ.nextval, ?,?,?,?,?,TO_DATE(?,'YYYY-MM-DD'),TO_DATE(?,'YYYY-MM-DD'),?)");
             PreparedStatement pres = LoginController.connection.con.prepareStatement(emp_sql);
-            
+
             pres.setString(1, employee.getFullname());
             pres.setString(2, employee.getGender());
             pres.setString(3, employee.getAddress());
@@ -69,7 +69,7 @@ public class EmployeeDAL {
     public boolean Update(EmployeeDTO employee, int id) {
         try{    
             String emp_sql;
-            emp_sql = String.format("UPDATE EMPLOYEE SET FULLNAME=?, GENDER=?, ADDRESS=?, NUMBERPHONE=?, SALARY=?, DATEOFBIRTH=TO_DATE(?,'DD-MM-YYYY), DATESTARTWORKING=(?,'DD-MM-YYYY)  WHERE EMPLOYEE_ID = ?");
+            emp_sql = String.format("UPDATE EMPLOYEE SET FULLNAME=?, GENDER=?, ADDRESS=?, NUMBERPHONE=?, SALARY=?, DATEOFBIRTH=TO_DATE(?,'YYYY-MM-DD'), DATESTARTWORKING=TO_DATE(?,'YYYY-MM-DD')  WHERE EMPLOYEE_ID = ?");
             PreparedStatement pres = LoginController.connection.con.prepareStatement(emp_sql);
             
             pres.setString(1, employee.getFullname());
@@ -116,6 +116,7 @@ public class EmployeeDAL {
         } catch (SQLException e){
             JOptionPane.showMessageDialog(null,e.toString(),"Error", JOptionPane.ERROR_MESSAGE); 
         }
+        
     }
     
     public ObservableList<EmployeeDTO> GetData(){
