@@ -14,10 +14,10 @@
    <children>
       <ImageView fitHeight="128.0" fitWidth="127.0" layoutX="114.0" layoutY="89.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@../../../../JavaProgramming/images/LOGO.png" />
+            <Image url="@images/LOGO.png" />
          </image>
       </ImageView>
-      <Text layoutX="353.0" layoutY="207.0" strokeType="OUTSIDE" strokeWidth="0.0" text="CHECKOUT" wrappingWidth="461.6708984375">
+      <Text layoutX="353.0" layoutY="175.0" strokeType="OUTSIDE" strokeWidth="0.0" text="CHECKOUT" wrappingWidth="461.6708984375">
          <font>
             <Font name="System Bold" size="72.0" />
          </font>

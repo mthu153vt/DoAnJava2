@@ -1,19 +1,8 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package BUS;
 
 import DAL.DBConnection;
-import com.jfoenix.controls.JFXPasswordField;
-import com.jfoenix.controls.JFXTextField;
-import doantest3.MainProject;
 import java.io.IOException;
 import java.net.URL;
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -25,49 +14,47 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
-import javafx.scene.input.MouseEvent;
-import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
 
 /**
  * FXML Controller class
  *
- * @author Computer
+ * @author lvlsp
  */
 public class LoginController implements Initializable {
 
     @FXML
-    private Button btnLogin;
-    @FXML
-    private Button btnCreateAccount;
+    private PasswordField passtextField;
     @FXML
     private TextField usertextField;
     @FXML
-    private PasswordField passtextField;
+    private Button btnLogin;
+    @FXML
+    private Button btnCreateAccount;
 
-    
+    /**
+     * Initializes the controller class.
+     */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
     }    
-
     public static DBConnection connection = new DBConnection();
 
     @FXML
-    private void buttonlogin(ActionEvent event) throws IOException {
+    private void Login_button(ActionEvent event) throws IOException {
         String username = usertextField.getText();
         String password = passtextField.getText();
-        String role = "";
+        String role ;
         if (username.equals("admin") && password.equals("admin")){
             role = "Admin";
-        }else if (username.equals("employee") && password.equals("employee")){
+        }else if (username.equals("sushimi") && password.equals("sushimi")){
             role = "employee";
-        }else if (username.equals("customer") && password.equals("customer")){
-            role = "Customer";
+        }else if (username.equals("potato123") && password.equals("customer")){
+            role = "customer";
         }else {
             return;
         }
-        
         if ( connection.OpenConnection()){
             ((Node) (event.getSource())).getScene().getWindow().hide();
             Stage stage = new Stage();
@@ -76,5 +63,24 @@ public class LoginController implements Initializable {
             stage.setScene(scene);
             stage.show();
         }
+        
+        
     }
+
+    @FXML
+    private void Action_Sign_up(ActionEvent event) throws IOException {
+        ((Node) (event.getSource())).getScene().getWindow().hide();
+            Stage stage = new Stage();
+            Parent root = FXMLLoader.load(getClass().getResource("../GUIs/SignUp.fxml"));
+            Scene scene = new Scene(root);
+            stage.setScene(scene);
+            stage.show();
+        
+        
+        
+    }
+
+
+    
+    
 }

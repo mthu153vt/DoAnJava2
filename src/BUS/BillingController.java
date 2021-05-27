@@ -144,7 +144,11 @@ public class BillingController implements Initializable {
                
         });
         btn_new_bill.setOnAction(e->{
-             header="";
+             header="""
+               ============================
+               Sushimi Restautant
+               Time and date:
+               ============================""";
              txt_bill.setText(header);
         });
     }
