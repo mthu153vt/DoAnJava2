@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
 <?import javafx.scene.control.ListView?>
 <?import javafx.scene.control.Tab?>
 <?import javafx.scene.control.TabPane?>
@@ -60,6 +61,7 @@
                               <TextField fx:id="txt_emp_address" layoutX="781.0" layoutY="394.0" prefHeight="48.0" prefWidth="337.0" />
                               <Text layoutX="1084.0" layoutY="587.0" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-font-size: 30PX; -fx-font-weight: bold;" text="NUMBERPHONE" textAlignment="RIGHT" wrappingWidth="255.3164463043213" />
                               <TextField fx:id="txt_emp_numberphone" layoutX="1353.0" layoutY="547.0" prefHeight="48.0" prefWidth="337.0" />
+                              <Label fx:id="lable_edit_emp" layoutX="1477.0" layoutY="741.0" prefHeight="30.0" prefWidth="150.0" />
                            </children></AnchorPane>
                   </content>              
                 </Tab>

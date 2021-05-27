@@ -16,6 +16,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.control.ListCell;
 import javafx.scene.control.ListView;
 import javafx.scene.control.Tab;
@@ -100,9 +101,12 @@ public class AdminController implements Initializable {
     private ImageView img_logo;
     @FXML
     private Text txt_title;
-
+    @FXML
+    private Label lable_edit_emp;
+    
     ObservableList<EmployeeDTO> emp_data = FXCollections.observableArrayList();
     EmployeeDAL emp_dal = new EmployeeDAL();
+    
     
     @Override
     public void initialize(URL url, ResourceBundle rb) {
@@ -158,8 +162,13 @@ public class AdminController implements Initializable {
         if (CheckInputEmp()){
         EmployeeDTO emp = getEmployeeFromGUI();
         EmployeeDTO empid = ls_employee.getSelectionModel().getSelectedItem();
-        emp_dal.Update(emp, empid.getEmployeeID());
-        emp_data = emp_dal.GetData();
+        
+        if(emp_dal.Update(emp, empid.getEmployeeID())){
+            emp_data = emp_dal.GetData();
+            JOptionPane.showMessageDialog(null,"thanh cong","employee", JOptionPane.CLOSED_OPTION);
+        }
+//        emp_dal.Update(emp, empid.getEmployeeID());
+//        emp_data = emp_dal.GetData();
        }
     }
 
