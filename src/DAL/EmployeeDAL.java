@@ -96,7 +96,6 @@ public class EmployeeDAL {
         this.Data.clear();    
         Statement statement = LoginController.connection.con.createStatement();
         ResultSet rs = statement.executeQuery("SELECT * FROM EMPLOYEE");
-        //ResultSet rs = statement.executeQuery("SELECT EMPLOYEE_ID, FULLNAME, GENDER,ADDRESS,NUMBERPHONE,SALARY FROM EMPLOYEE");
         while(rs.next())
         {
             EmployeeDTO employee =  new EmployeeDTO();

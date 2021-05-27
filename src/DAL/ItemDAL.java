@@ -9,7 +9,9 @@ import BUS.LoginController;
 import DTO.EmployeeDTO;
 import DTO.ItemDTO;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javax.swing.JOptionPane;
@@ -80,4 +82,36 @@ public class ItemDAL {
         }
         return false;    
     }
+    
+    public void LoadData(){
+        try{
+        this.Data.clear();    
+        Statement statement = LoginController.connection.con.createStatement();
+        ResultSet rs = statement.executeQuery("SELECT * FROM ITEM");
+        while(rs.next())
+        {
+            ItemDTO item =  new ItemDTO();
+            
+            item.setItemID(rs.getInt(1));
+            item.setItemname(rs.getString(2));
+            item.setDescribe(rs.getString(3));
+            item.setPrice(rs.getInt(4));
+            
+            Data.add(item);
+        }
+        } catch (SQLException e){
+            JOptionPane.showMessageDialog(null,e.toString(),"Error", JOptionPane.ERROR_MESSAGE); 
+        }
+    }
+     
+     public ObservableList<ItemDTO> GetData(){
+        try{
+            LoadData();
+        }catch (Exception e){
+            JOptionPane.showMessageDialog(null,e.toString(),"Error at GetData()", JOptionPane.ERROR_MESSAGE);
+        }  
+        
+        return this.Data;
+    }
+
 }
