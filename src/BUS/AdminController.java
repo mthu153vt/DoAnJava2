@@ -150,7 +150,7 @@ public class AdminController implements Initializable {
                 if (empty || e == null || e.getItemname() == null) {
                     setText(null);
                 } else {
-                    setText("ID: " + e.getItemID() + "          " + e.getItemname() + e.getPrice());
+                    setText("ID: " + e.getItemID() + "          " + e.getItemname() +"          "+ e.getPrice());
                 }
             }
         });
