@@ -100,8 +100,9 @@ public class EmployeeManagementController implements Initializable {
         
         if(emp_dal.Update(emp, empid.getEmployeeID())){
             emp_data = emp_dal.GetData();
-            JOptionPane.showMessageDialog(null,"Editing Successful","Employee", JOptionPane.CLOSED_OPTION);
+            JOptionPane.showMessageDialog(null,"Editing Successful","Employee", JOptionPane.INFORMATION_MESSAGE);
         }
+        
 //        emp_dal.Update(emp, empid.getEmployeeID());
 //        emp_data = emp_dal.GetData();
        }
@@ -113,7 +114,7 @@ public class EmployeeManagementController implements Initializable {
         EmployeeDTO emp = getEmployeeFromGUI();
         if(emp_dal.Insert(emp)){
             emp_data = emp_dal.GetData();
-            JOptionPane.showMessageDialog(null,"Adding Successful","Employee", JOptionPane.CLOSED_OPTION);
+            JOptionPane.showMessageDialog(null,"Adding Successful","Employee", JOptionPane.INFORMATION_MESSAGE);
         }
        }
     }
