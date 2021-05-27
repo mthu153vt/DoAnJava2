@@ -93,7 +93,7 @@ public class EmployeeManagementController implements Initializable {
     }
     
     @FXML
-    private void Action_Con_EditEmp(ActionEvent event) {
+    private void Action_Con_EditEmp(ActionEvent event) throws SQLException {
         if (CheckInputEmp()){
         EmployeeDTO emp = getEmployeeFromGUI();
         EmployeeDTO empid = ls_employee.getSelectionModel().getSelectedItem();

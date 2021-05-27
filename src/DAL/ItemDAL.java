@@ -65,13 +65,13 @@ public class ItemDAL {
     public boolean Update(ItemDTO item, int id) {
         try{    
             String item_sql;
-            item_sql = String.format("UPDATE ITEM SET ITEMNAME=?, DESCRIBE=?, PRICE=? WHERE ITEM_ID = ?");
+            item_sql = String.format("UPDATE ITEM SET ITEMNAME=?, DESCRIBE=?, PRICE=? WHERE ITEM_ID=? ");
             PreparedStatement pres = LoginController.connection.con.prepareStatement(item_sql);
             
             pres.setString(1, item.getItemname());
             pres.setString(2, item.getDescribe());
             pres.setInt(3, item.getPrice());
-            pres.setInt(4, item.getItemID());
+            pres.setInt(4, id);
  
             int rows = pres.executeUpdate();
             if(rows > 0)
