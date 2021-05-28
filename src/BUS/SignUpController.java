@@ -65,17 +65,18 @@ public class SignUpController implements Initializable {
     private void Action_CreateAccount(ActionEvent event) throws IOException {
         if(CheckInputAccount()){
             AccountDTO account = getAccountFromGUI();
-            if(acc_dal.Insert(account)){
-                ((Node) (event.getSource())).getScene().getWindow().hide();
-                Stage stage = new Stage();
-                Parent root = FXMLLoader.load(getClass().getResource("../GUIs/Customer.fxml"));
-                Scene scene = new Scene(root);
-                stage.setScene(scene);
-                stage.show();
-            }
-            else{
-                JOptionPane.showMessageDialog(null,"Sign Up Failed"," Error", JOptionPane.ERROR_MESSAGE);
-            }
+            acc_dal.Insert(account);
+//            if(acc_dal.Insert(account)){
+//                ((Node) (event.getSource())).getScene().getWindow().hide();
+//                Stage stage = new Stage();
+//                Parent root = FXMLLoader.load(getClass().getResource("../GUIs/Customer.fxml"));
+//                Scene scene = new Scene(root);
+//                stage.setScene(scene);
+//                stage.show();
+//            }
+//            else{
+//                JOptionPane.showMessageDialog(null,"Sign Up Failed"," Error", JOptionPane.ERROR_MESSAGE);
+//            }
         }
     }
     
@@ -97,7 +98,7 @@ public class SignUpController implements Initializable {
                 return false;
             }
         }
-        if(txt_password.getText() != txt_retype_password.getText()){
+        if( !txt_password.getText().equals(txt_retype_password.getText())){
             String ErrorStr = "Re-type Password wrong";
             JOptionPane.showMessageDialog(null,ErrorStr,"Error", JOptionPane.ERROR_MESSAGE);
             return false;

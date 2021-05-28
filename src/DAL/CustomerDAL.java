@@ -36,7 +36,6 @@ public class CustomerDAL {
             pres1.setString(3, "customer");
             int rows_acc = pres1.executeUpdate();
             
-            
             cus_sql = String.format("INSERT INTO CUSTOMER VALUES (CUSTOMERID_SEQ.nextval,?,?,?,?,?,?)");
             PreparedStatement pres2 = LoginController.connection.con.prepareStatement(cus_sql);
             pres2.setString(1, customer.getFullname());

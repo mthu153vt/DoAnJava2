@@ -54,19 +54,21 @@ public class AccountDAL {
             
             acc_sql = String.format("INSERT INTO ACCOUNT VALUES (?,?,?)");
             PreparedStatement pres = LoginController.connection.con.prepareStatement(acc_sql);
-            
             pres.setString(1, account.getUsername());
             pres.setString(2, account.getPassword());
             pres.setString(3, account.getAccountrole());
             int rows_acc = pres.executeUpdate();
             
-            cus_sql = String.format("INSERT INTO CUSTOMER(CUSTOMER_ID, USERNAME) VALUES (CUSTOMERID_SEQ.nextval,?)");
-            PreparedStatement pres2 = LoginController.connection.con.prepareStatement(cus_sql);
-            pres2.setString(1, account.getUsername());
-            int rows_cus = pres2.executeUpdate();
-            if (rows_acc > 0 && rows_cus >0)
+//            cus_sql = String.format("INSERT INTO CUSTOMER(CUSTOMER_ID, USERNAME) VALUES (CUSTOMERID_SEQ.nextval,?)");
+//            PreparedStatement pres2 = LoginController.connection.con.prepareStatement(cus_sql);
+//            pres2.setString(1, account.getUsername());
+//            int rows_cus = pres2.executeUpdate();
+//            
+//            if (rows_acc > 0 && rows_cus > 0)
+//                return true;
+            if (rows_acc > 0 )
                 return true;
-            
+
         }catch (SQLException e){
             JOptionPane.showMessageDialog(null,e.toString(),"Error", JOptionPane.ERROR_MESSAGE);
             return false;
