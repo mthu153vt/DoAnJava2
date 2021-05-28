@@ -14,12 +14,12 @@
             <Font size="36.0" />
          </font>
       </TextField>
-      <TextField fx:id="txt_fullname" layoutX="526.0" layoutY="429.0" prefHeight="73.0" prefWidth="475.0">
+      <TextField fx:id="txt_fullname" layoutX="1290.0" layoutY="293.0" prefHeight="73.0" prefWidth="475.0">
          <font>
             <Font size="36.0" />
          </font>
       </TextField>
-      <TextField fx:id="txt_phone" layoutX="1271.0" layoutY="297.0" prefHeight="73.0" prefWidth="475.0">
+      <TextField fx:id="txt_phone" layoutX="1287.0" layoutY="445.0" prefHeight="73.0" prefWidth="475.0">
          <font>
             <Font size="36.0" />
          </font>
@@ -29,7 +29,7 @@
             <Font name="System Bold" size="36.0" />
          </font>
       </Button>
-      <TextField fx:id="tx_password" layoutX="528.0" layoutY="543.0" prefHeight="73.0" prefWidth="475.0">
+      <TextField fx:id="tx_password" layoutX="520.0" layoutY="437.0" prefHeight="73.0" prefWidth="475.0">
          <font>
             <Font size="36.0" />
          </font>
@@ -39,7 +39,7 @@
             <Font name="System Bold" size="48.0" />
          </font>
       </Text>
-      <TextField fx:id="txt_confirmpass" layoutX="528.0" layoutY="665.0" prefHeight="73.0" prefWidth="475.0">
+      <TextField fx:id="txt_confirmpass" layoutX="520.0" layoutY="582.0" prefHeight="73.0" prefWidth="475.0">
          <font>
             <Font size="36.0" />
          </font>
@@ -49,37 +49,37 @@
             <Font size="36.0" />
          </font>
       </Text>
-      <Text layoutX="299.0" layoutY="477.0" strokeType="OUTSIDE" strokeWidth="0.0" text="FULL NAME">
+      <Text layoutX="1069.0" layoutY="347.0" strokeType="OUTSIDE" strokeWidth="0.0" text="FULL NAME">
          <font>
             <Font size="36.0" />
          </font>
       </Text>
-      <Text layoutX="301.0" layoutY="594.0" strokeType="OUTSIDE" strokeWidth="0.0" text="PASSWORD">
+      <Text layoutX="293.0" layoutY="490.0" strokeType="OUTSIDE" strokeWidth="0.0" text="PASSWORD">
          <font>
             <Font size="36.0" />
          </font>
       </Text>
-      <Text layoutX="134.0" layoutY="718.0" strokeType="OUTSIDE" strokeWidth="0.0" text="CONFIRM PASSWORD">
+      <Text layoutX="126.0" layoutY="635.0" strokeType="OUTSIDE" strokeWidth="0.0" text="CONFIRM PASSWORD">
          <font>
             <Font size="36.0" />
          </font>
       </Text>
-      <Text layoutX="1109.0" layoutY="350.0" strokeType="OUTSIDE" strokeWidth="0.0" text="PHONE">
+      <Text layoutX="1131.0" layoutY="498.0" strokeType="OUTSIDE" strokeWidth="0.0" text="PHONE">
          <font>
             <Font size="36.0" />
          </font>
       </Text>
-      <Text layoutX="1114.0" layoutY="595.0" strokeType="OUTSIDE" strokeWidth="0.0" text="GENDER">
+      <Text layoutX="1135.0" layoutY="627.0" strokeType="OUTSIDE" strokeWidth="0.0" text="GENDER">
          <font>
             <Font size="36.0" />
          </font>
       </Text>
-      <RadioButton fx:id="btn_male" layoutX="1292.0" layoutY="553.0" mnemonicParsing="false" onAction="#act_male" text="MALE">
+      <RadioButton fx:id="btn_male" layoutX="1313.0" layoutY="585.0" mnemonicParsing="false" onAction="#act_male" text="MALE">
          <font>
             <Font size="36.0" />
          </font>
       </RadioButton>
-      <RadioButton fx:id="btn_female" layoutX="1496.0" layoutY="553.0" mnemonicParsing="false" onAction="#act_female" text="FEMALE">
+      <RadioButton fx:id="btn_female" layoutX="1517.0" layoutY="585.0" mnemonicParsing="false" onAction="#act_female" text="FEMALE">
          <font>
             <Font size="36.0" />
          </font>
@@ -89,15 +89,5 @@
             <Font name="System Bold" size="36.0" />
          </font>
       </Button>
-      <TextField fx:id="txt_birthday" layoutX="1277.0" layoutY="422.0" prefHeight="73.0" prefWidth="475.0">
-         <font>
-            <Font size="36.0" />
-         </font>
-      </TextField>
-      <Text layoutX="1084.0" layoutY="473.0" strokeType="OUTSIDE" strokeWidth="0.0" text="BIRTHDAY">
-         <font>
-            <Font size="36.0" />
-         </font>
-      </Text>
    </children>
 </AnchorPane>

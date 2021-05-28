@@ -5,6 +5,8 @@
  */
 package BUS;
 
+import DAL.AccountDAL;
+import DTO.AccountDTO;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -19,6 +21,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
+import javax.swing.JOptionPane;
 
 /**
  * FXML Controller class
@@ -41,7 +44,9 @@ public class SignUpController implements Initializable {
     /**
      * Initializes the controller class.
      */
-    @Override
+    
+    AccountDAL acc_dal = new AccountDAL();
+    @Override 
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
     }    
@@ -57,7 +62,47 @@ public class SignUpController implements Initializable {
     }
 
     @FXML
-    private void Action_CreateAccount(ActionEvent event) {
+    private void Action_CreateAccount(ActionEvent event) throws IOException {
+        if(CheckInputAccount()){
+            AccountDTO account = getAccountFromGUI();
+            if(acc_dal.Insert(account)){
+                ((Node) (event.getSource())).getScene().getWindow().hide();
+                Stage stage = new Stage();
+                Parent root = FXMLLoader.load(getClass().getResource("../GUIs/Customer.fxml"));
+                Scene scene = new Scene(root);
+                stage.setScene(scene);
+                stage.show();
+            }
+            else{
+                JOptionPane.showMessageDialog(null,"Sign Up Failed"," Error", JOptionPane.ERROR_MESSAGE);
+            }
+        }
+    }
+    
+    
+    private AccountDTO getAccountFromGUI(){
+        AccountDTO acc;
+        acc = new AccountDTO(txt_username.getText(), txt_password.getText(), "customer");
+        
+        return acc;
+    }
+    
+    private boolean CheckInputAccount(){
+        String input[] = {txt_username.getText(), txt_password.getText(), txt_retype_password.getText()};
+        String property[] = {"USERNAME ", "PASSWORD", "RE-TYPE PASSWORS"};
+        for (int i = 0 ; i< input.length; i++){
+            if (input[i] == null || input[i].equals("")){
+                String ErrorStr = property[i] + " is empty";
+                JOptionPane.showMessageDialog(null,ErrorStr,"Error", JOptionPane.ERROR_MESSAGE);
+                return false;
+            }
+        }
+        if(txt_password.getText() != txt_retype_password.getText()){
+            String ErrorStr = "Re-type Password wrong";
+            JOptionPane.showMessageDialog(null,ErrorStr,"Error", JOptionPane.ERROR_MESSAGE);
+            return false;
+        }
+        return true;
     }
     
 }

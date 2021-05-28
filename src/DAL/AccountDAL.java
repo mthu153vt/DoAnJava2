@@ -50,17 +50,23 @@ public class AccountDAL {
     
     public boolean Insert(AccountDTO account) {
         try {
-            String acc_sql;
+            String acc_sql, cus_sql;
+            
             acc_sql = String.format("INSERT INTO ACCOUNT VALUES (?,?,?)");
             PreparedStatement pres = LoginController.connection.con.prepareStatement(acc_sql);
             
             pres.setString(1, account.getUsername());
             pres.setString(2, account.getPassword());
             pres.setString(3, account.getAccountrole());
- 
-            int rows = pres.executeUpdate();
-            if(rows > 0)
+            int rows_acc = pres.executeUpdate();
+            
+            cus_sql = String.format("INSERT INTO CUSTOMER(CUSTOMER_ID, USERNAME) VALUES (CUSTOMERID_SEQ.nextval,?)");
+            PreparedStatement pres2 = LoginController.connection.con.prepareStatement(cus_sql);
+            pres2.setString(1, account.getUsername());
+            int rows_cus = pres2.executeUpdate();
+            if (rows_acc > 0 && rows_cus >0)
                 return true;
+            
         }catch (SQLException e){
             JOptionPane.showMessageDialog(null,e.toString(),"Error", JOptionPane.ERROR_MESSAGE);
             return false;
@@ -124,5 +130,35 @@ public class AccountDAL {
         return false;
     }
     
+    public void LoadData(){
+        try{
+        this.Data.clear();    
+        Statement statement = LoginController.connection.con.createStatement();
+        ResultSet rs = statement.executeQuery("SELECT * FROM ACCOUNT");
+        while(rs.next())
+        {
+            AccountDTO account =  new AccountDTO();
+            
+            account.setUsername(rs.getString(1));
+            account.setPassword(rs.getString(2));
+            account.setAccountrole(rs.getString(3));
+            
+            Data.add(account);
+        }
+        } catch (SQLException e){
+            JOptionPane.showMessageDialog(null,e.toString(),"Error", JOptionPane.ERROR_MESSAGE); 
+        }
+        
+    }
+    
+    public ObservableList<AccountDTO> GetData(){
+        try{
+            LoadData();
+        }catch (Exception e){
+            JOptionPane.showMessageDialog(null,e.toString(),"Error at GetData()", JOptionPane.ERROR_MESSAGE);
+        }  
+        
+        return this.Data;
+    }
     
 }

@@ -41,12 +41,11 @@ public class CustomerInfoController implements Initializable {
     private RadioButton btn_female;
     @FXML
     private Button btn_change;
-    @FXML
-    private TextField txt_birthday;
 
     /**
      * Initializes the controller class.
      */
+    
     @Override
     public void initialize(URL url, ResourceBundle rb) {
        }    

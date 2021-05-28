@@ -95,13 +95,13 @@ public class EmployeeManagementController implements Initializable {
     @FXML
     private void Action_Con_EditEmp(ActionEvent event) throws SQLException {
         if (CheckInputEmp()){
-        EmployeeDTO emp = getEmployeeFromGUI();
-        EmployeeDTO empid = ls_employee.getSelectionModel().getSelectedItem();
+            EmployeeDTO emp = getEmployeeFromGUI();
+            EmployeeDTO empid = ls_employee.getSelectionModel().getSelectedItem();
         
-        if(emp_dal.Update(emp, empid.getEmployeeID())){
-            emp_data = emp_dal.GetData();
-            JOptionPane.showMessageDialog(null,"Editing Successful","Employee", JOptionPane.INFORMATION_MESSAGE);
-        }
+            if(emp_dal.Update(emp, empid.getEmployeeID())){
+                emp_data = emp_dal.GetData();
+                JOptionPane.showMessageDialog(null,"Editing Successful","Employee", JOptionPane.INFORMATION_MESSAGE);
+            }
         
 //        emp_dal.Update(emp, empid.getEmployeeID());
 //        emp_data = emp_dal.GetData();
@@ -111,11 +111,11 @@ public class EmployeeManagementController implements Initializable {
     @FXML
     private void Action_Con_AddEmp(ActionEvent event) throws SQLException {
         if (CheckInputEmp()){
-        EmployeeDTO emp = getEmployeeFromGUI();
-        if(emp_dal.Insert(emp)){
-            emp_data = emp_dal.GetData();
-            JOptionPane.showMessageDialog(null,"Adding Successful","Employee", JOptionPane.INFORMATION_MESSAGE);
-        }
+            EmployeeDTO emp = getEmployeeFromGUI();
+            if(emp_dal.Insert(emp)){
+                emp_data = emp_dal.GetData();
+                JOptionPane.showMessageDialog(null,"Adding Successful","Employee", JOptionPane.INFORMATION_MESSAGE);
+            }
        }
     }
     
