@@ -29,12 +29,12 @@ public class CustomerDAL {
         try {
             String acc_sql, cus_sql;
             
-            acc_sql = String.format("INSERT INTO ACCOUNT VALUES (?, ?)");
-            PreparedStatement pres1 = LoginController.connection.con.prepareStatement(acc_sql);
-            pres1.setString(1, customer.getUsername());
-            pres1.setString(2, "");
-            pres1.setString(3, "customer");
-            int rows_acc = pres1.executeUpdate();
+//            acc_sql = String.format("INSERT INTO ACCOUNT VALUES (?, ?)");
+//            PreparedStatement pres1 = LoginController.connection.con.prepareStatement(acc_sql);
+//            pres1.setString(1, customer.getUsername());
+//            pres1.setString(2, "");
+//            pres1.setString(3, "customer");
+//            int rows_acc = pres1.executeUpdate();
             
             cus_sql = String.format("INSERT INTO CUSTOMER VALUES (CUSTOMERID_SEQ.nextval,?,?,?,?,?,?)");
             PreparedStatement pres2 = LoginController.connection.con.prepareStatement(cus_sql);
@@ -46,8 +46,11 @@ public class CustomerDAL {
             pres2.setString(6, customer.getUsername());
             int rows_cus = pres2.executeUpdate();
             
-            if (rows_acc > 0 && rows_cus >0)
+//            if (rows_acc > 0 && rows_cus >0)
+//                return true;
+            if (rows_cus >0)
                 return true;
+
         } catch (SQLException e){
             JOptionPane.showMessageDialog(null,e.toString(),"Error", JOptionPane.ERROR_MESSAGE);
             return false;
