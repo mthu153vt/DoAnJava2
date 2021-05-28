@@ -7,6 +7,8 @@ package DAL;
 
 import BUS.LoginController;
 import DTO.CustomerDTO;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 
 import java.sql.SQLException;
 import java.sql.Statement;
@@ -25,71 +27,116 @@ public class CustomerDAL {
     
     public boolean Insert(CustomerDTO customer) {
         try {
-            Object arg_acc[] = {customer.getUsername()};
-            Object arg_cus[] = {customer.getFullname(), customer.getGender(),customer.getNumberphone(),customer.getMembershiptier(),
-                customer.getMembershippoint(), customer.getUsername()};
+            String acc_sql, cus_sql;
             
-            String acc_sql;
-            acc_sql = String.format("INSERT INTO ACCOUNT(USERNAME, ACCOUNTROLE) VALUES ('%s', 'customer')", arg_acc);
-            String cus_sql;
-            cus_sql = String.format("INSERT INTO CUSTOMER VALUES (CUSTOMERID_SEQ.nextval,'%s','%s','%d','%s','%d','%s')", arg_cus);
+            acc_sql = String.format("INSERT INTO ACCOUNT VALUES (?, ?)");
+            PreparedStatement pres1 = LoginController.connection.con.prepareStatement(acc_sql);
+            pres1.setString(1, customer.getUsername());
+            pres1.setString(2, "");
+            pres1.setString(3, "customer");
+            int rows_acc = pres1.executeUpdate();
             
-            Statement statement = LoginController.connection.con.createStatement();
             
-            int rows_acc = statement.executeUpdate(acc_sql);
-            int rows_cus = statement.executeUpdate(cus_sql);
+            cus_sql = String.format("INSERT INTO CUSTOMER VALUES (CUSTOMERID_SEQ.nextval,?,?,?,?,?,?)");
+            PreparedStatement pres2 = LoginController.connection.con.prepareStatement(cus_sql);
+            pres2.setString(1, customer.getFullname());
+            pres2.setString(2, customer.getGender());
+            pres2.setString(3, customer.getNumberphone());
+            pres2.setString(4, customer.getMembershiptier());
+            pres2.setInt(5, customer.getMembershippoint());
+            pres2.setString(6, customer.getUsername());
+            int rows_cus = pres2.executeUpdate();
             
-            if (rows_cus > 0 && rows_acc >0){
-                System.out.println("Insert successfull");
-            }else {
-                System.out.println("Insert fail");
-            }
-        } catch (SQLException ex) {
-            JOptionPane.showMessageDialog(null,ex.toString(),"Error!", JOptionPane.ERROR_MESSAGE);
+            if (rows_acc > 0 && rows_cus >0)
+                return true;
+        } catch (SQLException e){
+            JOptionPane.showMessageDialog(null,e.toString(),"Error", JOptionPane.ERROR_MESSAGE);
             return false;
         }
-        return true;
+        return false;
     }
     
     public boolean Delete(CustomerDTO customer){
         try {
-            Object arg_cus[]= {customer.getUsername()};
-            String acc_sql,cus_sql;
+            String cus_sql, acc_sql;
             
-            cus_sql = String.format("DELETE FROM CUSTOMER WHERE USERNAME = '%s'", arg_cus);
-            acc_sql = String.format("DELETE FROM ACCOUNT WHERE USERNAME = '%s'", arg_cus);
+            cus_sql = String.format("DELETE FROM CUSTOMER WHERE CUSTOMER_ID = ?");
+            PreparedStatement pres1 = LoginController.connection.con.prepareStatement(cus_sql);
+            pres1.setInt(1, customer.getCustomerID());
+            int rows_cus = pres1.executeUpdate();
             
-            Statement statement = LoginController.connection.con.createStatement();
-            int rows_cus = statement.executeUpdate(cus_sql);
-            int rows_acc = statement.executeUpdate(acc_sql);
-            if (rows_acc > 0 && rows_cus >0){
-                System.out.println("Delete successfull");
-            }
-        } catch (SQLException ex) {
-            JOptionPane.showMessageDialog(null,ex.toString(),"Error", JOptionPane.ERROR_MESSAGE);
+            acc_sql = String.format("DELETE FROM ACCOUNT WHERE USERNAME = ?");
+            PreparedStatement pres2 = LoginController.connection.con.prepareStatement(acc_sql);
+            pres2.setString(1, customer.getUsername());
+            int rows_acc = pres2.executeUpdate();
+            
+            if (rows_acc > 0 && rows_cus >0)
+                return true;
+        }catch (SQLException e){
+            JOptionPane.showMessageDialog(null,e.toString(),"Error", JOptionPane.ERROR_MESSAGE);
             return false;
         }
-        return true;
+        return false;
     }
     
-    public boolean Update(String ID ,CustomerDTO customer) {
+    public boolean Update (CustomerDTO customer, int id ) {
         try {
-            Object arg[]= {customer.getFullname(), customer.getGender(),customer.getNumberphone(), customer.getMembershiptier(), 
-                customer.getMembershippoint(),ID};
-            String sql;
-            sql = String.format("UPDATE CUSTOMER SET Fullname = '%s', Gender = '%s', Numberphone = '%d', Membershiptier = '%s', Membershippoint = '%d' WHERE CustomerID = '%d'", arg);
-            Statement statement = LoginController.connection.con.createStatement();
-            int rows = statement.executeUpdate(sql);
-            if (rows > 0){
-                System.out.println("Update successfull");
-            }
-        } catch (SQLException ex) {
-            JOptionPane.showMessageDialog(null,ex.toString(),"Error", JOptionPane.ERROR_MESSAGE);
+            String cus_sql;
+            cus_sql = String.format("UPDATE CUSTOMER SET fullname =?, gender =?, numberphone =?, membershiptier =?, membershippoint =? WHERE CUSTOMER_ID =?");
+            PreparedStatement pres = LoginController.connection.con.prepareStatement(cus_sql);
+            
+            pres.setString(1, customer.getFullname());
+            pres.setString(2, customer.getGender());
+            pres.setString(3, customer.getNumberphone());
+            pres.setString(4, customer.getMembershiptier());
+            pres.setInt(5, customer.getMembershippoint());
+            pres.setInt(6, id);
+            
+            int rows = pres.executeUpdate();
+            if(rows > 0)
+                return true;
+        }catch (SQLException e){
+            JOptionPane.showMessageDialog(null,e.toString(),"Error", JOptionPane.ERROR_MESSAGE);
             return false;
         }
-        return true;
-
+        return false;    
     }
+    
+    
+    public void LoadData(){
+        try{
+        this.Data.clear();    
+        Statement statement = LoginController.connection.con.createStatement();
+        ResultSet rs = statement.executeQuery("SELECT * FROM CUSTOMER");
+        while(rs.next())
+        {
+            CustomerDTO customer =  new CustomerDTO();
+            
+            customer.setCustomerID(rs.getInt(1));
+            customer.setFullname(rs.getString(2));
+            customer.setGender(rs.getString(3));
+            customer.setNumberphone(rs.getString(4));
+            customer.setMembershiptier(rs.getString(5));
+            customer.setMembershippoint(rs.getInt(6));
+            customer.setUsername(rs.getString(7));
+            
+            Data.add(customer);
+        }
+        } catch (SQLException e){
+            JOptionPane.showMessageDialog(null,e.toString(),"Error", JOptionPane.ERROR_MESSAGE); 
+        }
+        
+    }
+    
+    public ObservableList<CustomerDTO> GetData(){
+        try{
+            LoadData();
+        }catch (Exception e){
+            JOptionPane.showMessageDialog(null,e.toString(),"Error at GetData()", JOptionPane.ERROR_MESSAGE);
+        }  
+        
+        return this.Data;
+    }
+    
 }
-
 

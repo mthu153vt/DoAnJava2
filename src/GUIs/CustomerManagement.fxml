@@ -17,20 +17,18 @@
       <Button fx:id="btn_delete_customer" layoutX="1075.0" layoutY="884.0" mnemonicParsing="false" onAction="#Action_Con_DelCus" prefHeight="42.0" prefWidth="312.0" style="-fx-background-color: orange; -fx-font-size: 18px; -fx-font-weight: bold;" text="DELETE CURRENT USER" textFill="WHITE" />
       <Button fx:id="btn_apply_edit_cus" layoutX="1405.0" layoutY="884.0" mnemonicParsing="false" onAction="#Action_Con_EditCus" prefHeight="42.0" prefWidth="312.0" style="-fx-background-color: green; -fx-font-size: 18px; -fx-font-weight: bold;" text="APPLY EDIT" textFill="WHITE" />
       <ListView fx:id="ls_customer" layoutX="107.0" layoutY="219.0" onMouseClicked="#displayCus" prefHeight="652.0" prefWidth="536.0" style="-fx-background-color: GRAY;" />
-      <TextField fx:id="txt_customer_user_name" layoutX="839.0" layoutY="300.0" prefHeight="48.0" prefWidth="337.0" />
-      <Text layoutX="656.0" layoutY="341.0" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-font-size: 30PX; -fx-font-weight: bold;" text="USERNAME" textAlignment="RIGHT" wrappingWidth="171.3164463043213" />
-      <TextField fx:id="txt_customer_name" layoutX="845.0" layoutY="450.0" prefHeight="48.0" prefWidth="337.0" />
-      <Text layoutX="662.0" layoutY="491.0" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-font-size: 30PX; -fx-font-weight: bold;" text="NAME" textAlignment="RIGHT" wrappingWidth="171.3164463043213" />
-      <TextField fx:id="txt_customer_gender" layoutX="1445.0" layoutY="287.0" prefHeight="48.0" prefWidth="337.0" />
-      <Text layoutX="1262.0" layoutY="328.0" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-font-size: 30PX; -fx-font-weight: bold;" text="GENDER" textAlignment="RIGHT" wrappingWidth="171.3164463043213" />
-      <TextField fx:id="txt_customer_birthday" layoutX="1436.0" layoutY="439.0" prefHeight="48.0" prefWidth="337.0" />
-      <Text layoutX="1253.0" layoutY="480.0" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-font-size: 30PX; -fx-font-weight: bold;" text="BIRTHDAY" textAlignment="RIGHT" wrappingWidth="171.3164463043213" />
-      <TextField fx:id="txt_customer_point" layoutX="1443.0" layoutY="591.0" prefHeight="48.0" prefWidth="337.0" />
-      <Text layoutX="1260.0" layoutY="632.0" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-font-size: 30PX; -fx-font-weight: bold;" text="POINT" textAlignment="RIGHT" wrappingWidth="171.3164463043213" />
+      <TextField fx:id="txt_customer_name" layoutX="923.0" layoutY="295.0" prefHeight="48.0" prefWidth="337.0" />
+      <Text layoutX="740.0" layoutY="336.0" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-font-size: 30PX; -fx-font-weight: bold;" text="NAME" textAlignment="RIGHT" wrappingWidth="171.3164463043213" />
+      <TextField fx:id="txt_customer_gender" layoutX="906.0" layoutY="589.0" prefHeight="48.0" prefWidth="337.0" />
+      <Text layoutX="723.0" layoutY="630.0" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-font-size: 30PX; -fx-font-weight: bold;" text="GENDER" textAlignment="RIGHT" wrappingWidth="171.3164463043213" />
+      <TextField fx:id="txt_customer_point" layoutX="895.0" layoutY="732.0" prefHeight="48.0" prefWidth="337.0" />
+      <Text layoutX="712.0" layoutY="773.0" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-font-size: 30PX; -fx-font-weight: bold;" text="POINT" textAlignment="RIGHT" wrappingWidth="171.3164463043213" />
       <Button fx:id="btn_back" layoutX="108.0" layoutY="957.0" mnemonicParsing="false" onAction="#act_back" prefHeight="59.0" prefWidth="324.0" style="-fx-background-color: RED;" text="BACK" textFill="WHITE">
          <font>
             <Font name="System Bold" size="36.0" />
          </font>
       </Button>
+      <TextField fx:id="txt_customer_numberphone" layoutX="914.0" layoutY="447.0" prefHeight="48.0" prefWidth="337.0" />
+      <Text layoutX="658.0" layoutY="480.0" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-font-size: 30PX; -fx-font-weight: bold;" text="NUMBERPHONE" textAlignment="RIGHT" wrappingWidth="244.6498203277588" />
    </children>
 </AnchorPane>

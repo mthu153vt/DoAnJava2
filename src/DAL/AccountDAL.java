@@ -107,5 +107,22 @@ public class AccountDAL {
         return false;
     }
     
+    public boolean Delete(String username) {
+        try{    
+            String acc_sql;
+            acc_sql = String.format("DELETE FROM ACCOUNT WHERE USERNAME = ?");
+            PreparedStatement pres = LoginController.connection.con.prepareStatement(acc_sql);
+             pres.setString(1, username);
+            
+            int rows = pres.executeUpdate();
+            if(rows > 0)
+                return true;
+        }catch (SQLException e){
+            JOptionPane.showMessageDialog(null,e.toString(),"Error", JOptionPane.ERROR_MESSAGE);
+            return false;
+        }
+        return false;
+    }
+    
     
 }
