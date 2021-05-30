@@ -10,16 +10,18 @@ import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.Node;
 import javafx.scene.control.Button;
 import javafx.scene.control.RadioButton;
 import javafx.scene.control.TextField;
+import javafx.stage.Stage;
 
 /**
  * FXML Controller class
  *
- * @author htthi
+ * @author lvlsp
  */
-public class CustomerInfoController implements Initializable {
+public class PersonalInfoController implements Initializable {
 
     @FXML
     private TextField txt_username;
@@ -43,25 +45,33 @@ public class CustomerInfoController implements Initializable {
     /**
      * Initializes the controller class.
      */
+    
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        // TODO
-    }    
+       }    
 
     @FXML
     private void act_back(ActionEvent event) {
+        ((Node) (event.getSource())).getScene();
+            Stage stage = new Stage();
+            stage.close();
     }
 
     @FXML
     private void act_male(ActionEvent event) {
+        btn_female.setSelected(false);
     }
 
     @FXML
     private void act_female(ActionEvent event) {
-    }
+         btn_male.setSelected(false);
+        }
 
     @FXML
     private void act_apply(ActionEvent event) {
     }
+    }
+
     
-}
+
+

@@ -48,6 +48,8 @@ public class AdminController implements Initializable {
     private Button btn_voucher;
     @FXML
     private Button btn_info;
+    @FXML
+    private Button btn_info1;
 
     /**
      * Initializes the controller class.

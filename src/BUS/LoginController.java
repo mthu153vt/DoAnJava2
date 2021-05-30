@@ -58,7 +58,7 @@ public class LoginController implements Initializable {
         if ( connection.OpenConnection()){
             ((Node) (event.getSource())).getScene().getWindow().hide();
             Stage stage = new Stage();
-            Parent root = FXMLLoader.load(getClass().getResource("../GUIs/" +role + ".fxml"));
+            Parent root = FXMLLoader.load(getClass().getResource("../GUIs/" +role + "Home.fxml"));
             Scene scene = new Scene(root);
             stage.setScene(scene);
             stage.show();
