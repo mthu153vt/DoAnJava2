@@ -86,13 +86,13 @@ public class CustomerManagementController implements Initializable {
     @FXML
     private void Action_Con_EditCus(ActionEvent event) throws SQLException {
         if (CheckInputCus()){
-        CustomerDTO cus = getCustomerFromGUI();
-        CustomerDTO cusid = ls_customer.getSelectionModel().getSelectedItem();
+            CustomerDTO cus = getCustomerFromGUI();
+            CustomerDTO cusid = ls_customer.getSelectionModel().getSelectedItem();
         
-        if(cus_dal.Update(cus, cusid.getCustomerID())){
-            cus_data = cus_dal.GetData();
-            JOptionPane.showMessageDialog(null,"Editing Successful","Customer", JOptionPane.INFORMATION_MESSAGE);
-        }
+            if(cus_dal.Update(cus, cusid.getCustomerID())){
+                cus_data = cus_dal.GetData();
+                JOptionPane.showMessageDialog(null,"Editing Successful","Customer", JOptionPane.INFORMATION_MESSAGE);
+            }
         }
     }
 

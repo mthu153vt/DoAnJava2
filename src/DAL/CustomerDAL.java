@@ -27,14 +27,7 @@ public class CustomerDAL {
     
     public boolean Insert(CustomerDTO customer) {
         try {
-            String acc_sql, cus_sql;
-            
-//            acc_sql = String.format("INSERT INTO ACCOUNT VALUES (?, ?)");
-//            PreparedStatement pres1 = LoginController.connection.con.prepareStatement(acc_sql);
-//            pres1.setString(1, customer.getUsername());
-//            pres1.setString(2, "");
-//            pres1.setString(3, "customer");
-//            int rows_acc = pres1.executeUpdate();
+            String cus_sql;
             
             cus_sql = String.format("INSERT INTO CUSTOMER VALUES (CUSTOMERID_SEQ.nextval,?,?,?,?,?,?)");
             PreparedStatement pres2 = LoginController.connection.con.prepareStatement(cus_sql);
@@ -46,8 +39,6 @@ public class CustomerDAL {
             pres2.setString(6, customer.getUsername());
             int rows_cus = pres2.executeUpdate();
             
-//            if (rows_acc > 0 && rows_cus >0)
-//                return true;
             if (rows_cus >0)
                 return true;
 
@@ -57,6 +48,25 @@ public class CustomerDAL {
         }
         return false;
     }
+    
+    public boolean Insert(String username) {
+        try {
+            String cus_sql;
+            
+            cus_sql = String.format("INSERT INTO CUSTOMER(CUSTOMER_ID, USERNAME) VALUES (CUSTOMERID_SEQ.nextval,?)");
+            PreparedStatement pres = LoginController.connection.con.prepareStatement(cus_sql);
+            pres.setString(1, username);
+            int rows_cus = pres.executeUpdate();
+            
+            if (rows_cus > 0)
+                return true;
+        }catch (SQLException e){
+            JOptionPane.showMessageDialog(null,e.toString(),"Error", JOptionPane.ERROR_MESSAGE);
+            return false;
+        }
+        return false;
+    }
+    
     
     public boolean Delete(CustomerDTO customer){
         try {

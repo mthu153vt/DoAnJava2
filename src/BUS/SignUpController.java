@@ -6,9 +6,11 @@
 package BUS;
 
 import DAL.AccountDAL;
+import DAL.CustomerDAL;
 import DTO.AccountDTO;
 import java.io.IOException;
 import java.net.URL;
+import java.sql.SQLException;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -46,6 +48,7 @@ public class SignUpController implements Initializable {
      */
     
     AccountDAL acc_dal = new AccountDAL();
+    CustomerDAL cus_dal = new CustomerDAL();
     @Override 
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
@@ -62,21 +65,22 @@ public class SignUpController implements Initializable {
     }
 
     @FXML
-    private void Action_CreateAccount(ActionEvent event) throws IOException {
+    private void Action_CreateAccount(ActionEvent event) throws SQLException, IOException {
         if(CheckInputAccount()){
             AccountDTO account = getAccountFromGUI();
-            acc_dal.Insert(account);
-//            if(acc_dal.Insert(account)){
-//                ((Node) (event.getSource())).getScene().getWindow().hide();
-//                Stage stage = new Stage();
-//                Parent root = FXMLLoader.load(getClass().getResource("../GUIs/Customer.fxml"));
-//                Scene scene = new Scene(root);
-//                stage.setScene(scene);
-//                stage.show();
-//            }
-//            else{
-//                JOptionPane.showMessageDialog(null,"Sign Up Failed"," Error", JOptionPane.ERROR_MESSAGE);
-//            }
+            if(acc_dal.Insert(account)){
+                cus_dal.Insert(account.getUsername());
+                
+                ((Node) (event.getSource())).getScene().getWindow().hide();
+                Stage stage = new Stage();
+                Parent root = FXMLLoader.load(getClass().getResource("../GUIs/CustomerHome.fxml"));
+                Scene scene = new Scene(root);
+                stage.setScene(scene);
+                stage.show();
+            }
+            else{
+                JOptionPane.showMessageDialog(null,"Sign Up Failed"," Error", JOptionPane.ERROR_MESSAGE);
+            }
         }
     }
     
@@ -98,7 +102,7 @@ public class SignUpController implements Initializable {
                 return false;
             }
         }
-        if( !txt_password.getText().equals(txt_retype_password.getText())){
+        if( !(txt_password.getText().equals(txt_retype_password.getText()))){
             String ErrorStr = "Re-type Password wrong";
             JOptionPane.showMessageDialog(null,ErrorStr,"Error", JOptionPane.ERROR_MESSAGE);
             return false;
