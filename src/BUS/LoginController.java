@@ -1,9 +1,13 @@
 package BUS;
 
+import DAL.AccountDAL;
 import DAL.DBConnection;
+import DTO.AccountDTO;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -15,6 +19,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
+import javax.swing.JOptionPane;
 
 /**
  * FXML Controller class
@@ -46,26 +51,50 @@ public class LoginController implements Initializable {
         String username = usertextField.getText();
         String password = passtextField.getText();
         String role ;
-        if (username.equals("admin") && password.equals("admin")){
-            role = "Admin";
-        }else if (username.equals("sushimi") && password.equals("sushimi")){
-            role = "employee";
-        }else if (username.equals("potato123") && password.equals("customer")){
-            role = "customer";
-        }else {
-            return;
-        }
-        if ( connection.OpenConnection()){
-            ((Node) (event.getSource())).getScene().getWindow().hide();
-            Stage stage = new Stage();
-            Parent root = FXMLLoader.load(getClass().getResource("../GUIs/" +role + "Home.fxml"));
-            Scene scene = new Scene(root);
-            stage.setScene(scene);
-            stage.show();
-        }
-        
-        
-    }
+        try{
+            if ( connection.OpenConnection()){
+                AccountDAL acc_dal = new AccountDAL();
+                AccountDTO account = acc_dal.getAccountByUserNameAndPassword(username, password);
+                
+                if(account == null) {
+                    connection.CloseConnection();
+                    JOptionPane.showMessageDialog(null,"Login Failed!","Error", JOptionPane.ERROR_MESSAGE);
+                }
+                else{
+                    role = account.getAccountrole();
+                    ((Node) (event.getSource())).getScene().getWindow().hide();
+                    Stage stage = new Stage();
+                    Parent root = FXMLLoader.load(getClass().getResource("../GUIs/" +role + "Home.fxml"));
+                    Scene scene = new Scene(root);
+                    stage.setScene(scene);
+                    stage.show();
+                        
+                }
+            }
+                
+            }catch(IOException ex) {
+                    connection.CloseConnection();
+                    Logger.getLogger(LoginController.class.getName()).log(Level.SEVERE, null, ex);
+            }
+          
+//        if (username.equals("admin") && password.equals("admin")){
+//            role = "Admin";
+//        }else if (username.equals("sushimi") && password.equals("sushimi")){
+//            role = "employee";
+//        }else if (username.equals("potato123") && password.equals("customer")){
+//            role = "customer";
+//        }else {
+//            return;
+//        }
+//        if ( connection.OpenConnection()){
+//            ((Node) (event.getSource())).getScene().getWindow().hide();
+//            Stage stage = new Stage();
+//            Parent root = FXMLLoader.load(getClass().getResource("../GUIs/" +role + "Home.fxml"));
+//            Scene scene = new Scene(root);
+//            stage.setScene(scene);
+//            stage.show();
+//        }
+    }     
 
     @FXML
     private void Action_Sign_up(ActionEvent event) throws IOException {
@@ -79,8 +108,5 @@ public class LoginController implements Initializable {
         
         
     }
-
-
-    
     
 }

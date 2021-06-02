@@ -26,15 +26,15 @@ public class AccountDAL {
     
     public AccountDTO getAccountByUserNameAndPassword(String user, String pass) {
     try {
-            Object arg[]= {user, pass};
-
             String acc_sql;
-            acc_sql = String.format("SELECT * FROM account WHERE username = '%s' AND password = '%s' ",arg);
+            acc_sql = String.format("SELECT * FROM ACCOUNT WHERE username=? AND password=?");
 
-            Statement statement = LoginController.connection.con.createStatement();
-            ResultSet rs = statement.executeQuery(acc_sql);
+            PreparedStatement ps = LoginController.connection.con.prepareStatement(acc_sql);
+            ps.setString(1, user);
+            ps.setString(2, pass);
+            ResultSet rs = ps.executeQuery();
             
-            if(rs.next()){
+            while(rs.next()){
                 AccountDTO acc = new AccountDTO();
                 acc.setUsername( rs.getString("username") );
                 acc.setPassword( rs.getString("password") );

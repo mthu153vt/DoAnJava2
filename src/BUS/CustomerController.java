@@ -5,6 +5,7 @@
  */
 package BUS;
 
+import DTO.AccountDTO;
 import java.io.IOException;
 import java.net.URL;
 import java.util.Optional;
@@ -44,6 +45,7 @@ public class CustomerController implements Initializable {
     /**
      * Initializes the controller class.
      */
+    AccountDTO account;
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
@@ -93,6 +95,10 @@ public class CustomerController implements Initializable {
            System.out.println("canceled");
 }
         
+    }
+    
+    public void Account_cus(AccountDTO acc){
+        this.account = acc;
     }
     
 }
