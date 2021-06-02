@@ -68,6 +68,7 @@ public class SignUpController implements Initializable {
     private void Action_CreateAccount(ActionEvent event) throws SQLException, IOException {
         if(CheckInputAccount()){
             AccountDTO account = getAccountFromGUI();
+            
             if(acc_dal.Insert(account)){
                 cus_dal.Insert(account.getUsername());
                 

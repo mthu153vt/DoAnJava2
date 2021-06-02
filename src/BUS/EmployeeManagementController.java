@@ -54,13 +54,15 @@ public class EmployeeManagementController implements Initializable {
     private TextField txt_emp_address;
     @FXML
     private TextField txt_emp_numberphone;
-
+    @FXML
+    private TextField txt_emp_username;
     /**
      * Initializes the controller class.
      */
     
     ObservableList<EmployeeDTO> emp_data = FXCollections.observableArrayList();
     EmployeeDAL emp_dal = new EmployeeDAL();
+    
     
     @Override
     public void initialize(URL url, ResourceBundle rb) {
@@ -130,6 +132,7 @@ public class EmployeeManagementController implements Initializable {
         txt_start_date.setText(employee.getDatestartworking());
         txt_salary.setText(Integer.toString(employee.getSalary()));
         txt_emp_numberphone.setText(employee.getNumberphone());
+        txt_emp_username.setText(employee.getUsername());
     }
 
     @FXML
@@ -140,7 +143,7 @@ public class EmployeeManagementController implements Initializable {
 
     private EmployeeDTO getEmployeeFromGUI(){
         EmployeeDTO emp;
-        emp = new EmployeeDTO(0,txt_emp_name.getText(), txt_emp_gender.getText(),txt_emp_address.getText(), txt_emp_numberphone.getText(), Integer.parseInt(txt_salary.getText()),txt_emp_birthday.getText(), txt_start_date.getText(), " " );
+        emp = new EmployeeDTO(0,txt_emp_name.getText(), txt_emp_gender.getText(),txt_emp_address.getText(), txt_emp_numberphone.getText(), Integer.parseInt(txt_salary.getText()),txt_emp_birthday.getText(), txt_start_date.getText(), txt_emp_username.getText() );
         
         return emp;
     }

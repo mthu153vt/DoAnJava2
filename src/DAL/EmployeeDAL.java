@@ -37,7 +37,7 @@ public class EmployeeDAL {
             pres.setInt(5, employee.getSalary());
             pres.setString(6, employee.getDateofbirth());
             pres.setString(7, employee.getDatestartworking());
-            pres.setString(8, "employee");
+            pres.setString(8, employee.getUsername());
             
             int rows = pres.executeUpdate();
             if(rows > 0)
@@ -69,7 +69,7 @@ public class EmployeeDAL {
     public boolean Update(EmployeeDTO employee, int id) {
         try{    
             String emp_sql;
-            emp_sql = String.format("UPDATE EMPLOYEE SET FULLNAME=?, GENDER=?, ADDRESS=?, NUMBERPHONE=?, SALARY=?, DATEOFBIRTH=TO_DATE(?,'YYYY-MM-DD'), DATESTARTWORKING=TO_DATE(?,'YYYY-MM-DD')  WHERE EMPLOYEE_ID = ?");
+            emp_sql = String.format("UPDATE EMPLOYEE SET FULLNAME=?, GENDER=?, ADDRESS=?, NUMBERPHONE=?, SALARY=?, DATEOFBIRTH=TO_DATE(?,'YYYY-MM-DD'), DATESTARTWORKING=TO_DATE(?,'YYYY-MM-DD'), USERNAME=?  WHERE EMPLOYEE_ID = ?");
             PreparedStatement pres = LoginController.connection.con.prepareStatement(emp_sql);
             
             pres.setString(1, employee.getFullname());
@@ -79,7 +79,8 @@ public class EmployeeDAL {
             pres.setInt(5, employee.getSalary());
             pres.setString(6, employee.getDateofbirth());
             pres.setString(7, employee.getDatestartworking());
-            pres.setInt(8, id);
+            pres.setString(8, employee.getUsername());
+            pres.setInt(9, id);
             
             int rows = pres.executeUpdate();
             if(rows > 0)
