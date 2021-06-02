@@ -52,9 +52,12 @@ public class PersonalInfoController implements Initializable {
 
     @FXML
     private void act_back(ActionEvent event) {
-        ((Node) (event.getSource())).getScene();
-            Stage stage = new Stage();
-            stage.close();
+//        ((Node) (event.getSource())).getScene();
+//            Stage stage = new Stage();
+//            stage.close();
+
+       Stage stage = (Stage) btn_back.getScene().getWindow();
+       stage.close();
     }
 
     @FXML
