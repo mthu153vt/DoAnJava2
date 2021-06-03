@@ -14,7 +14,7 @@
       <ListView fx:id="ls_employee" layoutX="98.0" layoutY="202.0" onMouseClicked="#displayEmp" prefHeight="652.0" prefWidth="536.0" style="-fx-background-color: GRAY;" />
       <TextField fx:id="txt_emp_name" layoutX="830.0" layoutY="273.0" prefHeight="48.0" prefWidth="337.0" />
       <Text layoutX="647.0" layoutY="314.0" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-font-size: 30PX; -fx-font-weight: bold;" text="NAME" textAlignment="RIGHT" wrappingWidth="171.3164463043213" />
-      <TextField fx:id="txt_emp_birthday" layoutX="836.0" layoutY="423.0" prefHeight="48.0" prefWidth="350.0" />
+      <TextField fx:id="txt_emp_birthday" layoutX="836.0" layoutY="423.0" prefHeight="48.0" prefWidth="337.0" />
       <Text layoutX="653.0" layoutY="464.0" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-font-size: 30PX; -fx-font-weight: bold;" text="BIRTHDAY" textAlignment="RIGHT" wrappingWidth="171.3164463043213" />
       <TextField fx:id="txt_emp_gender" layoutX="1436.0" layoutY="270.0" prefHeight="48.0" prefWidth="337.0" />
       <Text layoutX="1253.0" layoutY="311.0" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-font-size: 30PX; -fx-font-weight: bold;" text="GENDER" textAlignment="RIGHT" wrappingWidth="171.3164463043213" />
@@ -37,7 +37,5 @@
       <TextField fx:id="txt_emp_address" layoutX="848.0" layoutY="572.0" prefHeight="48.0" prefWidth="337.0" />
       <TextField fx:id="txt_emp_numberphone" layoutX="1445.0" layoutY="725.0" prefHeight="48.0" prefWidth="337.0" />
       <Text layoutX="1189.0" layoutY="763.0" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-font-size: 30PX; -fx-font-weight: bold;" text="NUMBERPHONE" textAlignment="RIGHT" wrappingWidth="248.6498203277588" />
-      <TextField fx:id="txt_emp_username" layoutX="839.0" layoutY="724.0" prefHeight="48.0" prefWidth="231.0" />
-      <Text layoutX="647.0" layoutY="762.0" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-font-size: 30PX; -fx-font-weight: bold;" text="USERNAME" textAlignment="RIGHT" wrappingWidth="179.3164463043213" />
    </children>
 </AnchorPane>

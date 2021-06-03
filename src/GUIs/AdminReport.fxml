@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="BUS.AdminReportController">
+   <children>
+      <Button fx:id="btn_financial" layoutX="75.0" layoutY="295.0" mnemonicParsing="false" onAction="#act_finacial_rep" prefHeight="26.0" prefWidth="127.0" style="-fx-background-color: GREEN;" text="FINANCIAL" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="13.0" />
+         </font>
+      </Button>
+      <Button fx:id="btn_employee" layoutX="237.0" layoutY="295.0" mnemonicParsing="false" onAction="#act_emp_rep" prefHeight="13.0" prefWidth="127.0" style="-fx-background-color: BLUE;" text="EMPLOYEE" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="13.0" />
+         </font>
+      </Button>
+      <Button layoutX="393.0" layoutY="295.0" mnemonicParsing="false" onAction="#act_customer_rep" prefHeight="25.0" prefWidth="127.0" style="-fx-background-color: ORANGE;" text="CUSTOMER" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="13.0" />
+         </font>
+      </Button>
+      <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="225.0" layoutY="40.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@images/LOGO.png" />
+         </image>
+      </ImageView>
+      <Text layoutX="178.0" layoutY="227.0" strokeType="OUTSIDE" strokeWidth="0.0" text="REPORTS" textAlignment="CENTER" wrappingWidth="246.9999995827675">
+         <font>
+            <Font name="System Bold" size="36.0" />
+         </font>
+      </Text>
+   </children>
+</AnchorPane>

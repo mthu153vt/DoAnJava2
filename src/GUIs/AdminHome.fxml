@@ -25,22 +25,22 @@
             <Font name="System Bold" size="24.0" />
          </font>
       </Button>
-      <Button fx:id="btn_menu" layoutX="1262.0" layoutY="303.0" mnemonicParsing="false" onAction="#Act_cus_mag" prefHeight="74.0" prefWidth="550.0" style="-fx-background-color: white;" text="CUSTOMER MANAGEMENT" textAlignment="CENTER">
+      <Button fx:id="btn_cus_mag" layoutX="1268.0" layoutY="305.0" mnemonicParsing="false" onAction="#Act_cus_mag" prefHeight="74.0" prefWidth="550.0" style="-fx-background-color: white;" text="CUSTOMER MANAGEMENT" textAlignment="CENTER">
          <font>
             <Font name="System Bold" size="32.0" />
          </font>
       </Button>
-      <Button fx:id="btn_voucher" layoutX="1257.0" layoutY="390.0" mnemonicParsing="false" onAction="#act_emp_mag" prefHeight="74.0" prefWidth="554.0" style="-fx-background-color: white;" text="EMPLOYEE MANAGEMENT" textAlignment="CENTER">
+      <Button fx:id="btn_emp_mag" layoutX="1257.0" layoutY="390.0" mnemonicParsing="false" onAction="#act_emp_mag" prefHeight="74.0" prefWidth="554.0" style="-fx-background-color: white;" text="EMPLOYEE MANAGEMENT" textAlignment="CENTER">
          <font>
             <Font name="System Bold" size="32.0" />
          </font>
       </Button>
-      <Button fx:id="btn_info" layoutX="1259.0" layoutY="478.0" mnemonicParsing="false" onAction="#act_food_mag" prefHeight="74.0" prefWidth="546.0" style="-fx-background-color: white;" text="MENU MANAGEMENT" textAlignment="CENTER">
+      <Button fx:id="btn_menu_mag" layoutX="1259.0" layoutY="478.0" mnemonicParsing="false" onAction="#act_menu_mag" prefHeight="74.0" prefWidth="546.0" style="-fx-background-color: white;" text="MENU MANAGEMENT" textAlignment="CENTER">
          <font>
             <Font name="System Bold" size="32.0" />
          </font>
       </Button>
-      <Button fx:id="btn_info1" layoutX="1256.0" layoutY="570.0" mnemonicParsing="false" onAction="#act_food_mag" prefHeight="74.0" prefWidth="546.0" style="-fx-background-color: white;" text="REPORT" textAlignment="CENTER">
+      <Button fx:id="btn_report" layoutX="1256.0" layoutY="570.0" mnemonicParsing="false" onAction="#act_report" prefHeight="74.0" prefWidth="546.0" style="-fx-background-color: white;" text="STATISTICAL REPORT" textAlignment="CENTER">
          <font>
             <Font name="System Bold" size="32.0" />
          </font>
