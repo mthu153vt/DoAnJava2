@@ -43,13 +43,13 @@ public class AdminController implements Initializable {
     @FXML
     private Button btn_logout;
     @FXML
-    private Button btn_menu;
+    private Button btn_cus_mag;
     @FXML
-    private Button btn_voucher;
+    private Button btn_emp_mag;
     @FXML
-    private Button btn_info;
+    private Button btn_menu_mag;
     @FXML
-    private Button btn_info1;
+    private Button btn_report;
 
     /**
      * Initializes the controller class.
@@ -103,13 +103,17 @@ public class AdminController implements Initializable {
     }
 
     @FXML
-    private void act_food_mag(ActionEvent event) throws IOException {
+    private void act_menu_mag(ActionEvent event) throws IOException {
         ((Node) (event.getSource())).getScene();
             Stage stage = new Stage();
             Parent root = FXMLLoader.load(getClass().getResource("../GUIs/MenuManagement.fxml"));
             Scene scene = new Scene(root);
             stage.setScene(scene);
             stage.show();
+    }
+
+    @FXML
+    private void act_report(ActionEvent event) {
     }
     
 }

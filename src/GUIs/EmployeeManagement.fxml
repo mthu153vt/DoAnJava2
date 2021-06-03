@@ -37,5 +37,7 @@
       <TextField fx:id="txt_emp_address" layoutX="848.0" layoutY="572.0" prefHeight="48.0" prefWidth="337.0" />
       <TextField fx:id="txt_emp_numberphone" layoutX="1445.0" layoutY="725.0" prefHeight="48.0" prefWidth="337.0" />
       <Text layoutX="1189.0" layoutY="763.0" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-font-size: 30PX; -fx-font-weight: bold;" text="NUMBERPHONE" textAlignment="RIGHT" wrappingWidth="248.6498203277588" />
+      <TextField fx:id="txt_emp_username" layoutX="840.0" layoutY="709.0" prefHeight="48.0" prefWidth="206.0" />
+      <Text layoutX="657.0" layoutY="747.0" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-font-size: 30PX; -fx-font-weight: bold;" text="USERNAME" textAlignment="RIGHT" wrappingWidth="171.3164463043213" />
    </children>
 </AnchorPane>

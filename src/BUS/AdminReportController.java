@@ -1,0 +1,47 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+package BUS;
+
+import java.net.URL;
+import java.util.ResourceBundle;
+import javafx.event.ActionEvent;
+import javafx.fxml.FXML;
+import javafx.fxml.Initializable;
+import javafx.scene.control.Button;
+
+/**
+ * FXML Controller class
+ *
+ * @author htthi
+ */
+public class AdminReportController implements Initializable {
+
+    @FXML
+    private Button btn_financial;
+    @FXML
+    private Button btn_employee;
+
+    /**
+     * Initializes the controller class.
+     */
+    @Override
+    public void initialize(URL url, ResourceBundle rb) {
+        // TODO
+    }    
+
+    @FXML
+    private void act_finacial_rep(ActionEvent event) {
+    }
+
+    @FXML
+    private void act_emp_rep(ActionEvent event) {
+    }
+
+    @FXML
+    private void act_customer_rep(ActionEvent event) {
+    }
+    
+}
