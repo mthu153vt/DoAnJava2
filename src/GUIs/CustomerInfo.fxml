@@ -54,12 +54,12 @@
             <Font size="36.0" />
          </font>
       </Text>
-      <Text layoutX="301.0" layoutY="594.0" strokeType="OUTSIDE" strokeWidth="0.0" text="PASSWORD">
+      <Text layoutX="205.0" layoutY="594.0" strokeType="OUTSIDE" strokeWidth="0.0" text="NEW PASSWORD">
          <font>
             <Font size="36.0" />
          </font>
       </Text>
-      <Text layoutX="134.0" layoutY="701.0" strokeType="OUTSIDE" strokeWidth="0.0" text="CONFIRM PASSWORD">
+      <Text layoutX="37.0" layoutY="701.0" strokeType="OUTSIDE" strokeWidth="0.0" text="CONFIRM NEW PASSWORD">
          <font>
             <Font size="36.0" />
          </font>
