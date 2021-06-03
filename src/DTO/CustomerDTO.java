@@ -35,6 +35,14 @@ public class CustomerDTO {
     public CustomerDTO() {
     }
 
+    public CustomerDTO(int CustomerID, String fullname, String gender, String numberphone, String username) {
+        this.CustomerID = CustomerID;
+        this.fullname = fullname;
+        this.gender = gender;
+        this.numberphone = numberphone;
+        this.username = username;
+    }
+
     public CustomerDTO(int CustomerID, String fullname, String gender, String numberphone, String membershiptier, int membershippoint, String username) {
         this.CustomerID = CustomerID;
         this.fullname = fullname;

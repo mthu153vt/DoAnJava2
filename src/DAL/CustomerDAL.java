@@ -53,7 +53,7 @@ public class CustomerDAL {
         try {
             String cus_sql;
             
-            cus_sql = String.format("INSERT INTO CUSTOMER(CUSTOMER_ID, USERNAME) VALUES (CUSTOMERID_SEQ.nextval,?)");
+            cus_sql = String.format("INSERT INTO CUSTOMER(CUSTOMER_ID, MEMBERSHIPPOINT, USERNAME) VALUES (CUSTOMERID_SEQ.nextval,0,?)");
             PreparedStatement pres = LoginController.connection.con.prepareStatement(cus_sql);
             pres.setString(1, username);
             int rows_cus = pres.executeUpdate();
