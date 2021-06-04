@@ -5,7 +5,9 @@
  */
 package BUS;
 
+import DAL.AccountDAL;
 import DAL.CustomerDAL;
+import DTO.AccountDTO;
 import DTO.CustomerDTO;
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -48,6 +50,8 @@ public class CustomerInfoController implements Initializable {
      * Initializes the controller class.
      */
     String gender = null;
+    AccountDTO account;
+    AccountDAL acc_dal = new AccountDAL();
     CustomerDAL cus_dal = new CustomerDAL();
     
     @Override
@@ -103,4 +107,23 @@ public class CustomerInfoController implements Initializable {
         }
         return true;
     }
+    
+    public void showinfoCus(CustomerDTO cus){
+        txt_username.setText(cus.getUsername());
+        txt_fullname.setText(cus.getFullname());
+        txt_phone.setText(cus.getNumberphone());
+        if(cus.getGender().equals("MALE")) {
+            btn_male.setSelected(true); 
+            gender = "MALE";
+        }
+        else {
+            btn_female.setSelected(true);
+            gender = "FEMALE";
+        }
+    }
+    
+    public void getAccount(AccountDTO acc){
+        this.account = acc;
+    }
+    
 }

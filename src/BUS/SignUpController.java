@@ -72,9 +72,19 @@ public class SignUpController implements Initializable {
             if(acc_dal.Insert(account)){
                 cus_dal.Insert(account.getUsername());
                 
-                ((Node) (event.getSource())).getScene().getWindow().hide();
+//                ((Node) (event.getSource())).getScene().getWindow().hide();
+//                Stage stage = new Stage();
+//                Parent root = FXMLLoader.load(getClass().getResource("../GUIs/CustomerHome.fxml"));
+//                Scene scene = new Scene(root);
+//                stage.setScene(scene);
+//                stage.show();
+                FXMLLoader loader = new FXMLLoader(getClass().getResource("../GUIs/CustomerHome.fxml"));
+                Parent root = loader.load();
+                
+                CustomerController controller = loader.getController();
+                controller.getAccount(account);
+                
                 Stage stage = new Stage();
-                Parent root = FXMLLoader.load(getClass().getResource("../GUIs/CustomerHome.fxml"));
                 Scene scene = new Scene(root);
                 stage.setScene(scene);
                 stage.show();
