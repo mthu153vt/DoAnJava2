@@ -67,13 +67,26 @@ public class CustomerController implements Initializable {
 
     @FXML
     private void act_info(ActionEvent event) throws IOException {
+//        ((Node) (event.getSource())).getScene().getWindow();
+//            Stage stage = new Stage();
+//            Parent root = FXMLLoader.load(getClass().getResource("../GUIs/CustomerInfo.fxml"));
+//            //Parent root = FXMLLoader.load(getClass().getResource("../GUIs/PersonalInfo.fxml"));
+//            Scene scene = new Scene(root);
+//            stage.setScene(scene);
+//            stage.show();
         ((Node) (event.getSource())).getScene().getWindow();
-            Stage stage = new Stage();
-            Parent root = FXMLLoader.load(getClass().getResource("../GUIs/CustomerInfo.fxml"));
-            //Parent root = FXMLLoader.load(getClass().getResource("../GUIs/PersonalInfo.fxml"));
-            Scene scene = new Scene(root);
-            stage.setScene(scene);
-            stage.show();
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("../GUIs/CustomerInfo.fxml"));
+        Parent root = loader.load();
+                
+        CustomerInfoController controller = loader.getController();
+        controller.getAccount(account);
+        controller.showinfoCus(account);
+        
+        Stage stage = new Stage();
+        Scene scene = new Scene(root);
+        stage.setScene(scene);
+        stage.show();
+        
     }
 
     @FXML

@@ -56,7 +56,7 @@ public class CustomerInfoController implements Initializable {
     
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        // TODO
+
     }    
 
     @FXML
@@ -108,15 +108,21 @@ public class CustomerInfoController implements Initializable {
         return true;
     }
     
-    public void showinfoCus(CustomerDTO cus){
+    public void showinfoCus(AccountDTO account){
+        String username = account.getUsername();
+        CustomerDTO cus = cus_dal.getCusInfo(username);
+        
         txt_username.setText(cus.getUsername());
         txt_fullname.setText(cus.getFullname());
         txt_phone.setText(cus.getNumberphone());
-        if(cus.getGender().equals("MALE")) {
+        if(cus.getGender() == null){
+            gender = null;
+        }
+        else if(cus.getGender().equals("MALE")) {
             btn_male.setSelected(true); 
             gender = "MALE";
         }
-        else {
+        else if(cus.getGender().equals("FEMALE")) {
             btn_female.setSelected(true);
             gender = "FEMALE";
         }

@@ -62,12 +62,28 @@ public class LoginController implements Initializable {
                 }
                 else{
                     role = account.getAccountrole();
+                    if(role.equals("customer")){
+                        ((Node) (event.getSource())).getScene().getWindow().hide();
+                        FXMLLoader loader = new FXMLLoader(getClass().getResource("../GUIs/CustomerHome.fxml"));
+                        Parent root = loader.load();
+                
+                        CustomerController controller = loader.getController();
+                        controller.getAccount(account);
+                
+                        Stage stage = new Stage();
+                        Scene scene = new Scene(root);
+                        stage.setScene(scene);
+                        stage.show();
+                    }
+                    
+                    else{
                     ((Node) (event.getSource())).getScene().getWindow().hide();
                     Stage stage = new Stage();
                     Parent root = FXMLLoader.load(getClass().getResource("../GUIs/" +role + "Home.fxml"));
                     Scene scene = new Scene(root);
                     stage.setScene(scene);
                     stage.show();
+                    }
                         
                 }
             }

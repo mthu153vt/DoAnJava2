@@ -150,5 +150,30 @@ public class CustomerDAL {
         return this.Data;
     }
     
+    public CustomerDTO getCusInfo(String username){
+        CustomerDTO customer =  new CustomerDTO();
+        
+        try{  
+        PreparedStatement pres = LoginController.connection.con.prepareStatement("SELECT * FROM CUSTOMER WHERE USERNAME=?");
+        pres.setString(1, username);
+        ResultSet rs = pres.executeQuery();
+    
+        while(rs.next())
+        {
+            customer.setCustomerID(rs.getInt(1));
+            customer.setFullname(rs.getString(2));
+            customer.setGender(rs.getString(3));
+            customer.setNumberphone(rs.getString(4));
+            customer.setMembershiptier(rs.getString(5));
+            customer.setMembershippoint(rs.getInt(6));
+            customer.setUsername(rs.getString(7));
+            
+        }
+        } catch (SQLException e){
+            JOptionPane.showMessageDialog(null,e.toString(),"Error", JOptionPane.ERROR_MESSAGE); 
+        }
+        
+        return customer;
+    }
 }
 
