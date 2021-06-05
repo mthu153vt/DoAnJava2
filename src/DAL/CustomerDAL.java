@@ -114,6 +114,28 @@ public class CustomerDAL {
         return false;    
     }
     
+    public boolean Update (CustomerDTO customer) {
+        try {
+            String cus_sql;
+            cus_sql = String.format("UPDATE CUSTOMER SET fullname =?, gender =?, numberphone =?, username =? WHERE CUSTOMER_ID =?");
+            PreparedStatement pres = LoginController.connection.con.prepareStatement(cus_sql);
+            
+            pres.setString(1, customer.getFullname());
+            pres.setString(2, customer.getGender());
+            pres.setString(3, customer.getNumberphone());
+            pres.setString(4, customer.getUsername());
+            pres.setInt(5, customer.getCustomerID());
+            
+            int rows = pres.executeUpdate();
+            if(rows > 0)
+                return true;
+        }catch (SQLException e){
+            JOptionPane.showMessageDialog(null,e.toString(),"Error", JOptionPane.ERROR_MESSAGE);
+            return false;
+        }
+        return false;    
+    }
+    
     
     public void LoadData(){
         try{

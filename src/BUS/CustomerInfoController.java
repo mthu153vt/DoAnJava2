@@ -51,6 +51,7 @@ public class CustomerInfoController implements Initializable {
      */
     String gender = null;
     AccountDTO account;
+    CustomerDTO customer;
     AccountDAL acc_dal = new AccountDAL();
     CustomerDAL cus_dal = new CustomerDAL();
     
@@ -67,32 +68,38 @@ public class CustomerInfoController implements Initializable {
 
     @FXML
     private void act_male(ActionEvent event) {
+        btn_female.setSelected(false);
         gender = "MALE";
     }
 
     @FXML
     private void act_female(ActionEvent event) {
+        btn_male.setSelected(false);
         gender = "FEMALE";
     }
 
     @FXML
     private void act_apply(ActionEvent event) {
         if(CheckInput()){
-            
+            CustomerDTO cus = getCustomerFromGUI();
+            if(cus_dal.Update(cus)){
+                JOptionPane.showMessageDialog(null,"Editing Successful","Customer", JOptionPane.INFORMATION_MESSAGE);
+            }
         }
     }
     
+    
     private CustomerDTO getCustomerFromGUI(){
         CustomerDTO cus;
-        cus = new CustomerDTO(0, txt_fullname.getText(), gender, txt_phone.getText(),txt_username.getText());
+        cus = new CustomerDTO(customer.getCustomerID(), txt_fullname.getText(), gender, txt_phone.getText(),txt_username.getText());
         
         return cus;
     }
     
     private boolean CheckInput(){
         
-        String input[] = {txt_fullname.getText(), txt_phone.getText(), tx_password.getText(), gender};
-        String property[] = {"FULLNAME", "NUMBERPHONE","PASSWORD", "GENDER"};
+        String input[] = {txt_fullname.getText(), txt_phone.getText(), gender};
+        String property[] = {"FULLNAME", "NUMBERPHONE", "GENDER"};
         for (int i = 0 ; i< input.length; i++){
             if (input[i] == null || input[i].equals("")){
                 String ErrorStr = property[i] + " is empty";
@@ -101,7 +108,7 @@ public class CustomerInfoController implements Initializable {
             }
         }
         if( !(tx_password.getText().equals(txt_confirmpass.getText()))){
-            String ErrorStr = "Re-type Password wrong";
+            String ErrorStr = "Confirm Password doesnt match with the password!";
             JOptionPane.showMessageDialog(null,ErrorStr,"Error", JOptionPane.ERROR_MESSAGE);
             return false;
         }
@@ -110,19 +117,19 @@ public class CustomerInfoController implements Initializable {
     
     public void showinfoCus(AccountDTO account){
         String username = account.getUsername();
-        CustomerDTO cus = cus_dal.getCusInfo(username);
+        customer = cus_dal.getCusInfo(username);
         
-        txt_username.setText(cus.getUsername());
-        txt_fullname.setText(cus.getFullname());
-        txt_phone.setText(cus.getNumberphone());
-        if(cus.getGender() == null){
+        txt_username.setText(customer.getUsername());
+        txt_fullname.setText(customer.getFullname());
+        txt_phone.setText(customer.getNumberphone());
+        if(customer.getGender() == null){
             gender = null;
         }
-        else if(cus.getGender().equals("MALE")) {
+        else if(customer.getGender().equals("MALE")) {
             btn_male.setSelected(true); 
             gender = "MALE";
         }
-        else if(cus.getGender().equals("FEMALE")) {
+        else if(customer.getGender().equals("FEMALE")) {
             btn_female.setSelected(true);
             gender = "FEMALE";
         }
@@ -131,5 +138,7 @@ public class CustomerInfoController implements Initializable {
     public void getAccount(AccountDTO acc){
         this.account = acc;
     }
+
+    
     
 }
