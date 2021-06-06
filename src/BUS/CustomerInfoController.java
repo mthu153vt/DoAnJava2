@@ -9,11 +9,17 @@ import DAL.AccountDAL;
 import DAL.CustomerDAL;
 import DTO.AccountDTO;
 import DTO.CustomerDTO;
+import java.io.IOException;
 import java.net.URL;
+import java.sql.SQLException;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Node;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.RadioButton;
 import javafx.scene.control.TextField;
@@ -36,16 +42,13 @@ public class CustomerInfoController implements Initializable {
     @FXML
     private Button btn_back;
     @FXML
-    private TextField tx_password;
-    @FXML
-    private TextField txt_confirmpass;
-    @FXML
     private RadioButton btn_male;
     @FXML
     private RadioButton btn_female;
     @FXML
     private Button btn_change;
-
+    @FXML
+    private Button btn_changepass;
     /**
      * Initializes the controller class.
      */
@@ -54,6 +57,7 @@ public class CustomerInfoController implements Initializable {
     CustomerDTO customer;
     AccountDAL acc_dal = new AccountDAL();
     CustomerDAL cus_dal = new CustomerDAL();
+
     
     @Override
     public void initialize(URL url, ResourceBundle rb) {
@@ -79,15 +83,29 @@ public class CustomerInfoController implements Initializable {
     }
 
     @FXML
-    private void act_apply(ActionEvent event) {
+    private void act_apply(ActionEvent event) throws SQLException{
         if(CheckInput()){
             CustomerDTO cus = getCustomerFromGUI();
-            if(cus_dal.Update(cus)){
+            if(acc_dal.UpdateUsername(cus.getUsername(), account)){
+                cus_dal.Update(cus);
                 JOptionPane.showMessageDialog(null,"Editing Successful","Customer", JOptionPane.INFORMATION_MESSAGE);
             }
         }
     }
     
+    @FXML
+    private void act_change_pass(ActionEvent event) throws IOException {
+        ((Node) (event.getSource())).getScene().getWindow();
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("../GUIs/ChangePassword.fxml"));
+        Parent root = loader.load();
+        ChangePasswordController controller = loader.getController();
+        controller.getAccount(account);
+                
+        Stage stage = new Stage();
+        Scene scene = new Scene(root);
+        stage.setScene(scene);
+        stage.show();                    
+    }
     
     private CustomerDTO getCustomerFromGUI(){
         CustomerDTO cus;
@@ -98,19 +116,14 @@ public class CustomerInfoController implements Initializable {
     
     private boolean CheckInput(){
         
-        String input[] = {txt_fullname.getText(), txt_phone.getText(), gender};
-        String property[] = {"FULLNAME", "NUMBERPHONE", "GENDER"};
+        String input[] = {txt_username.getText(), txt_fullname.getText(), txt_phone.getText(), gender};
+        String property[] = {"USERNAME", "FULLNAME", "NUMBERPHONE", "GENDER"};
         for (int i = 0 ; i< input.length; i++){
             if (input[i] == null || input[i].equals("")){
                 String ErrorStr = property[i] + " is empty";
                 JOptionPane.showMessageDialog(null,ErrorStr,"Error", JOptionPane.ERROR_MESSAGE);
                 return false;
             }
-        }
-        if( !(tx_password.getText().equals(txt_confirmpass.getText()))){
-            String ErrorStr = "Confirm Password doesnt match with the password!";
-            JOptionPane.showMessageDialog(null,ErrorStr,"Error", JOptionPane.ERROR_MESSAGE);
-            return false;
         }
         return true;
     }
@@ -138,6 +151,8 @@ public class CustomerInfoController implements Initializable {
     public void getAccount(AccountDTO acc){
         this.account = acc;
     }
+
+    
 
     
     

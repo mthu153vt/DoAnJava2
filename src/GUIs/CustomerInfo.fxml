@@ -29,37 +29,17 @@
             <Font name="System Bold" size="36.0" />
          </font>
       </Button>
-      <TextField fx:id="tx_password" layoutX="1401.0" layoutY="346.0" prefHeight="77.0" prefWidth="460.0">
-         <font>
-            <Font size="36.0" />
-         </font>
-      </TextField>
       <Text layoutX="144.0" layoutY="133.0" strokeType="OUTSIDE" strokeWidth="0.0" text="UPDATE INFOMATION">
          <font>
             <Font name="System Bold" size="48.0" />
          </font>
       </Text>
-      <TextField fx:id="txt_confirmpass" layoutX="1402.0" layoutY="472.0" prefHeight="77.0" prefWidth="460.0">
-         <font>
-            <Font size="36.0" />
-         </font>
-      </TextField>
       <Text layoutX="158.0" layoutY="306.0" strokeType="OUTSIDE" strokeWidth="0.0" text="USER NAME">
          <font>
             <Font size="36.0" />
          </font>
       </Text>
       <Text layoutX="158.0" layoutY="434.0" strokeType="OUTSIDE" strokeWidth="0.0" text="FULL NAME">
-         <font>
-            <Font size="36.0" />
-         </font>
-      </Text>
-      <Text layoutX="1108.0" layoutY="399.0" strokeType="OUTSIDE" strokeWidth="0.0" text="NEW PASSWORD">
-         <font>
-            <Font size="36.0" />
-         </font>
-      </Text>
-      <Text layoutX="940.0" layoutY="524.0" strokeType="OUTSIDE" strokeWidth="0.0" text="CONFIRM NEW PASSWORD">
          <font>
             <Font size="36.0" />
          </font>
@@ -85,6 +65,11 @@
          </font>
       </RadioButton>
       <Button fx:id="btn_change" layoutX="518.0" layoutY="947.0" mnemonicParsing="false" onAction="#act_apply" prefHeight="77.0" prefWidth="374.0" style="-fx-background-color: GREEN;" text="APPLY CHANGES" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="36.0" />
+         </font>
+      </Button>
+      <Button fx:id="btn_changepass" layoutX="1133.0" layoutY="946.0" mnemonicParsing="false" onAction="#act_change_pass" prefHeight="77.0" prefWidth="439.0" style="-fx-background-color: orange;" text="CHANGE PASSWORD" textFill="WHITE">
          <font>
             <Font name="System Bold" size="36.0" />
          </font>

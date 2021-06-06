@@ -68,15 +68,32 @@ public class AccountDAL {
     }
     
     
-    public boolean Update(AccountDTO account, String username) {
+    public boolean UpdateUsername(String newusername, AccountDTO account) {
         try {
             String acc_sql;
-            acc_sql = String.format("UPDATE ACCOUNT SET USERNAME =?, PASSWORD=? WHERE USERNAME = ?");
+            acc_sql = String.format("UPDATE ACCOUNT SET USERNAME =? WHERE USERNAME =?");
             PreparedStatement pres = LoginController.connection.con.prepareStatement(acc_sql);
             
-            pres.setString(1, account.getUsername());
-            pres.setString(2, account.getPassword());
-            pres.setString(3, username);
+            pres.setString(1, newusername);
+            pres.setString(2, account.getUsername());
+                        
+            int rows = pres.executeUpdate();
+            if(rows > 0)
+                return true;
+        }catch (SQLException e){
+            JOptionPane.showMessageDialog(null,e.toString(),"Error", JOptionPane.ERROR_MESSAGE);
+            return false;
+        }
+        return false;    
+    }
+    public boolean UpdatePassword(String newpassword, AccountDTO account) {
+        try {
+            String acc_sql;
+            acc_sql = String.format("UPDATE ACCOUNT SET PASSWORD =? WHERE USERNAME =?");
+            PreparedStatement pres = LoginController.connection.con.prepareStatement(acc_sql);
+            
+            pres.setString(1, newpassword);
+            pres.setString(2, account.getUsername());
             
             int rows = pres.executeUpdate();
             if(rows > 0)
@@ -87,8 +104,8 @@ public class AccountDAL {
         }
         return false;    
     }
-    
-    
+ 
+                
     public boolean Delete(AccountDTO account) {
         try{    
             String acc_sql;
