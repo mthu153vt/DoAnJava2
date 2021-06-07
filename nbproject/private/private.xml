@@ -5,8 +5,8 @@
         <group>
             <file>file:/D:/THUW/QLNhaHang/DoAnJava2/src/doantest3/MainProject.java</file>
             <file>file:/D:/THUW/QLNhaHang/DoAnJava2/src/BUS/EmployeeManagementController.java</file>
-            <file>file:/D:/THUW/QLNhaHang/DoAnJava2/src/BUS/ChangePasswordController.java</file>
             <file>file:/D:/THUW/QLNhaHang/DoAnJava2/src/DAL/AccountDAL.java</file>
+            <file>file:/D:/THUW/QLNhaHang/DoAnJava2/src/DAL/CustomerDAL.java</file>
             <file>file:/D:/THUW/QLNhaHang/DoAnJava2/src/BUS/LoginController.java</file>
             <file>file:/D:/THUW/QLNhaHang/DoAnJava2/src/BUS/CustomerInfoController.java</file>
         </group>

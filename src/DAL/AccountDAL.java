@@ -86,6 +86,7 @@ public class AccountDAL {
         }
         return false;    
     }
+    
     public boolean UpdatePassword(String newpassword, AccountDTO account) {
         try {
             String acc_sql;

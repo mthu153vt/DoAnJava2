@@ -10,6 +10,7 @@ import DTO.AccountDTO;
 import java.net.URL;
 import java.sql.SQLException;
 import java.util.ResourceBundle;
+import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -93,5 +94,6 @@ public class ChangePasswordController implements Initializable {
     
     public void getAccount(AccountDTO acc){
         this.account = acc;
+        txt_username.setText(account.getUsername());
     }
 }

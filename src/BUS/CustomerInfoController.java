@@ -89,6 +89,8 @@ public class CustomerInfoController implements Initializable {
             if(acc_dal.UpdateUsername(cus.getUsername(), account)){
                 cus_dal.Update(cus);
                 JOptionPane.showMessageDialog(null,"Editing Successful","Customer", JOptionPane.INFORMATION_MESSAGE);
+//                account.setUsername(txt_username.getText());
+//                customer = cus;
             }
         }
     }
