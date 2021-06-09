@@ -26,6 +26,11 @@ public class BillDetailDTO {
     public BillDetailDTO() {
     }
 
+    public BillDetailDTO(int ItemID, int quantity) {
+        this.ItemID = ItemID;
+        this.quantity = quantity;
+    }
+
     public BillDetailDTO(int BillID, int ItemID, int quantity) {
         this.BillID = BillID;
         this.ItemID = ItemID;

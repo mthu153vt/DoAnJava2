@@ -32,13 +32,6 @@ public class BillDTO {
     public BillDTO() {
     }
 
-    public BillDTO(int BillID, int CustomerID, String billdate, String paymentmethod) {
-        this.BillID = BillID;
-        this.CustomerID = CustomerID;
-        this.billdate = billdate;
-        this.paymentmethod = paymentmethod;
-    }
-
     public BillDTO(int BillID, int CustomerID, String billdate, String paymentmethod, int total) {
         this.BillID = BillID;
         this.CustomerID = CustomerID;

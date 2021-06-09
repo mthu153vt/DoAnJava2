@@ -2,64 +2,145 @@
 
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.RadioButton?>
+<?import javafx.scene.control.Spinner?>
+<?import javafx.scene.control.TableView?>
 <?import javafx.scene.control.TextArea?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane id="AnchorPane" fx:id="pane_pane" prefHeight="813.0" prefWidth="1531.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="BUS.BillingController">
+<AnchorPane id="AnchorPane" fx:id="pane_pane" prefHeight="820.0" prefWidth="1530.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="BUS.BillingController">
    <children>
-      <ImageView fitHeight="128.0" fitWidth="127.0" layoutX="114.0" layoutY="89.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fitHeight="128.0" fitWidth="127.0" layoutX="24.0" layoutY="22.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@images/LOGO.png" />
+            <Image url="@../../QLNhaHang/DoAnJava2/src/GUIs/images/LOGO.png" />
          </image>
       </ImageView>
-      <Text layoutX="353.0" layoutY="175.0" strokeType="OUTSIDE" strokeWidth="0.0" text="CHECKOUT" wrappingWidth="461.6708984375">
+      <Text layoutX="169.0" layoutY="102.0" strokeType="OUTSIDE" strokeWidth="0.0" text="CHECKOUT" wrappingWidth="305.6708984375">
          <font>
-            <Font name="System Bold" size="72.0" />
+            <Font name="System Bold" size="48.0" />
          </font>
       </Text>
-      <TextField id="txt_id" fx:id="txt_ID" layoutX="307.0" layoutY="347.0" prefHeight="75.0" prefWidth="661.0" />
-      <TextField id="txt_quantity" fx:id="txt_quantity" layoutX="307.0" layoutY="463.0" prefHeight="75.0" prefWidth="659.0" />
-      <Text layoutX="89.0" layoutY="400.0" strokeType="OUTSIDE" strokeWidth="0.0" text="ITEM ID">
+      <Button id="btn_print" fx:id="btn_print_bill" layoutX="1195.0" layoutY="740.0" mnemonicParsing="false" onAction="#Action_PrintBill" prefHeight="57.0" prefWidth="223.0" style="-fx-background-color: BLUE;" text="PRINT BILL" textFill="WHITE">
          <font>
-            <Font name="System Bold" size="36.0" />
-         </font>
-      </Text>
-      <Text layoutX="90.0" layoutY="513.0" strokeType="OUTSIDE" strokeWidth="0.0" text="QUANTITY">
-         <font>
-            <Font name="System Bold" size="36.0" />
-         </font>
-      </Text>
-      <Button id="btn_add" fx:id="btn_add" layoutX="558.0" layoutY="686.0" mnemonicParsing="false" prefHeight="86.0" prefWidth="413.0" style="-fx-background-color: green;" text="ADD" textFill="WHITE">
-         <font>
-            <Font name="Arial Bold" size="36.0" />
+            <Font name="Arial Bold" size="24.0" />
          </font>
       </Button>
-      <Button id="btn_new" fx:id="btn_new_bill" layoutX="68.0" layoutY="686.0" mnemonicParsing="false" prefHeight="86.0" prefWidth="413.0" style="-fx-background-color: ORANGE;" text="NEW BILL" textFill="WHITE">
+      <TextArea id="txt_bill" fx:id="txt_bill" editable="false" layoutX="1089.0" layoutY="141.0" prefHeight="587.0" prefWidth="399.0" styleClass="centeredTextArea" stylesheets="@../Style.css" AnchorPane.topAnchor="141.0">
          <font>
-            <Font name="Arial Bold" size="36.0" />
+            <Font name="Consolas" size="20.0" />
          </font>
-      </Button>
-      <AnchorPane layoutX="989.0" layoutY="57.0" prefHeight="756.0" prefWidth="510.0">
+         <opaqueInsets>
+            <Insets />
+         </opaqueInsets>
+      </TextArea>
+      <TableView fx:id="tb_item" layoutX="466.0" layoutY="144.0" onMouseClicked="#act_clickItem" prefHeight="230.0" prefWidth="590.0" />
+      <TableView fx:id="tb_bill_detail" layoutX="471.0" layoutY="564.0" prefHeight="218.0" prefWidth="267.0" />
+      <Text layoutX="776.0" layoutY="589.0" strokeType="OUTSIDE" strokeWidth="0.0" text="TOTAL" wrappingWidth="81.57501220703125">
+         <font>
+            <Font size="24.0" />
+         </font>
+      </Text>
+      <TextField fx:id="txt_total_sum" layoutX="866.0" layoutY="558.0" prefHeight="40.0" prefWidth="161.0" />
+      <Pane layoutX="472.0" layoutY="402.0" prefHeight="118.0" prefWidth="553.0" style="-fx-background-color: afb9c8;">
          <children>
-            <TextArea id="txt_bill" fx:id="txt_bill" editable="false" layoutX="49.0" layoutY="14.0" prefHeight="584.0" prefWidth="424.0" styleClass="centeredTextArea" stylesheets="@../../../../JavaProgramming/Style.css" text="aaaaaaaaaaa" AnchorPane.topAnchor="14.0">
+            <Text layoutX="14.0" layoutY="19.0" strokeType="OUTSIDE" strokeWidth="0.0" text="ID">
                <font>
-                  <Font name="Consolas" size="20.0" />
+                  <Font name="System Bold Italic" size="14.0" />
                </font>
-               <opaqueInsets>
-                  <Insets />
-               </opaqueInsets>
-            </TextArea>
-            <Button id="btn_print" fx:id="btn_print" layoutX="53.0" layoutY="628.0" mnemonicParsing="false" prefHeight="86.0" prefWidth="413.0" style="-fx-background-color: BLUE;" text="CALCULATE" textFill="WHITE">
+            </Text>
+            <Text layoutX="355.0" layoutY="20.0" strokeType="OUTSIDE" strokeWidth="0.0" text="QUANTITY">
                <font>
-                  <Font name="Arial Bold" size="36.0" />
+                  <Font name="System Bold Italic" size="13.0" />
+               </font>
+            </Text>
+            <TextField fx:id="txt_item_id" layoutX="7.0" layoutY="27.0" prefHeight="32.0" prefWidth="46.0" />
+            <Spinner fx:id="spinner_quantity" layoutX="350.0" layoutY="26.0" onMouseClicked="#act_click_quantity" prefHeight="43.0" prefWidth="82.0" />
+            <Button fx:id="btn_add_item" layoutX="38.0" layoutY="74.0" mnemonicParsing="false" onAction="#Action_AddItem" prefHeight="30.0" prefWidth="102.0" text="ADD ITEM">
+               <font>
+                  <Font name="System Bold" size="14.0" />
                </font>
             </Button>
+            <Text layoutX="96.0" layoutY="20.0" strokeType="OUTSIDE" strokeWidth="0.0" text="ITEM NAME">
+               <font>
+                  <Font name="System Bold Italic" size="14.0" />
+               </font>
+            </Text>
+            <TextField fx:id="txt_item_name" layoutX="58.0" layoutY="27.0" prefHeight="32.0" prefWidth="170.0" />
+            <Text layoutX="253.0" layoutY="20.0" strokeType="OUTSIDE" strokeWidth="0.0" text="PRICE">
+               <font>
+                  <Font name="System Bold Italic" size="14.0" />
+               </font>
+            </Text>
+            <TextField fx:id="txt_price" layoutX="233.0" layoutY="26.0" prefHeight="32.0" prefWidth="102.0" />
+            <Text layoutX="473.0" layoutY="19.0" strokeType="OUTSIDE" strokeWidth="0.0" text="TOTAL">
+               <font>
+                  <Font name="System Bold Italic" size="14.0" />
+               </font>
+            </Text>
+            <TextField fx:id="txt_total" layoutX="441.0" layoutY="25.0" prefHeight="32.0" prefWidth="102.0" />
          </children>
-      </AnchorPane>
+      </Pane>
+      <Pane layoutX="25.0" layoutY="214.0" prefHeight="202.0" prefWidth="398.0" style="-fx-background-color: e1e5ea;">
+         <children>
+            <Text layoutX="17.0" layoutY="48.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Username">
+               <font>
+                  <Font name="System Italic" size="18.0" />
+               </font>
+            </Text>
+            <Text layoutX="25.0" layoutY="128.0" strokeType="OUTSIDE" strokeWidth="0.0" text="USER NAME " wrappingWidth="108.93717956542969">
+               <font>
+                  <Font name="System Italic" size="18.0" />
+               </font>
+            </Text>
+            <Text layoutX="21.0" layoutY="163.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Membershipter">
+               <font>
+                  <Font name="System Italic" size="18.0" />
+               </font>
+            </Text>
+            <TextField fx:id="txt_search_username" layoutX="114.0" layoutY="29.0" prefHeight="30.0" prefWidth="170.0" />
+            <Button fx:id="btn_search_username" layoutX="305.0" layoutY="27.0" mnemonicParsing="false" onAction="#Action_SearchUsername" style="-fx-background-color: afb9c8;" text="SEARCH">
+               <font>
+                  <Font name="System Bold" size="14.0" />
+               </font>
+            </Button>
+            <Text fx:id="txt_username" layoutX="148.0" layoutY="127.0" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="218.80555157363415">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Text>
+            <Text fx:id="txt_membershipter" layoutX="157.0" layoutY="163.0" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="218.80555157363415">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Text>
+            <Label fx:id="lable_warning" layoutX="42.0" layoutY="68.0" text="Username does not exist!" textFill="RED" visible="false">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Label>
+         </children>
+      </Pane>
+      <Text layoutX="52.0" layoutY="496.0" strokeType="OUTSIDE" strokeWidth="0.0" text="PAYMENT METHOD" wrappingWidth="229.2531781643629">
+         <font>
+            <Font name="System Italic" size="24.0" />
+         </font>
+      </Text>
+      <RadioButton fx:id="btn_cash" layoutX="58.0" layoutY="521.0" mnemonicParsing="false" onAction="#act_cash" text="CASH">
+         <font>
+            <Font size="24.0" />
+         </font>
+      </RadioButton>
+      <RadioButton fx:id="btn_card" layoutX="210.0" layoutY="520.0" mnemonicParsing="false" onAction="#act_card" text="CARD">
+         <font>
+            <Font size="24.0" />
+         </font>
+      </RadioButton>
    </children>
 </AnchorPane>

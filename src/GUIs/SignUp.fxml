@@ -23,7 +23,7 @@
             <Separator layoutX="19.0" layoutY="277.0" prefWidth="200.0" />
             <TextField fx:id="txt_username" layoutX="18.0" layoutY="88.0" prefHeight="26.0" prefWidth="200.0" promptText="User Name" />
             <Text fill="#838383" layoutX="67.0" layoutY="269.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Already signed up?" />
-            <Button fx:id="btn_CreateAccount" contentDisplay="CENTER" layoutX="22.0" layoutY="208.0" mnemonicParsing="false" onAction="#Action_CreateAccount" prefHeight="32.0" prefWidth="195.0" style="-fx-background-color: green;" text="CREAT NEW ACCOUNT" textFill="WHITE" />
+            <Button fx:id="btn_CreateAccount" contentDisplay="CENTER" layoutX="22.0" layoutY="208.0" mnemonicParsing="false" onAction="#Action_CreateAccount" prefHeight="32.0" prefWidth="195.0" style="-fx-background-color: green;" text="CREATE NEW ACCOUNT" textFill="WHITE" />
             <ImageView fitHeight="91.0" fitWidth="87.0" layoutX="77.0" layoutY="-28.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@images/LOGO.png" />
