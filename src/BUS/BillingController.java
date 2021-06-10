@@ -41,6 +41,10 @@ import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Node;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.control.RadioButton;
 import javafx.scene.control.Spinner;
@@ -50,6 +54,7 @@ import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.text.Text;
+import javafx.stage.Stage;
 
 
 
@@ -114,6 +119,9 @@ public class BillingController implements Initializable {
     @FXML
     private Label lable_warning;
      
+    @FXML
+    private Button btn_new_bill;
+    
     
     String paymentmethod = null;
     int sumTotal = 0;
@@ -128,7 +136,7 @@ public class BillingController implements Initializable {
     
     BillDetailDAL billDetail_dal = new BillDetailDAL();
     ObservableList<BillDetailDTO> list_billDetail = FXCollections.observableArrayList();
-    
+
     
     @Override
     public void initialize(URL url, ResourceBundle rb) {
@@ -265,6 +273,19 @@ public class BillingController implements Initializable {
         bill_ = new BillDTO(0, customer.getCustomerID(), date_String, paymentmethod, total);
         
         return bill_;
+    }
+
+    @FXML
+    private void Action_NewBill(ActionEvent event) throws IOException {
+        Stage stage = (Stage) btn_new_bill.getScene().getWindow();
+        stage.close();
+        
+        ((Node) (event.getSource())).getScene().getWindow();
+            //Stage stage = new Stage();
+            Parent root = FXMLLoader.load(getClass().getResource("../GUIs/Billing.fxml"));
+            Scene scene = new Scene(root);
+            stage.setScene(scene);
+            stage.show();
     }
 
     

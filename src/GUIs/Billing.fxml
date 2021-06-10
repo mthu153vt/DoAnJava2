@@ -32,7 +32,7 @@
             <Font name="Arial Bold" size="24.0" />
          </font>
       </Button>
-      <TextArea id="txt_bill" fx:id="txt_bill" editable="false" layoutX="1089.0" layoutY="141.0" prefHeight="587.0" prefWidth="399.0" styleClass="centeredTextArea" stylesheets="@../Style.css" AnchorPane.topAnchor="141.0">
+      <TextArea id="txt_bill" fx:id="txt_bill" editable="false" layoutX="1069.0" layoutY="141.0" prefHeight="587.0" prefWidth="419.0" styleClass="centeredTextArea" stylesheets="@../Style.css" AnchorPane.topAnchor="141.0">
          <font>
             <Font name="Consolas" size="20.0" />
          </font>
@@ -40,7 +40,7 @@
             <Insets />
          </opaqueInsets>
       </TextArea>
-      <TableView fx:id="tb_item" layoutX="466.0" layoutY="144.0" onMouseClicked="#act_clickItem" prefHeight="230.0" prefWidth="590.0" />
+      <TableView fx:id="tb_item" layoutX="466.0" layoutY="144.0" onMouseClicked="#act_clickItem" prefHeight="230.0" prefWidth="563.0" />
       <TableView fx:id="tb_bill_detail" layoutX="471.0" layoutY="564.0" prefHeight="218.0" prefWidth="267.0" />
       <Text layoutX="776.0" layoutY="589.0" strokeType="OUTSIDE" strokeWidth="0.0" text="TOTAL" wrappingWidth="81.57501220703125">
          <font>
@@ -142,5 +142,10 @@
             <Font size="24.0" />
          </font>
       </RadioButton>
+      <Button id="btn_print" fx:id="btn_new_bill" layoutX="39.0" layoutY="728.0" mnemonicParsing="false" onAction="#Action_NewBill" prefHeight="57.0" prefWidth="223.0" style="-fx-background-color: green;" text="NEW BILL" textFill="WHITE">
+         <font>
+            <Font name="Arial Bold" size="24.0" />
+         </font>
+      </Button>
    </children>
 </AnchorPane>
