@@ -193,6 +193,7 @@ public class BillingController implements Initializable {
         if(flag){
             txt_username.setText(customer.getUsername());
             txt_membershipter.setText(customer.getMembershiptier());
+            lable_warning.setVisible(false);
         }
         else{
             lable_warning.setVisible(true);
