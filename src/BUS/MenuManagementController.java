@@ -84,7 +84,7 @@ public class MenuManagementController implements Initializable {
         ItemDTO item = ls_item.getSelectionModel().getSelectedItem();
 	item_dal.Delete(item);
 	item_data = item_dal.GetData();
-        
+        JOptionPane.showMessageDialog(null,"Deleting Successful","Menu", JOptionPane.INFORMATION_MESSAGE);
     }
 
 

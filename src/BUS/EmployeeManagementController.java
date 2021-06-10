@@ -91,7 +91,7 @@ public class EmployeeManagementController implements Initializable {
         EmployeeDTO emp = ls_employee.getSelectionModel().getSelectedItem();
         emp_dal.Delete(emp);
         emp_data = emp_dal.GetData();
-        
+        JOptionPane.showMessageDialog(null,"Deleting Successful","Employee", JOptionPane.INFORMATION_MESSAGE);
     }
     
     @FXML

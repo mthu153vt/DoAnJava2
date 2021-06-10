@@ -33,6 +33,7 @@ import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
 import java.time.LocalDateTime;
+import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -53,13 +54,14 @@ import javafx.scene.text.Text;
 
 
 public class BillingController implements Initializable {
-   // DateTimeFormatter dtf = DateTimeFormatter.ofPattern("uuuu/MM/dd HH:mm:ss");
     DateTimeFormatter datef = DateTimeFormatter.ofPattern("yyyy-MM-dd");
-    //LocalDate localDate = LocalDate.now();
-
-    DateTimeFormatter timef = DateTimeFormatter.ofPattern("HH:mm:ss");
+    LocalDate localDate = LocalDate.now();
+    String dateString = datef.format(localDate);
     
-    LocalDateTime now = LocalDateTime.now();      
+    DateTimeFormatter timef = DateTimeFormatter.ofPattern("HH:mm:ss");
+    LocalTime localTime = LocalTime.now();
+    String localTimeString = timef.format(localTime);
+    
     public String header;
     public String ID;
     int total_price;
@@ -131,7 +133,7 @@ public class BillingController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         
-        header="=================================\n" + "Sushimi Restautant\n" + "Time and date: "+ datef +"  "+now.format(timef) +"\n" + "============================";
+        header="=================================\n" + "Sushimi Restautant\n" + "Time and date: "+ dateString +"  "+ localTimeString +"\n" + "============================";
         txt_bill.setText(header);
         txt_bill.setStyle("-fx-font-alignment: center");
         
@@ -149,7 +151,7 @@ public class BillingController implements Initializable {
         describeCol.setCellValueFactory(new PropertyValueFactory<>("describe"));
         priceCol.setCellValueFactory(new PropertyValueFactory<>("price"));
  
-        tb_item.getColumns().addAll(itemIDCol,itemnameCol,describeCol,priceCol);
+        tb_item.getColumns().addAll(itemIDCol, itemnameCol, priceCol, describeCol);
         item_data = item_dal.GetData();
         tb_item.setItems(item_data);
         
@@ -241,9 +243,12 @@ public class BillingController implements Initializable {
         BillDTO bill = getBillInfoFromGUI();
         
         if(bill_dal.Insert(bill)){
-            for(BillDetailDTO b_temp : list_billDetail){
+//            for(BillDetailDTO b_temp : list_billDetail){
+//                billDetail_dal.Insert(b_temp);
+//            }
+            list_billDetail.forEach((b_temp) -> {
                 billDetail_dal.Insert(b_temp);
-            }
+            });
             header = header+"\n================================="+"\nTotal:\t " + txt_total_sum.getText()
                     +"\n---------------------------------"+"\nCustomer:\t " + customer.getUsername()
                     +"\n---------------------------------"+"\nPayment method:\t " + paymentmethod;
@@ -253,11 +258,11 @@ public class BillingController implements Initializable {
     }
 
     private BillDTO getBillInfoFromGUI(){
-        String dateString = now.format(datef);
+        String date_String = datef.format(localDate);
         int total = Integer.parseInt(txt_total_sum.getText());
         
         BillDTO bill_;
-        bill_ = new BillDTO(0, customer.getCustomerID(), dateString, paymentmethod, total);
+        bill_ = new BillDTO(0, customer.getCustomerID(), date_String, paymentmethod, total);
         
         return bill_;
     }

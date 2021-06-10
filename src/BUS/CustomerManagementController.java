@@ -81,6 +81,7 @@ public class CustomerManagementController implements Initializable {
         CustomerDTO cus = ls_customer.getSelectionModel().getSelectedItem();
         cus_dal.Delete(cus);
         cus_data = cus_dal.GetData();
+        JOptionPane.showMessageDialog(null,"Deleting Successful","Customer", JOptionPane.INFORMATION_MESSAGE);
     }
     
     @FXML

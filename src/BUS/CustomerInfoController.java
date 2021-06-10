@@ -92,6 +92,7 @@ public class CustomerInfoController implements Initializable {
                 cus_dal.Update(cus);
                 JOptionPane.showMessageDialog(null,"Editing Successful","Customer", JOptionPane.INFORMATION_MESSAGE);
                 
+                account.setUsername(cus.getUsername());
             }
         }
     }
@@ -101,6 +102,7 @@ public class CustomerInfoController implements Initializable {
         ((Node) (event.getSource())).getScene().getWindow();
         FXMLLoader loader = new FXMLLoader(getClass().getResource("../GUIs/ChangePassword.fxml"));
         Parent root = loader.load();
+        
         ChangePasswordController controller = loader.getController();
         controller.getAccount(account);
                 
@@ -130,6 +132,7 @@ public class CustomerInfoController implements Initializable {
         }
         return true;
     }
+    
     
     public void showinfoCus(AccountDTO account){
         String username = account.getUsername();
