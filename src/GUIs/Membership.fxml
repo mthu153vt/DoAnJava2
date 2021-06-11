@@ -46,7 +46,7 @@
                </image>
             </ImageView>
             <Text fx:id="txt_card_ID" layoutX="24.0" layoutY="152.0" strokeType="OUTSIDE" strokeWidth="0.0" text="251133340" />
-            <Text fx:id="txt_name" layoutX="27.0" layoutY="68.0" strokeType="OUTSIDE" strokeWidth="0.0" text="NGUYEN VAN A" wrappingWidth="89.13671875" />
+            <Text fx:id="txt_name" layoutX="24.0" layoutY="70.0" strokeType="OUTSIDE" strokeWidth="0.0" text="NGUYEN VAN A" wrappingWidth="173.80340576171875" />
          </children>
       </AnchorPane>
    </children>
