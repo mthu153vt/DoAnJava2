@@ -137,7 +137,7 @@
             <Font size="24.0" />
          </font>
       </RadioButton>
-      <Button id="btn_print" fx:id="btn_new_bill" layoutX="39.0" layoutY="728.0" mnemonicParsing="false" onAction="#Action_NewBill" prefHeight="57.0" prefWidth="223.0" style="-fx-background-color: green;" text="NEW BILL" textFill="WHITE">
+      <Button id="btn_print" fx:id="btn_new_bill" layoutX="261.0" layoutY="728.0" mnemonicParsing="false" onAction="#Action_NewBill" prefHeight="57.0" prefWidth="186.0" style="-fx-background-color: green;" text="NEW BILL" textFill="WHITE">
          <font>
             <Font name="Arial Bold" size="24.0" />
          </font>
@@ -147,5 +147,10 @@
             <Image url="@images/LOGO.png" />
          </image>
       </ImageView>
+      <Button id="btn_print" fx:id="btn_back" layoutX="38.0" layoutY="742.0" mnemonicParsing="false" onAction="#act_back" prefHeight="43.0" prefWidth="170.0" style="-fx-background-color: red;" text="BACK" textFill="WHITE">
+         <font>
+            <Font name="Arial Bold" size="24.0" />
+         </font>
+      </Button>
    </children>
 </AnchorPane>

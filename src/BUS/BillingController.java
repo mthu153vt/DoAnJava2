@@ -136,6 +136,8 @@ public class BillingController implements Initializable {
     
     BillDetailDAL billDetail_dal = new BillDetailDAL();
     ObservableList<BillDetailDTO> list_billDetail = FXCollections.observableArrayList();
+    @FXML
+    private Button btn_back;
 
     
     @Override
@@ -287,6 +289,12 @@ public class BillingController implements Initializable {
             Scene scene = new Scene(root);
             stage.setScene(scene);
             stage.show();
+    }
+
+    @FXML
+    private void act_back(ActionEvent event) {
+        Stage stage = (Stage) btn_back.getScene().getWindow();
+        stage.close();
     }
 
     
