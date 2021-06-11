@@ -5,10 +5,14 @@
  */
 package BUS;
 
+import DAL.CustomerDAL;
+import DTO.CustomerDTO;
 import java.io.File;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.embed.swing.SwingFXUtils;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -23,6 +27,7 @@ import javafx.scene.layout.AnchorPane;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 import javax.imageio.ImageIO;
+import javax.swing.JOptionPane;
 
 /**
  * FXML Controller class
@@ -51,6 +56,10 @@ public class MebershipController implements Initializable {
     /**
      * Initializes the controller class.
      */
+    
+    ObservableList<CustomerDTO> cus_data = FXCollections.observableArrayList();
+    CustomerDAL cus_dal = new CustomerDAL();
+    
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
@@ -82,9 +91,30 @@ public class MebershipController implements Initializable {
         Image silver= new Image("file:src/GUIs/images/silver.png");
         Image gold= new Image("file:src/GUIs/images/gold.png");
         Image platinum= new Image("file:src/GUIs/images/platinum.png");
-        int point=3;
-        if (point==3)
-            img_card_background.setImage(silver);
+
+        cus_data = cus_dal.GetData();
+        CustomerDTO customer = new CustomerDTO();
+        boolean flag = false;
+        for(CustomerDTO temp : cus_data){
+            if(txt_ID.getText().equals(Integer.toString(temp.getCustomerID()))){
+                customer = temp;
+                flag = true;
+                break;
+            }
+        }
+        if(flag){
+            txt_name.setText(customer.getUsername());
+            txt_card_ID.setText(Integer.toString(customer.getCustomerID()));
+            int point = customer.getMembershippoint();
+            
+            if(point > 2000000) img_card_background.setImage(gold);
+            else if(point > 5000000) img_card_background.setImage(platinum);
+            else img_card_background.setImage(silver);
+        }
+        else{
+            JOptionPane.showMessageDialog(null,"Customer does not exit!","Error", JOptionPane.ERROR_MESSAGE);
+        }
+
     }
     
 }

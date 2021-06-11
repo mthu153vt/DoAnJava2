@@ -7,8 +7,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-
-<AnchorPane id="AnchorPane" prefHeight="401.0" prefWidth="765.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8.0.171" fx:controller="BUS.EmployeeController">
+<AnchorPane id="AnchorPane" prefHeight="401.0" prefWidth="765.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="BUS.EmployeeController">
    <children>
       <ImageView fitHeight="431.0" fitWidth="553.0" pickOnBounds="true" preserveRatio="true">
          <image>
@@ -22,7 +21,7 @@
                   <Font name="System Bold" size="12.0" />
                </font>
             </Button>
-            <Button fx:id="btn_mem_card" layoutX="14.0" layoutY="205.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="176.0" style="-fx-background-color: GREEN;" text="PRINT MEMBERSHIP CARD" textFill="WHITE" />
+            <Button fx:id="btn_mem_card" layoutX="14.0" layoutY="205.0" mnemonicParsing="false" onAction="#act_print_memcard" prefHeight="25.0" prefWidth="176.0" style="-fx-background-color: GREEN;" text="PRINT MEMBERSHIP CARD" textFill="WHITE" />
             <Text layoutX="21.0" layoutY="45.0" strokeType="OUTSIDE" strokeWidth="0.0" text="SUSHIMI EMPLOYEE" wrappingWidth="176.00000090897083">
                <font>
                   <Font name="System Bold" size="18.0" />
