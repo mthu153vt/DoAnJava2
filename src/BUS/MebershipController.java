@@ -103,7 +103,7 @@ public class MebershipController implements Initializable {
             }
         }
         if(flag){
-            txt_name.setText(customer.getUsername());
+            txt_name.setText(customer.getFullname());
             txt_card_ID.setText(Integer.toString(customer.getCustomerID()));
             int point = customer.getMembershippoint();
             
