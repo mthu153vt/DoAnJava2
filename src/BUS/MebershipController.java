@@ -108,7 +108,7 @@ public class MebershipController implements Initializable {
             int point = customer.getMembershippoint();
             
             if(point > 2000000 && point < 5000000) img_card_background.setImage(gold);
-            else if(point > 5000000) img_card_background.setImage(platinum);
+            else if(point >= 5000000) img_card_background.setImage(platinum);
             else img_card_background.setImage(silver);
         }
         else{

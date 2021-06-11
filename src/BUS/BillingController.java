@@ -55,6 +55,7 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
+import javax.swing.JOptionPane;
 
 
 
@@ -251,19 +252,20 @@ public class BillingController implements Initializable {
     
     @FXML
     private void Action_PrintBill(ActionEvent event) {
-        BillDTO bill = getBillInfoFromGUI();
-        
-        if(bill_dal.Insert(bill)){
+        if(CheckInput()){
+            BillDTO bill = getBillInfoFromGUI();
+            if(bill_dal.Insert(bill)){
 //            for(BillDetailDTO b_temp : list_billDetail){
 //                billDetail_dal.Insert(b_temp);
 //            }
-            list_billDetail.forEach((b_temp) -> {
+                list_billDetail.forEach((b_temp) -> {
                 billDetail_dal.Insert(b_temp);
             });
             header = header+"\n================================="+"\nTotal:\t " + txt_total_sum.getText()
                     +"\n---------------------------------"+"\nCustomer:\t " + customer.getUsername()
                     +"\n---------------------------------"+"\nPayment method:\t " + paymentmethod;
             txt_bill.setText(header);
+            }        
         }
         
     }
@@ -297,7 +299,15 @@ public class BillingController implements Initializable {
         stage.close();
     }
 
-    
+    private boolean CheckInput(){
+        if(paymentmethod == null || paymentmethod.equals("")){
+            String ErrorStr = "paymentmethod is empty";
+            JOptionPane.showMessageDialog(null,ErrorStr,"Error", JOptionPane.ERROR_MESSAGE);      
+            return false;
+        }
+        
+        return true;
+    }
 
     
 

@@ -119,7 +119,7 @@ public class CustomerManagementController implements Initializable {
         String str;
         if(Integer.parseInt(txt_customer_point.getText()) > 2000000 && Integer.parseInt(txt_customer_point.getText()) < 5000000)
             str = "GOLD";
-        else if(Integer.parseInt(txt_customer_point.getText()) > 5000000)
+        else if(Integer.parseInt(txt_customer_point.getText()) >= 5000000)
             str = "PLATINUM";
         else str = "SILVER";
         
