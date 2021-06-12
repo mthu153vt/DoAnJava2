@@ -189,6 +189,10 @@ public class EmployeeManagementController implements Initializable {
                 return false;
             }
         }
+        if(!txt_emp_gender.getText().equals("MALE") && !txt_emp_gender.getText().equals("FEMALE")){
+            JOptionPane.showMessageDialog(null,"Gender is MALE or FEMALE!","Error", JOptionPane.ERROR_MESSAGE);
+            return false;
+        }
         return true;
     }
 
