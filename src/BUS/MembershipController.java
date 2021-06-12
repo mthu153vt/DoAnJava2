@@ -16,7 +16,11 @@ import javafx.collections.ObservableList;
 import javafx.embed.swing.SwingFXUtils;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Node;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.SnapshotParameters;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextArea;
@@ -34,7 +38,7 @@ import javax.swing.JOptionPane;
  *
  * @author htthi
  */
-public class MebershipController implements Initializable {
+public class MembershipController implements Initializable {
 
     @FXML
     private TextArea txt_ID;
@@ -66,9 +70,15 @@ public class MebershipController implements Initializable {
     }    
 
     @FXML
-    private void act_back(ActionEvent event) {
-        Stage stage = (Stage) btn_back.getScene().getWindow();
-         stage.close();
+    private void act_back(ActionEvent event) throws IOException {
+//        Stage stage = (Stage) btn_back.getScene().getWindow();
+//         stage.close();
+            ((Node) (event.getSource())).getScene().getWindow().hide();
+            Stage stage = new Stage();
+            Parent root = FXMLLoader.load(getClass().getResource("../GUIs/EmployeeHome.fxml"));
+            Scene scene = new Scene(root);
+            stage.setScene(scene);
+            stage.show();
     }
      
     @FXML

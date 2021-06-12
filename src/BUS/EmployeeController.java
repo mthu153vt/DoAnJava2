@@ -45,7 +45,8 @@ public class EmployeeController implements Initializable {
 
     @FXML
     private void act_bill(ActionEvent event) throws IOException {
-        ((Node) (event.getSource())).getScene().getWindow();
+        //((Node) (event.getSource())).getScene().getWindow();
+        ((Node) (event.getSource())).getScene().getWindow().hide();
             Stage stage = new Stage();
             Parent root = FXMLLoader.load(getClass().getResource("../GUIs/Billing.fxml"));
             Scene scene = new Scene(root);
@@ -76,7 +77,7 @@ public class EmployeeController implements Initializable {
 
     @FXML
     private void act_print_memcard(ActionEvent event) throws IOException {
-        ((Node) (event.getSource())).getScene().getWindow();
+        ((Node) (event.getSource())).getScene().getWindow().hide();
             Stage stage = new Stage();
             Parent root = FXMLLoader.load(getClass().getResource("../GUIs/Membership.fxml"));
             Scene scene = new Scene(root);

@@ -5,10 +5,10 @@
         <group>
             <file>file:/D:/THUW/QLNhaHang/DoAnJava2/src/doantest3/MainProject.java</file>
             <file>file:/D:/THUW/QLNhaHang/DoAnJava2/src/BUS/CustomerManagementController.java</file>
-            <file>file:/D:/THUW/QLNhaHang/DoAnJava2/src/BUS/EmployeeManagementController.java</file>
             <file>file:/D:/THUW/QLNhaHang/DoAnJava2/src/BUS/BillingController.java</file>
-            <file>file:/D:/THUW/QLNhaHang/DoAnJava2/src/BUS/EmployeeController.java</file>
+            <file>file:/D:/THUW/QLNhaHang/DoAnJava2/src/BUS/SignUpController.java</file>
             <file>file:/D:/THUW/QLNhaHang/DoAnJava2/src/BUS/MebershipController.java</file>
+            <file>file:/D:/THUW/QLNhaHang/DoAnJava2/src/BUS/CustomerInfoController.java</file>
         </group>
     </open-files>
 </project-private>

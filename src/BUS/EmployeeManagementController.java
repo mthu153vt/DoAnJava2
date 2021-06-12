@@ -7,6 +7,7 @@ package BUS;
 
 import DAL.EmployeeDAL;
 import DTO.EmployeeDTO;
+import java.io.IOException;
 import java.net.URL;
 import java.sql.SQLException;
 import java.util.ResourceBundle;
@@ -14,7 +15,11 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Node;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.ListCell;
 import javafx.scene.control.ListView;
@@ -136,9 +141,15 @@ public class EmployeeManagementController implements Initializable {
     }
 
     @FXML
-    private void act_back(ActionEvent event) {
-        Stage stage = (Stage) btn_back.getScene().getWindow();
-        stage.close();
+    private void act_back(ActionEvent event) throws IOException {
+//        Stage stage = (Stage) btn_back.getScene().getWindow();
+//        stage.close();
+            ((Node) (event.getSource())).getScene().getWindow().hide();
+            Stage stage = new Stage();
+            Parent root = FXMLLoader.load(getClass().getResource("../GUIs/AdminHome.fxml"));
+            Scene scene = new Scene(root);
+            stage.setScene(scene);
+            stage.show();
     }
 
     private EmployeeDTO getEmployeeFromGUI(){

@@ -31,7 +31,7 @@ import javax.swing.JOptionPane;
  *
  * @author htthi
  */
-public class CustomerInfoController implements Initializable {
+public class PersonalInfoController implements Initializable {
 
     @FXML
     private TextField txt_username;
@@ -67,9 +67,20 @@ public class CustomerInfoController implements Initializable {
     }    
 
     @FXML
-    private void act_back(ActionEvent event) {
-        Stage stage = (Stage) btn_back.getScene().getWindow();
-        stage.close();
+    private void act_back(ActionEvent event) throws IOException {
+//        Stage stage = (Stage) btn_back.getScene().getWindow();
+//        stage.close();
+        ((Node) (event.getSource())).getScene().getWindow().hide();
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("../GUIs/CustomerHome.fxml"));
+        Parent root = loader.load();
+                
+        CustomerController controller = loader.getController();
+        controller.getAccount(account);
+        
+        Stage stage = new Stage();
+        Scene scene = new Scene(root);
+        stage.setScene(scene);
+        stage.show();
     }
 
     @FXML

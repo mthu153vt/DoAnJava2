@@ -119,7 +119,7 @@ public class BillingController implements Initializable {
     
     @FXML
     private Label lable_warning;
-     
+    
     @FXML
     private Button btn_new_bill;
     
@@ -294,9 +294,15 @@ public class BillingController implements Initializable {
     }
 
     @FXML
-    private void act_back(ActionEvent event) {
-        Stage stage = (Stage) btn_back.getScene().getWindow();
-        stage.close();
+    private void act_back(ActionEvent event) throws IOException {
+//        Stage stage = (Stage) btn_back.getScene().getWindow();
+//        stage.close();
+            ((Node) (event.getSource())).getScene().getWindow().hide();
+            Stage stage = new Stage();
+            Parent root = FXMLLoader.load(getClass().getResource("../GUIs/EmployeeHome.fxml"));
+            Scene scene = new Scene(root);
+            stage.setScene(scene);
+            stage.show();
     }
 
     private boolean CheckInput(){

@@ -85,7 +85,8 @@ public class AdminController implements Initializable {
 
     @FXML
     private void Act_cus_mag(ActionEvent event) throws IOException {
-         ((Node) (event.getSource())).getScene();
+        ((Node) (event.getSource())).getScene().getWindow().hide();
+         //((Node) (event.getSource())).getScene();
             Stage stage = new Stage();
             Parent root = FXMLLoader.load(getClass().getResource("../GUIs/CustomerManagement.fxml"));
             Scene scene = new Scene(root);
@@ -94,7 +95,7 @@ public class AdminController implements Initializable {
     }
     @FXML
      private void act_emp_mag (ActionEvent event) throws IOException {
-         ((Node) (event.getSource())).getScene();
+         ((Node) (event.getSource())).getScene().getWindow().hide();
             Stage stage = new Stage();
             Parent root = FXMLLoader.load(getClass().getResource("../GUIs/EmployeeManagement.fxml"));
             Scene scene = new Scene(root);
@@ -104,7 +105,7 @@ public class AdminController implements Initializable {
 
     @FXML
     private void act_menu_mag(ActionEvent event) throws IOException {
-        ((Node) (event.getSource())).getScene();
+        ((Node) (event.getSource())).getScene().getWindow().hide();
             Stage stage = new Stage();
             Parent root = FXMLLoader.load(getClass().getResource("../GUIs/MenuManagement.fxml"));
             Scene scene = new Scene(root);
