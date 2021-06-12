@@ -23,7 +23,10 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.ListCell;
 import javafx.scene.control.ListView;
+import javafx.scene.control.TableColumn;
+import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
+import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 import javax.swing.JOptionPane;
@@ -36,11 +39,11 @@ import javax.swing.JOptionPane;
 public class EmployeeManagementController implements Initializable {
 
     @FXML
+    private TableView<EmployeeDTO> tb_emp;
+    @FXML
     private Button btn_delete_emp;
     @FXML
     private Button btn_apply_edit_emp;
-    @FXML
-    private ListView<EmployeeDTO> ls_employee;
     @FXML
     private TextField txt_emp_name;
     @FXML
@@ -71,29 +74,59 @@ public class EmployeeManagementController implements Initializable {
     
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        // TODO
-        emp_data = emp_dal.GetData();
-        ls_employee.setItems(emp_data);
-        
-        //thuộc tính hiện trên listView
-        ls_employee.setCellFactory(param -> new ListCell<EmployeeDTO>() {
-            @Override
-            protected void updateItem(EmployeeDTO e, boolean empty) {
-                super.updateItem(e, empty);
+//        // TODO
+//        emp_data = emp_dal.GetData();
+//        ls_employee.setItems(emp_data);
+//        
+//        //thuộc tính hiện trên listView
+//        ls_employee.setCellFactory(param -> new ListCell<EmployeeDTO>() {
+//            @Override
+//            protected void updateItem(EmployeeDTO e, boolean empty) {
+//                super.updateItem(e, empty);
+//
+//                if (empty || e == null || e.getFullname() == null) {
+//                    setText(null);
+//                } else {
+//                    setText("ID: " + e.getEmployeeID() + "          " +e.getFullname());
+//                }
+//            }
+//        });
 
-                if (empty || e == null || e.getFullname() == null) {
-                    setText(null);
-                } else {
-                    setText("ID: " + e.getEmployeeID() + "          " +e.getFullname());
-                }
-            }
-        });
+        TableColumn employeeIDCol = new TableColumn("ID");
+        TableColumn fullnameCol = new TableColumn("FULL NAME");
+        TableColumn genderCol = new TableColumn("GENDER");
+        TableColumn salaryCol = new TableColumn("SALARY");
+        TableColumn dateofbirthCol = new TableColumn("DATE OF BIRTH");        
+
+        employeeIDCol.setCellValueFactory(new PropertyValueFactory<>("EmployeeID"));
+        fullnameCol.setCellValueFactory(new PropertyValueFactory<>("fullname"));
+        genderCol.setCellValueFactory(new PropertyValueFactory<>("gender"));
+        salaryCol.setCellValueFactory(new PropertyValueFactory<>("salary"));
+        dateofbirthCol.setCellValueFactory(new PropertyValueFactory<>("dateofbirth"));
+        
+        tb_emp.getColumns().addAll(employeeIDCol, fullnameCol, genderCol, salaryCol, dateofbirthCol);
+        emp_data = emp_dal.GetData();
+        tb_emp.setItems(emp_data);
     }    
 
     @FXML
+    private void act_clickEmp(MouseEvent event) {
+        EmployeeDTO employee  = tb_emp.getSelectionModel().getSelectedItem();
+        
+        txt_emp_name.setText(employee.getFullname());
+        txt_emp_birthday.setText(employee.getDateofbirth());
+        txt_emp_address.setText(employee.getAddress());
+        txt_emp_gender.setText(employee.getGender());
+        txt_start_date.setText(employee.getDatestartworking());
+        txt_salary.setText(Integer.toString(employee.getSalary()));
+        txt_emp_numberphone.setText(employee.getNumberphone());
+        txt_emp_username.setText(employee.getUsername());
+    }
+    
+    @FXML
     private void Action_Con_DelEmp(ActionEvent event) throws SQLException {
         
-        EmployeeDTO emp = ls_employee.getSelectionModel().getSelectedItem();
+        EmployeeDTO emp = tb_emp.getSelectionModel().getSelectedItem();
         emp_dal.Delete(emp);
         emp_data = emp_dal.GetData();
         JOptionPane.showMessageDialog(null,"Deleting Successful","Employee", JOptionPane.INFORMATION_MESSAGE);
@@ -103,7 +136,7 @@ public class EmployeeManagementController implements Initializable {
     private void Action_Con_EditEmp(ActionEvent event) throws SQLException {
         if (CheckInputEmp()){
             EmployeeDTO emp = getEmployeeFromGUI();
-            EmployeeDTO empid = ls_employee.getSelectionModel().getSelectedItem();
+            EmployeeDTO empid = tb_emp.getSelectionModel().getSelectedItem();
         
             if(emp_dal.Update(emp, empid.getEmployeeID())){
                 emp_data = emp_dal.GetData();
@@ -126,20 +159,6 @@ public class EmployeeManagementController implements Initializable {
        }
     }
     
-    @FXML
-    private void displayEmp(MouseEvent event) {
-        EmployeeDTO employee  = ls_employee.getSelectionModel().getSelectedItem();
-        
-        txt_emp_name.setText(employee.getFullname());
-        txt_emp_birthday.setText(employee.getDateofbirth());
-        txt_emp_address.setText(employee.getAddress());
-        txt_emp_gender.setText(employee.getGender());
-        txt_start_date.setText(employee.getDatestartworking());
-        txt_salary.setText(Integer.toString(employee.getSalary()));
-        txt_emp_numberphone.setText(employee.getNumberphone());
-        txt_emp_username.setText(employee.getUsername());
-    }
-
     @FXML
     private void act_back(ActionEvent event) throws IOException {
 //        Stage stage = (Stage) btn_back.getScene().getWindow();
@@ -172,6 +191,20 @@ public class EmployeeManagementController implements Initializable {
         }
         return true;
     }
+
+//    private void displayEmp(MouseEvent event) {
+//        EmployeeDTO employee  = ls_employee.getSelectionModel().getSelectedItem();
+//        
+//        txt_emp_name.setText(employee.getFullname());
+//        txt_emp_birthday.setText(employee.getDateofbirth());
+//        txt_emp_address.setText(employee.getAddress());
+//        txt_emp_gender.setText(employee.getGender());
+//        txt_start_date.setText(employee.getDatestartworking());
+//        txt_salary.setText(Integer.toString(employee.getSalary()));
+//        txt_emp_numberphone.setText(employee.getNumberphone());
+//        txt_emp_username.setText(employee.getUsername());
+//    }
+
 
    
     
