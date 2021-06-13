@@ -29,6 +29,6 @@
       </Button>
       <TextField fx:id="txt_customer_numberphone" layoutX="1379.0" layoutY="447.0" prefHeight="48.0" prefWidth="337.0" />
       <Text layoutX="1123.0" layoutY="480.0" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-font-size: 30PX; -fx-font-weight: bold;" text="NUMBERPHONE" textAlignment="RIGHT" wrappingWidth="244.6498203277588" />
-      <TableView fx:id="tb_customer" layoutX="198.0" layoutY="285.0" onMouseClicked="#displayCus" prefHeight="580.0" prefWidth="703.0" />
+      <TableView fx:id="tb_customer" layoutX="151.0" layoutY="285.0" onMouseClicked="#displayCus" prefHeight="580.0" prefWidth="750.0" />
    </children>
 </AnchorPane>

@@ -69,15 +69,15 @@ public class MenuManagementController implements Initializable {
     public void initialize(URL url, ResourceBundle rb) {
         TableColumn itemIDCol = new TableColumn("ID");
         TableColumn itemnameCol = new TableColumn("ITEMNAME");
-        TableColumn describeCol = new TableColumn("DESCRIBE");
         TableColumn priceCol = new TableColumn("PRICE");
+        TableColumn describeCol = new TableColumn("DESCRIBE");
         
         itemIDCol.setCellValueFactory(new PropertyValueFactory<>("ItemID"));
         itemnameCol.setCellValueFactory(new PropertyValueFactory<>("itemname"));
         describeCol.setCellValueFactory(new PropertyValueFactory<>("describe"));
         priceCol.setCellValueFactory(new PropertyValueFactory<>("price"));
         
-        tb_item.getColumns().addAll(itemIDCol, itemnameCol, describeCol, priceCol);
+        tb_item.getColumns().addAll(itemIDCol, itemnameCol, priceCol, describeCol);
         item_data = item_dal.GetData();
         tb_item.setItems(item_data);
     }    

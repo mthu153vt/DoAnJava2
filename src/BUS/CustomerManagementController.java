@@ -72,7 +72,7 @@ public class CustomerManagementController implements Initializable {
         TableColumn membershippointCol = new TableColumn("POINT"); 
         TableColumn usernameCol = new TableColumn("USERNAME"); 
         
-        customerIDCol.setCellValueFactory(new PropertyValueFactory<>("EmployeeID"));
+        customerIDCol.setCellValueFactory(new PropertyValueFactory<>("CustomerID"));
         fullnameCol.setCellValueFactory(new PropertyValueFactory<>("fullname"));
         genderCol.setCellValueFactory(new PropertyValueFactory<>("gender"));
         numberphoneCol.setCellValueFactory(new PropertyValueFactory<>("numberphone"));
