@@ -21,8 +21,6 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
-import javafx.scene.control.ListCell;
-import javafx.scene.control.ListView;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
@@ -110,7 +108,7 @@ public class EmployeeManagementController implements Initializable {
     }    
 
     @FXML
-    private void act_clickEmp(MouseEvent event) {
+    private void displayEmp(MouseEvent event) {
         EmployeeDTO employee  = tb_emp.getSelectionModel().getSelectedItem();
         
         txt_emp_name.setText(employee.getFullname());
@@ -142,9 +140,6 @@ public class EmployeeManagementController implements Initializable {
                 emp_data = emp_dal.GetData();
                 JOptionPane.showMessageDialog(null,"Editing Successful","Employee", JOptionPane.INFORMATION_MESSAGE);
             }
-        
-//        emp_dal.Update(emp, empid.getEmployeeID());
-//        emp_data = emp_dal.GetData();
        }
     }
 

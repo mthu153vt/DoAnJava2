@@ -21,9 +21,10 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
-import javafx.scene.control.ListCell;
-import javafx.scene.control.ListView;
+import javafx.scene.control.TableColumn;
+import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
+import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
@@ -42,8 +43,6 @@ public class MenuManagementController implements Initializable {
     @FXML
     private Button btn_apply_edit_item;
     @FXML
-    private ListView<ItemDTO> ls_item;
-    @FXML
     private TextField txt_item_name;
     @FXML
     private TextField txt_item_description;
@@ -55,38 +54,39 @@ public class MenuManagementController implements Initializable {
     private Button btn_add_item;
     @FXML
     private Button btn_back;
-
+    @FXML
+    private TableView<ItemDTO> tb_item;
+    
     /**
      * Initializes the controller class.
      */
     
     ObservableList<ItemDTO> item_data = FXCollections.observableArrayList();
     ItemDAL item_dal = new ItemDAL();
+
     
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        // TODO
+        TableColumn itemIDCol = new TableColumn("ID");
+        TableColumn itemnameCol = new TableColumn("ITEMNAME");
+        TableColumn describeCol = new TableColumn("DESCRIBE");
+        TableColumn priceCol = new TableColumn("PRICE");
+        
+        itemIDCol.setCellValueFactory(new PropertyValueFactory<>("ItemID"));
+        itemnameCol.setCellValueFactory(new PropertyValueFactory<>("itemname"));
+        describeCol.setCellValueFactory(new PropertyValueFactory<>("describe"));
+        priceCol.setCellValueFactory(new PropertyValueFactory<>("price"));
+        
+        tb_item.getColumns().addAll(itemIDCol, itemnameCol, describeCol, priceCol);
         item_data = item_dal.GetData();
-        ls_item.setItems(item_data);
-
-        ls_item.setCellFactory(param -> new ListCell<ItemDTO>() {
-            @Override
-            protected void updateItem(ItemDTO e, boolean empty) {
-                super.updateItem(e, empty);
-
-                if (empty || e == null || e.getItemname() == null) {
-                    setText(null);
-                } else {
-                    setText("ID: " + e.getItemID() + "          " + e.getItemname() +"          "+ e.getPrice());
-                }
-            }
-        });
+        tb_item.setItems(item_data);
     }    
-
+    
+    
     @FXML
     private void Action_Con_DelItem(ActionEvent event) {
         
-        ItemDTO item = ls_item.getSelectionModel().getSelectedItem();
+        ItemDTO item = tb_item.getSelectionModel().getSelectedItem();
 	item_dal.Delete(item);
 	item_data = item_dal.GetData();
         JOptionPane.showMessageDialog(null,"Deleting Successful","Menu", JOptionPane.INFORMATION_MESSAGE);
@@ -97,7 +97,7 @@ public class MenuManagementController implements Initializable {
     private void Action_Con_EditItem(ActionEvent event) throws SQLException {
         if (CheckInputItem()){
         ItemDTO item = getItemFromGUI();
-        ItemDTO itemid = ls_item.getSelectionModel().getSelectedItem();
+        ItemDTO itemid = tb_item.getSelectionModel().getSelectedItem();
         
         if(item_dal.Update(item, itemid.getItemID())){
             item_data = item_dal.GetData();
@@ -108,7 +108,7 @@ public class MenuManagementController implements Initializable {
 
     @FXML
     private void displayItem(MouseEvent event) throws SQLException {
-        ItemDTO item = ls_item.getSelectionModel().getSelectedItem();
+        ItemDTO item = tb_item.getSelectionModel().getSelectedItem();
 	
 	txt_item_name.setText(item.getItemname());
 	txt_item_description.setText(item.getDescribe());
@@ -158,4 +158,6 @@ public class MenuManagementController implements Initializable {
         }
         return true;
     }
+
+    
 }

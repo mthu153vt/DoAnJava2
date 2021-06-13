@@ -38,6 +38,6 @@
       <Text layoutX="1189.0" layoutY="763.0" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-font-size: 30PX; -fx-font-weight: bold;" text="NUMBERPHONE" textAlignment="RIGHT" wrappingWidth="248.6498203277588" />
       <TextField fx:id="txt_emp_username" layoutX="840.0" layoutY="709.0" prefHeight="48.0" prefWidth="206.0" />
       <Text layoutX="657.0" layoutY="747.0" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-font-size: 30PX; -fx-font-weight: bold;" text="USERNAME" textAlignment="RIGHT" wrappingWidth="171.3164463043213" />
-      <TableView fx:id="tb_emp" layoutX="80.0" layoutY="194.0" onMouseClicked="#act_clickEmp" prefHeight="723.0" prefWidth="548.0" />
+      <TableView fx:id="tb_emp" layoutX="80.0" layoutY="194.0" onMouseClicked="#displayEmp" prefHeight="723.0" prefWidth="548.0" />
    </children>
 </AnchorPane>

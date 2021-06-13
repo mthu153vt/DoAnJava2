@@ -21,9 +21,10 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
-import javafx.scene.control.ListCell;
-import javafx.scene.control.ListView;
+import javafx.scene.control.TableColumn;
+import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
+import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 import javax.swing.JOptionPane;
@@ -40,8 +41,6 @@ public class CustomerManagementController implements Initializable {
     @FXML
     private Button btn_apply_edit_cus;
     @FXML
-    private ListView<CustomerDTO> ls_customer;
-    @FXML
     private TextField txt_customer_name;
     @FXML
     private TextField txt_customer_gender;
@@ -51,7 +50,8 @@ public class CustomerManagementController implements Initializable {
     private TextField txt_customer_numberphone;
     @FXML
     private Button btn_back;
-    
+    @FXML
+    private TableView<CustomerDTO> tb_customer;
 
     /**
      * Initializes the controller class.
@@ -59,31 +59,47 @@ public class CustomerManagementController implements Initializable {
     
     ObservableList<CustomerDTO> cus_data = FXCollections.observableArrayList();
     CustomerDAL cus_dal = new CustomerDAL();
+
     
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        cus_data = cus_dal.GetData();
-        ls_customer.setItems(cus_data);
         
-        //thuộc tính hiện trên listView
-        ls_customer.setCellFactory(param -> new ListCell<CustomerDTO>() {
-            @Override
-            protected void updateItem(CustomerDTO e, boolean empty) {
-                super.updateItem(e, empty);
+        TableColumn customerIDCol = new TableColumn("ID");
+        TableColumn fullnameCol = new TableColumn("FULL NAME");
+        TableColumn genderCol = new TableColumn("GENDER");
+        TableColumn numberphoneCol = new TableColumn("NUMBERPHONE");
+        TableColumn membershiptierCol = new TableColumn("MEMBERSHIPTIER");        
+        TableColumn membershippointCol = new TableColumn("POINT"); 
+        TableColumn usernameCol = new TableColumn("USERNAME"); 
+        
+        customerIDCol.setCellValueFactory(new PropertyValueFactory<>("EmployeeID"));
+        fullnameCol.setCellValueFactory(new PropertyValueFactory<>("fullname"));
+        genderCol.setCellValueFactory(new PropertyValueFactory<>("gender"));
+        numberphoneCol.setCellValueFactory(new PropertyValueFactory<>("numberphone"));
+        membershiptierCol.setCellValueFactory(new PropertyValueFactory<>("membershiptier"));
+        membershippointCol.setCellValueFactory(new PropertyValueFactory<>("membershippoint"));
+        usernameCol.setCellValueFactory(new PropertyValueFactory<>("username"));
+        
+        tb_customer.getColumns().addAll(customerIDCol, fullnameCol, genderCol, numberphoneCol, membershiptierCol, membershippointCol, usernameCol);
+        cus_data = cus_dal.GetData();
+        tb_customer.setItems(cus_data);
 
-                if (empty || e == null || e.getUsername() == null) {
-                    setText(null);
-                } else {
-                    setText("ID: " + e.getCustomerID()+ "          " + "Username: " + e.getUsername() +"          "+e.getFullname() + "          " + e.getMembershiptier());
-                }
-            }
-        });
     }    
 
     @FXML
+    private void displayCus(MouseEvent event) {
+        CustomerDTO cus = tb_customer.getSelectionModel().getSelectedItem();
+        
+        txt_customer_name.setText(cus.getFullname());
+        txt_customer_gender.setText(cus.getGender());
+        txt_customer_numberphone.setText(cus.getNumberphone());
+        txt_customer_point.setText(Integer.toString(cus.getMembershippoint()));
+    }
+    
+    @FXML
     private void Action_Con_DelCus(ActionEvent event) throws SQLException {
         
-        CustomerDTO cus = ls_customer.getSelectionModel().getSelectedItem();
+        CustomerDTO cus = tb_customer.getSelectionModel().getSelectedItem();
         cus_dal.Delete(cus);
         cus_data = cus_dal.GetData();
         JOptionPane.showMessageDialog(null,"Deleting Successful","Customer", JOptionPane.INFORMATION_MESSAGE);
@@ -93,24 +109,13 @@ public class CustomerManagementController implements Initializable {
     private void Action_Con_EditCus(ActionEvent event) throws SQLException {
         if (CheckInputCus()){
             CustomerDTO cus = getCustomerFromGUI();
-            CustomerDTO cusid = ls_customer.getSelectionModel().getSelectedItem();
+            CustomerDTO cusid = tb_customer.getSelectionModel().getSelectedItem();
         
             if(cus_dal.Update(cus, cusid.getCustomerID())){
                 cus_data = cus_dal.GetData();
                 JOptionPane.showMessageDialog(null,"Editing Successful","Customer", JOptionPane.INFORMATION_MESSAGE);
             }
         }
-    }
-
-    @FXML
-    private void displayCus(MouseEvent event) {
-        CustomerDTO cus = ls_customer.getSelectionModel().getSelectedItem();
-        
-        txt_customer_name.setText(cus.getFullname());
-        txt_customer_gender.setText(cus.getGender());
-        txt_customer_numberphone.setText(cus.getNumberphone());
-        txt_customer_point.setText(Integer.toString(cus.getMembershippoint()));
-        
     }
 
     @FXML
@@ -153,4 +158,6 @@ public class CustomerManagementController implements Initializable {
         }
         return true;
     }
+
+    
 }
