@@ -147,8 +147,8 @@ public class MenuManagementController implements Initializable {
 
     private boolean CheckInputItem(){
         
-        String input[] = {txt_item_name.getText(),txt_item_description.getText(),txt_item_price.getText()};
-        String property[] = {"NAME", "DESCRIPTION", "PRICE"};
+        String input[] = {txt_item_name.getText(), txt_item_price.getText()};
+        String property[] = {"NAME", "PRICE"};
         for (int i = 0 ; i< input.length; i++){
             if (input[i] == null || input[i].equals("")){
                 String ErrorStr = property[i] + " is empty";
