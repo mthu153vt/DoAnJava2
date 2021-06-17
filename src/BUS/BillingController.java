@@ -51,6 +51,7 @@ import javafx.scene.control.Spinner;
 import javafx.scene.control.SpinnerValueFactory;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
+import javafx.scene.control.ToggleGroup;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.text.Text;
@@ -116,12 +117,15 @@ public class BillingController implements Initializable {
     private RadioButton btn_cash;
     @FXML
     private RadioButton btn_card;
-    
+    @FXML
+    private ToggleGroup group_pay;
     @FXML
     private Label lable_warning;
     
     @FXML
     private Button btn_new_bill;
+    @FXML
+    private Button btn_back;
     
     
     String paymentmethod = null;
@@ -137,8 +141,7 @@ public class BillingController implements Initializable {
     
     BillDetailDAL billDetail_dal = new BillDetailDAL();
     ObservableList<BillDetailDTO> list_billDetail = FXCollections.observableArrayList();
-    @FXML
-    private Button btn_back;
+    
 
     
     @Override

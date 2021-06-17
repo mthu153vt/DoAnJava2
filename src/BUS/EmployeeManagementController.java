@@ -21,9 +21,11 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.RadioButton;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
+import javafx.scene.control.ToggleGroup;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
@@ -47,8 +49,6 @@ public class EmployeeManagementController implements Initializable {
     @FXML
     private TextField txt_emp_birthday;
     @FXML
-    private TextField txt_emp_gender;
-    @FXML
     private TextField txt_start_date;
     @FXML
     private TextField txt_salary;
@@ -62,14 +62,22 @@ public class EmployeeManagementController implements Initializable {
     private TextField txt_emp_numberphone;
     @FXML
     private TextField txt_emp_username;
+    @FXML
+    private RadioButton btn_male;
+    @FXML
+    private RadioButton btn_female;
+    @FXML
+    private ToggleGroup group_gender;
     /**
      * Initializes the controller class.
      */
     
     ObservableList<EmployeeDTO> emp_data = FXCollections.observableArrayList();
     EmployeeDAL emp_dal = new EmployeeDAL();
+    String gender = null;
     
     
+
     @Override
     public void initialize(URL url, ResourceBundle rb) {
 //        // TODO
@@ -114,11 +122,21 @@ public class EmployeeManagementController implements Initializable {
         txt_emp_name.setText(employee.getFullname());
         txt_emp_birthday.setText(employee.getDateofbirth());
         txt_emp_address.setText(employee.getAddress());
-        txt_emp_gender.setText(employee.getGender());
         txt_start_date.setText(employee.getDatestartworking());
         txt_salary.setText(Integer.toString(employee.getSalary()));
         txt_emp_numberphone.setText(employee.getNumberphone());
         txt_emp_username.setText(employee.getUsername());
+        if(employee.getGender() == null){
+            gender = null;
+        }
+        else if(employee.getGender().equals("MALE")) {
+            btn_male.setSelected(true); 
+            gender = "MALE";
+        }
+        else if(employee.getGender().equals("FEMALE")) {
+            btn_female.setSelected(true);
+            gender = "FEMALE";
+        }
     }
     
     @FXML
@@ -168,14 +186,14 @@ public class EmployeeManagementController implements Initializable {
 
     private EmployeeDTO getEmployeeFromGUI(){
         EmployeeDTO emp;
-        emp = new EmployeeDTO(0,txt_emp_name.getText(), txt_emp_gender.getText(),txt_emp_address.getText(), txt_emp_numberphone.getText(), Integer.parseInt(txt_salary.getText()),txt_emp_birthday.getText(), txt_start_date.getText(), txt_emp_username.getText() );
+        emp = new EmployeeDTO(0,txt_emp_name.getText(), gender,txt_emp_address.getText(), txt_emp_numberphone.getText(), Integer.parseInt(txt_salary.getText()),txt_emp_birthday.getText(), txt_start_date.getText(), txt_emp_username.getText() );
         
         return emp;
     }
     
     private boolean CheckInputEmp(){
         
-        String input[] = {txt_emp_name.getText(),txt_emp_birthday.getText(),txt_emp_address.getText(),txt_emp_gender.getText(),txt_start_date.getText(), txt_salary.getText(), txt_emp_numberphone.getText()};
+        String input[] = {txt_emp_name.getText(),txt_emp_birthday.getText(),txt_emp_address.getText(),gender,txt_start_date.getText(), txt_salary.getText(), txt_emp_numberphone.getText()};
         String property[] = {"NAME", "BIRTHDAY", "ADDRESS", "GENDER", "START DAY", "SALARY", "NUMBERPHONE"};
         for (int i = 0 ; i< input.length; i++){
             if (input[i] == null || input[i].equals("")){
@@ -184,13 +202,22 @@ public class EmployeeManagementController implements Initializable {
                 return false;
             }
         }
-        if(!txt_emp_gender.getText().equals("MALE") && !txt_emp_gender.getText().equals("FEMALE")){
-            JOptionPane.showMessageDialog(null,"Gender is MALE or FEMALE!","Error", JOptionPane.ERROR_MESSAGE);
-            return false;
-        }
         return true;
     }
 
+    @FXML
+    private void act_male(ActionEvent event) {
+        btn_female.setSelected(false);
+        gender = "MALE";
+    }
+
+    @FXML
+    private void act_female(ActionEvent event) {
+        btn_male.setSelected(false);
+        gender = "FEMALE";
+    }
+    
+    
 //    private void displayEmp(MouseEvent event) {
 //        EmployeeDTO employee  = ls_employee.getSelectionModel().getSelectedItem();
 //        
@@ -203,6 +230,8 @@ public class EmployeeManagementController implements Initializable {
 //        txt_emp_numberphone.setText(employee.getNumberphone());
 //        txt_emp_username.setText(employee.getUsername());
 //    }
+
+    
 
 
    

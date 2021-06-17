@@ -8,6 +8,7 @@
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.control.TextArea?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.ToggleGroup?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
@@ -131,8 +132,11 @@
          <font>
             <Font size="24.0" />
          </font>
+         <toggleGroup>
+            <ToggleGroup fx:id="group_pay" />
+         </toggleGroup>
       </RadioButton>
-      <RadioButton fx:id="btn_card" layoutX="210.0" layoutY="520.0" mnemonicParsing="false" onAction="#act_card" text="CARD">
+      <RadioButton fx:id="btn_card" layoutX="210.0" layoutY="520.0" mnemonicParsing="false" onAction="#act_card" text="CARD" toggleGroup="$group_pay">
          <font>
             <Font size="24.0" />
          </font>

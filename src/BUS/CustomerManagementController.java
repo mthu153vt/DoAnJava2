@@ -21,9 +21,11 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.RadioButton;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
+import javafx.scene.control.ToggleGroup;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
@@ -43,8 +45,6 @@ public class CustomerManagementController implements Initializable {
     @FXML
     private TextField txt_customer_name;
     @FXML
-    private TextField txt_customer_gender;
-    @FXML
     private TextField txt_customer_point;
     @FXML
     private TextField txt_customer_numberphone;
@@ -52,13 +52,20 @@ public class CustomerManagementController implements Initializable {
     private Button btn_back;
     @FXML
     private TableView<CustomerDTO> tb_customer;
-
+    @FXML
+    private RadioButton btn_male;
+    @FXML
+    private RadioButton btn_female;
+    @FXML
+    private ToggleGroup group_gender;
     /**
      * Initializes the controller class.
      */
     
     ObservableList<CustomerDTO> cus_data = FXCollections.observableArrayList();
     CustomerDAL cus_dal = new CustomerDAL();
+    String gender = null;
+    
 
     
     @Override
@@ -91,9 +98,19 @@ public class CustomerManagementController implements Initializable {
         CustomerDTO cus = tb_customer.getSelectionModel().getSelectedItem();
         
         txt_customer_name.setText(cus.getFullname());
-        txt_customer_gender.setText(cus.getGender());
         txt_customer_numberphone.setText(cus.getNumberphone());
         txt_customer_point.setText(Integer.toString(cus.getMembershippoint()));
+        if(cus.getGender() == null){
+            gender = null;
+        }
+        else if(cus.getGender().equals("MALE")) {
+            btn_male.setSelected(true); 
+            gender = "MALE";
+        }
+        else if(cus.getGender().equals("FEMALE")) {
+            btn_female.setSelected(true);
+            gender = "FEMALE";
+        }
     }
     
     @FXML
@@ -140,14 +157,14 @@ public class CustomerManagementController implements Initializable {
         else str = "SILVER";
         
         CustomerDTO cus;
-        cus = new CustomerDTO(0, txt_customer_name.getText(), txt_customer_gender.getText(), txt_customer_numberphone.getText(),str, Integer.parseInt(txt_customer_point.getText()), " ");
+        cus = new CustomerDTO(0, txt_customer_name.getText(), gender, txt_customer_numberphone.getText(),str, Integer.parseInt(txt_customer_point.getText()), " ");
         
         return cus;
     }
     
     private boolean CheckInputCus(){
         
-        String input[] = {txt_customer_name.getText(),txt_customer_gender.getText(),txt_customer_numberphone.getText(),txt_customer_point.getText()};
+        String input[] = {txt_customer_name.getText(),gender,txt_customer_numberphone.getText(),txt_customer_point.getText()};
         String property[] = {"NAME", "GENDER", "NUMBERPHONE", "POINT"};
         for (int i = 0 ; i< input.length; i++){
             if (input[i] == null || input[i].equals("")){
@@ -157,6 +174,16 @@ public class CustomerManagementController implements Initializable {
             }
         }
         return true;
+    }
+
+    @FXML
+    private void act_male(ActionEvent event) {
+        gender = "MALE";
+    }
+
+    @FXML
+    private void act_female(ActionEvent event) {
+        gender = "FEMALE";
     }
 
     
