@@ -86,14 +86,11 @@ public class AdminReportController implements Initializable {
             BaseFont bfontContent = BaseFont.createFont(urlFont, BaseFont.IDENTITY_H, BaseFont.EMBEDDED ); 
         
             Font fontTitle_1 = new Font(bfontTitle,16);
-            fontTitle_1.setColor(BaseColor.BLACK);
+            fontTitle_1.setColor(BaseColor.BLUE);
         
             Font fontTitle_3 = new Font(bfontTitle,13);
             fontTitle_3.setColor(BaseColor.BLUE);
-             
-            Font fontTitle_5 = new Font(bfontTitle,16);
-            fontTitle_1.setColor(BaseColor.BLUE);
-        
+            
             Font fontTitle_6 = new Font(bfontTitle,11);
             fontTitle_6.setColor(BaseColor.BLACK);
         
@@ -122,8 +119,30 @@ public class AdminReportController implements Initializable {
         parTitle.setSpacingAfter(10);
         doc.add(parTitle);
         
-        Paragraph chuThich = new Paragraph("*Display revenue of a month", fontTitle_6);
+        Paragraph chuThich = new Paragraph("- REVENUE IN A MONTH", fontTitle_6);
         doc.add(chuThich);
+        
+        PdfPTable tbRevenue = new PdfPTable(2);
+        tbRevenue.setWidthPercentage(80);
+        tbRevenue.setSpacingBefore(15);
+        tbRevenue.setSpacingAfter(15);
+
+        int[] tb_ColumnWidths = {50,80};
+        tbRevenue.setWidths(tb_ColumnWidths);
+        
+        PdfPCell cellId = new PdfPCell (new Paragraph("Month", fontTitle_6));
+        cellId.setBorderColor(BaseColor.BLACK);
+        cellId.setHorizontalAlignment(Element.ALIGN_CENTER);
+        cellId.setVerticalAlignment(Element.ALIGN_MIDDLE);
+        cellId.setMinimumHeight(30);
+        tbRevenue.addCell(cellId);
+        
+        PdfPCell cellName = new PdfPCell (new Paragraph("Revenue", fontTitle_6));
+        cellName.setBorderColor(BaseColor.BLACK);
+        cellName.setHorizontalAlignment(Element.ALIGN_CENTER);
+        cellName.setVerticalAlignment(Element.ALIGN_MIDDLE);
+        cellName.setMinimumHeight(30);
+        tbRevenue.addCell(cellName);
         
         try{
             String sql = String.format("SELECT  to_char(BILLDATE,'mm') MONTH, SUM(TOTAL) FROM    BILL GROUP BY    to_char(BILLDATE,'mm')");
@@ -131,19 +150,28 @@ public class AdminReportController implements Initializable {
             ResultSet rs = pres.executeQuery();
         
         while(rs.next()){
-              Paragraph paraID = new Paragraph("Month:    " + rs.getInt(1));
-              Paragraph para = new Paragraph("Revenue:    " + rs.getInt(2));
-
-              paraID.setSpacingBefore(15);
-              doc.add(paraID);
-              doc.add(para);
+            PdfPCell cellmonth = new PdfPCell (new Paragraph(Integer.toString(rs.getInt(1))));
+            cellmonth.setHorizontalAlignment(Element.ALIGN_CENTER);
+            cellmonth.setHorizontalAlignment(Element.ALIGN_CENTER);
+            cellmonth.setVerticalAlignment(Element.ALIGN_MIDDLE);
+            cellmonth.setMinimumHeight(30);
+            tbRevenue.addCell(cellmonth); 
+            
+            PdfPCell cellRevenueND = new PdfPCell (new Paragraph(Integer.toString(rs.getInt(2))));
+            cellRevenueND.setHorizontalAlignment(Element.ALIGN_CENTER);
+            cellRevenueND.setHorizontalAlignment(Element.ALIGN_CENTER);
+            cellRevenueND.setVerticalAlignment(Element.ALIGN_MIDDLE);
+            cellRevenueND.setMinimumHeight(30);
+            tbRevenue.addCell(cellRevenueND); 
         }
+        
+            doc.add(tbRevenue);
         
         }catch(SQLException e){
             e.printStackTrace();
         }
         
-        Paragraph chuThich2= new Paragraph("*Display Top 3 most favorite items ", fontTitle_6);
+        Paragraph chuThich2= new Paragraph("- TOP 3 FAVOURITE ITEMS ", fontTitle_6);
         chuThich2.setSpacingBefore(15);
         doc.add(chuThich2);
         
@@ -155,7 +183,7 @@ public class AdminReportController implements Initializable {
         while(result.next()){
               Paragraph paraID = new Paragraph("Item ID:    " + result.getInt(1));
               Paragraph para = new Paragraph("Item Name:    " + result.getString(2));
-              Paragraph para1 = new Paragraph("Chosen times:    " + result.getInt(3));
+              Paragraph para1 = new Paragraph("Chosen times:    " + Integer.toString(result.getInt(3)));
               
               paraID.setSpacingBefore(15);
               doc.add(paraID);
@@ -259,9 +287,57 @@ public class AdminReportController implements Initializable {
         parTitle.setSpacingAfter(10);
         doc.add(parTitle);
         
-        Paragraph chuThich = new Paragraph("*Display employees are currently working in the restaurant", fontTitle_6);
-        chuThich.setAlignment(Element.ALIGN_CENTER);
-        doc.add(chuThich);
+        PdfPTable tbEMP = new PdfPTable(6);
+        tbEMP.setWidthPercentage(80);
+        tbEMP.setSpacingBefore(15);
+        tbEMP.setSpacingAfter(15);
+
+        int[] tb_ColumnWidths = {40,150,90,100,90,90};
+        tbEMP.setWidths(tb_ColumnWidths);
+        
+        PdfPCell cellId = new PdfPCell (new Paragraph("ID", fontTitle_6));
+        cellId.setBorderColor(BaseColor.BLACK);
+        cellId.setHorizontalAlignment(Element.ALIGN_CENTER);
+        cellId.setVerticalAlignment(Element.ALIGN_MIDDLE);
+        cellId.setMinimumHeight(30);
+        tbEMP.addCell(cellId);
+        
+        PdfPCell cellName = new PdfPCell (new Paragraph("Full name", fontTitle_6));
+        cellName.setBorderColor(BaseColor.BLACK);
+        cellName.setHorizontalAlignment(Element.ALIGN_CENTER);
+        cellName.setVerticalAlignment(Element.ALIGN_MIDDLE);
+        cellName.setMinimumHeight(30);
+        tbEMP.addCell(cellName);
+        
+        PdfPCell cellgender= new PdfPCell (new Paragraph("Gender", fontTitle_6));
+        cellgender.setBorderColor(BaseColor.BLACK);
+        cellgender.setHorizontalAlignment(Element.ALIGN_CENTER);
+        cellgender.setVerticalAlignment(Element.ALIGN_MIDDLE);
+        cellgender.setMinimumHeight(30);
+        tbEMP.addCell(cellgender);
+        
+        
+        PdfPCell cellPhone = new PdfPCell (new Paragraph("Phone", fontTitle_6));
+        cellPhone.setBorderColor(BaseColor.BLACK);
+        cellPhone.setHorizontalAlignment(Element.ALIGN_CENTER);
+        cellPhone.setVerticalAlignment(Element.ALIGN_MIDDLE);
+        cellPhone.setMinimumHeight(30);
+        tbEMP.addCell(cellPhone);
+        
+        PdfPCell cellDOB = new PdfPCell (new Paragraph("Birthday", fontTitle_6));
+        cellDOB.setBorderColor(BaseColor.BLACK);
+        cellDOB.setHorizontalAlignment(Element.ALIGN_CENTER);
+        cellDOB.setVerticalAlignment(Element.ALIGN_MIDDLE);
+        cellDOB.setMinimumHeight(30);
+        tbEMP.addCell(cellDOB);
+        
+        PdfPCell cellwork = new PdfPCell (new Paragraph("DateStart", fontTitle_6));
+        cellwork.setBorderColor(BaseColor.BLACK);
+        cellwork.setHorizontalAlignment(Element.ALIGN_CENTER);
+        cellwork.setVerticalAlignment(Element.ALIGN_MIDDLE);
+        cellwork.setMinimumHeight(30);
+        tbEMP.addCell(cellwork);
+
         
         try{
             String sql = String.format("SELECT * FROM EMPLOYEE");
@@ -269,30 +345,33 @@ public class AdminReportController implements Initializable {
             ResultSet rs = pres.executeQuery();
         
         while(rs.next()){
-           Paragraph paraID = new Paragraph("ID:    " + rs.getString(1));
-              Paragraph para = new Paragraph("Full name:    " + rs.getString(2));
-              Paragraph para2 = new Paragraph("Gender:    " + rs.getString(3));
-              Paragraph para3 = new Paragraph("Address:    " + rs.getString(4));
-              Paragraph para4 = new Paragraph("Numberphone:    " + rs.getString(5));
-              Paragraph para5 = new Paragraph("Salary:    " + rs.getInt(6));
-              Paragraph para6 = new Paragraph("Date of birth:    " + rs.getDate(7));
-              Paragraph para7 = new Paragraph("Date start working:    " + rs.getDate(8));
-              
-              paraID.setSpacingBefore(15);
-              doc.add(paraID);
-              doc.add(para);
-              doc.add(para2);
-              doc.add(para3);
-              doc.add(para4);
-              doc.add(para5);
-              doc.add(para6);
-              doc.add(para7);
+           PdfPCell cellID = new PdfPCell (new Paragraph(Integer.toString(rs.getInt(1))));
+           cellID.setHorizontalAlignment(Element.ALIGN_CENTER);
+           tbEMP.addCell(cellID); 
+            
+           PdfPCell cellNameND = new PdfPCell (new Paragraph(rs.getString(2)));
+           tbEMP.addCell(cellNameND);
+           
+           PdfPCell cellGenderND = new PdfPCell (new Paragraph(rs.getString(3)));
+           tbEMP.addCell(cellGenderND);
+           
+           PdfPCell cellPhoneND = new PdfPCell (new Paragraph(rs.getString(5)));
+           tbEMP.addCell(cellPhoneND);
+           
+           PdfPCell cellDOBnd = new PdfPCell (new Paragraph(rs.getDate(7).toString()));
+           tbEMP.addCell(cellDOBnd);
+           
+           PdfPCell cellWORK= new PdfPCell (new Paragraph(rs.getDate(8).toString()));
+           tbEMP.addCell(cellWORK);
         }
-        
+
         }catch(SQLException e){
             e.printStackTrace();
         }
-        
+        doc.add(tbEMP);
+        Paragraph chuThich = new Paragraph("*Display employees are currently working in the restaurant", fontTitle_6);
+        chuThich.setAlignment(Element.ALIGN_CENTER);
+        doc.add(chuThich);
         
         }catch(IOException e){
             e.printStackTrace();
@@ -348,18 +427,9 @@ public class AdminReportController implements Initializable {
         
             Font fontTitle_1 = new Font(bfontTitle,16);
             fontTitle_1.setColor(BaseColor.BLACK);
-        
-            Font fontTitle_2 = new Font(bfontContent,14);
-            fontTitle_2.setColor(BaseColor.BLACK);
-
+       
             Font fontTitle_3 = new Font(bfontTitle,13);
             fontTitle_3.setColor(BaseColor.BLUE);
-        
-            Font fontTitle_4 = new Font(bfontContent,10);
-            fontTitle_4.setColor(BaseColor.BLACK);
-        
-            Font fontTitle_5 = new Font(bfontTitle,16);
-            fontTitle_1.setColor(BaseColor.BLUE);
         
             Font fontTitle_6 = new Font(bfontContent,12);
             fontTitle_6.setColor(BaseColor.BLACK);
@@ -390,14 +460,21 @@ public class AdminReportController implements Initializable {
         doc.add(parTitle);
         
 
-        PdfPTable tbCustomer = new PdfPTable(4);
+        PdfPTable tbCustomer = new PdfPTable(6);
         tbCustomer.setWidthPercentage(80);
         tbCustomer.setSpacingBefore(15);
         tbCustomer.setSpacingAfter(15);
 
-        int[] tb_ColumnWidths = {160,70,90,90};
+        int[] tb_ColumnWidths = {40,150,70,90,100,80};
         tbCustomer.setWidths(tb_ColumnWidths);
             
+        PdfPCell cellid = new PdfPCell (new Paragraph("ID", fontTitle_6));
+        cellid.setBorderColor(BaseColor.BLACK);
+        cellid.setHorizontalAlignment(Element.ALIGN_CENTER);
+        cellid.setVerticalAlignment(Element.ALIGN_MIDDLE);
+        cellid.setMinimumHeight(30);
+        tbCustomer.addCell(cellid);
+        
         PdfPCell cellName = new PdfPCell (new Paragraph("Full name", fontTitle_6));
         cellName.setBorderColor(BaseColor.BLACK);
         cellName.setHorizontalAlignment(Element.ALIGN_CENTER);
@@ -419,19 +496,19 @@ public class AdminReportController implements Initializable {
         cellNumber.setMinimumHeight(30);
         tbCustomer.addCell(cellNumber);
         
-        PdfPCell cellTier = new PdfPCell (new Paragraph("Member Tier", fontTitle_6));
+        PdfPCell cellTier = new PdfPCell (new Paragraph("Tier", fontTitle_6));
         cellTier.setBorderColor(BaseColor.BLACK);
         cellTier.setHorizontalAlignment(Element.ALIGN_CENTER);
         cellTier.setVerticalAlignment(Element.ALIGN_MIDDLE);
         cellTier.setMinimumHeight(30);
         tbCustomer.addCell(cellTier);
         
-//        PdfPCell cellPoint = new PdfPCell (new Paragraph("Member Point", fontTitle_6));
-//        cellPoint.setBorderColor(BaseColor.BLACK);
-//        cellPoint.setHorizontalAlignment(Element.ALIGN_CENTER);
-//        cellPoint.setVerticalAlignment(Element.ALIGN_MIDDLE);
-//        cellPoint.setMinimumHeight(30);
-//        tbCustomer.addCell(cellPoint);
+        PdfPCell cellPoint = new PdfPCell (new Paragraph("Point", fontTitle_6));
+        cellPoint.setBorderColor(BaseColor.BLACK);
+        cellPoint.setHorizontalAlignment(Element.ALIGN_CENTER);
+        cellPoint.setVerticalAlignment(Element.ALIGN_MIDDLE);
+        cellPoint.setMinimumHeight(30);
+        tbCustomer.addCell(cellPoint);
 
             
         try{
@@ -440,20 +517,24 @@ public class AdminReportController implements Initializable {
             ResultSet rs = pres.executeQuery();
         
         while(rs.next()){
-            PdfPCell cellNameND = new PdfPCell (new Paragraph(rs.getString(2), fontTitle_4));
+            PdfPCell cellidND = new PdfPCell (new Paragraph(Integer.toString(rs.getInt(1))));
+            cellidND.setHorizontalAlignment(Element.ALIGN_CENTER);
+            tbCustomer.addCell(cellidND);
+            
+            PdfPCell cellNameND = new PdfPCell (new Paragraph(rs.getString(2)));
             tbCustomer.addCell(cellNameND);
             
-            PdfPCell cellGenderND = new PdfPCell (new Paragraph(rs.getString(3), fontTitle_4));
+            PdfPCell cellGenderND = new PdfPCell (new Paragraph(rs.getString(3)));
             tbCustomer.addCell(cellGenderND);
             
-            PdfPCell cellPhoneND = new PdfPCell (new Paragraph(rs.getString(4), fontTitle_4));
+            PdfPCell cellPhoneND = new PdfPCell (new Paragraph(rs.getString(4)));
             tbCustomer.addCell(cellPhoneND);
             
-            PdfPCell cellTierND = new PdfPCell (new Paragraph(rs.getString(5), fontTitle_4));
+            PdfPCell cellTierND = new PdfPCell (new Paragraph(rs.getString(5)));
             tbCustomer.addCell(cellTierND);
             
-//            PdfPCell cellPointND = new PdfPCell (new Paragraph(rs.getInt(6)));
-//            tbCustomer.addCell(cellPointND);
+            PdfPCell cellPointND = new PdfPCell (new Paragraph(Integer.toString(rs.getInt(6))));
+            tbCustomer.addCell(cellPointND);
         }
         
         }catch(SQLException e){
@@ -461,7 +542,7 @@ public class AdminReportController implements Initializable {
         }
         
         doc.add(tbCustomer);
-        Paragraph chuThich = new Paragraph("*Display customer's information order by membership tier (PLATINUM > GOLD > SILVER)", fontTitle_6);
+        Paragraph chuThich = new Paragraph("*Display customer's information order by membership points", fontTitle_6);
         chuThich.setAlignment(Element.ALIGN_CENTER);
         doc.add(chuThich);
         
