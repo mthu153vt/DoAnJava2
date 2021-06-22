@@ -156,5 +156,10 @@
             <Font name="Arial Bold" size="24.0" />
          </font>
       </Button>
+      <Text layoutX="466.0" layoutY="134.0" strokeType="OUTSIDE" strokeWidth="0.0" text="MENU" wrappingWidth="82.00000081211329">
+         <font>
+            <Font name="System Bold" size="24.0" />
+         </font>
+      </Text>
    </children>
 </AnchorPane>

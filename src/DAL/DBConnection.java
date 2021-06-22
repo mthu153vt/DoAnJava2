@@ -14,7 +14,7 @@ import java.sql.DriverManager;
 import java.sql.SQLException;
 
 public class DBConnection {
-    String connectionURL= "jdbc:oracle:thin:@//localhost:1521/orcl";
+    String connectionURL= "jdbc:oracle:thin:@//localhost:1521/QLyNhaHang";
     String username = "doan";
     String password = "12345";
    // ("jdbc:oracle:thin:@//localhost:1521/QLyNhaHang","doan","12345");*/

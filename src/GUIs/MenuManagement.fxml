@@ -17,11 +17,20 @@
       </Text>
       <Button fx:id="btn_delete_item" layoutX="781.0" layoutY="879.0" mnemonicParsing="false" onAction="#Action_Con_DelItem" prefHeight="42.0" prefWidth="312.0" style="-fx-background-color: orange; -fx-font-size: 18px; -fx-font-weight: bold;" text="DELETE CURRENT ITEM" textFill="WHITE" />
       <Button fx:id="btn_apply_edit_item" layoutX="1452.0" layoutY="880.0" mnemonicParsing="false" onAction="#Action_Con_EditItem" prefHeight="42.0" prefWidth="312.0" style="-fx-background-color: green; -fx-font-size: 18px; -fx-font-weight: bold;" text="APPLY EDIT" textFill="WHITE" />
-      <TextField fx:id="txt_item_name" layoutX="1166.0" layoutY="337.0" prefHeight="48.0" prefWidth="337.0" />
+      <TextField fx:id="txt_item_name" layoutX="1166.0" layoutY="337.0" prefHeight="48.0" prefWidth="337.0">
+         <font>
+            <Font size="24.0" />
+         </font></TextField>
       <Text layoutX="983.0" layoutY="378.0" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-font-size: 30PX; -fx-font-weight: bold;" text="NAME" textAlignment="RIGHT" wrappingWidth="171.3164463043213" />
-      <TextField fx:id="txt_item_description" layoutX="1172.0" layoutY="487.0" prefHeight="48.0" prefWidth="337.0" />
+      <TextField fx:id="txt_item_description" layoutX="1172.0" layoutY="487.0" prefHeight="51.0" prefWidth="470.0">
+         <font>
+            <Font size="24.0" />
+         </font></TextField>
       <Text layoutX="955.0" layoutY="527.0" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-font-size: 30PX; -fx-font-weight: bold;" text="DESCRIPTION" textAlignment="RIGHT" wrappingWidth="205.3164463043213" />
-      <TextField fx:id="txt_item_price" layoutX="1173.0" layoutY="613.0" prefHeight="48.0" prefWidth="337.0" />
+      <TextField fx:id="txt_item_price" layoutX="1173.0" layoutY="613.0" prefHeight="48.0" prefWidth="337.0">
+         <font>
+            <Font size="24.0" />
+         </font></TextField>
       <Text layoutX="956.0" layoutY="653.0" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-font-size: 30PX; -fx-font-weight: bold;" text="PRICE" textAlignment="RIGHT" wrappingWidth="205.3164463043213" />
       <ImageView fx:id="img_item" fitHeight="342.0" fitWidth="302.0" layoutX="1566.0" layoutY="318.0" pickOnBounds="true" preserveRatio="true" />
       <Button fx:id="btn_add_item" layoutX="1107.0" layoutY="880.0" mnemonicParsing="false" onAction="#Action_Con_AddItem" prefHeight="42.0" prefWidth="312.0" style="-fx-background-color: BLUE; -fx-font-size: 18px; -fx-font-weight: bold;" text="ADD NEW ITEM" textFill="WHITE" />
@@ -30,6 +39,6 @@
             <Font name="System Bold" size="36.0" />
          </font>
       </Button>
-      <TableView fx:id="tb_item" layoutX="167.0" layoutY="245.0" onMouseClicked="#displayItem" prefHeight="611.0" prefWidth="608.0" />
+      <TableView fx:id="tb_item" layoutX="167.0" layoutY="222.0" onMouseClicked="#displayItem" prefHeight="634.0" prefWidth="655.0" />
    </children>
 </AnchorPane>
