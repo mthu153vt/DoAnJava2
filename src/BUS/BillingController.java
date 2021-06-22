@@ -248,7 +248,8 @@ public class BillingController implements Initializable {
         txt_total_sum.setText(String.valueOf(sumTotal));
         
         //hiển thị trên text field bill
-        header = header + "\n" + txt_item_name.getText() + "\t SL:" + spinner_quantity.getValue() + "       " + txt_total.getText();
+        header = header + "\n" + txt_item_name.getText() 
+                +"\n SL:" + spinner_quantity.getValue() + "       " + txt_total.getText();
         txt_bill.setText(header);
         
     }
