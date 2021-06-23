@@ -115,7 +115,7 @@ public class AdminController implements Initializable {
 
     @FXML
     private void act_report(ActionEvent event) throws IOException {
-        ((Node) (event.getSource())).getScene().getWindow().hide();
+        ((Node) (event.getSource())).getScene().getWindow();
             Stage stage = new Stage();
             Parent root = FXMLLoader.load(getClass().getResource("../GUIs/AdminReport.fxml"));
             Scene scene = new Scene(root);

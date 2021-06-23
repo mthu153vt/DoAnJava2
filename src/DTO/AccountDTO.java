@@ -32,10 +32,6 @@ public class AccountDTO {
         this.accountrole = accountrole;
     }
     
-    
-    public static void main(String args[]) {
-        // TODO code application logic here
-    }
 
     /**
      * @return the Username

@@ -63,7 +63,8 @@ public class CustomerController implements Initializable {
 
     @FXML
     private void act_voucher(ActionEvent event) throws IOException {
-        ((Node) (event.getSource())).getScene().getWindow().hide();
+        //((Node) (event.getSource())).getScene().getWindow().hide();
+            ((Node) (event.getSource())).getScene();
             Stage stage = new Stage();
             Parent root = FXMLLoader.load(getClass().getResource("../GUIs/Voucher.fxml"));
             Scene scene = new Scene(root);

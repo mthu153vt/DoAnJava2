@@ -5,6 +5,7 @@
  */
 package BUS;
 
+import BUS.LoginController;
 import DAL.AccountDAL;
 import DAL.CustomerDAL;
 import DTO.AccountDTO;
@@ -66,6 +67,7 @@ public class SignUpController implements Initializable {
 
     @FXML
     private void Action_CreateAccount(ActionEvent event) throws SQLException, IOException {
+        LoginController.connection.OpenConnection();
         if(CheckInputAccount()){
             AccountDTO account = getAccountFromGUI();
             
