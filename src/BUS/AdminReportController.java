@@ -94,7 +94,8 @@ public class AdminReportController implements Initializable {
             Font fontTitle_6 = new Font(bfontTitle,11);
             fontTitle_6.setColor(BaseColor.BLACK);
         
-            Image logo = Image.getInstance("G:\\app\\BTTH5 va Lab1\\DoAnJava2\\src\\GUIs\\images\\LOGO.png");
+            //Image logo = Image.getInstance("G:\\app\\BTTH5 va Lab1\\DoAnJava2\\src\\GUIs\\images\\LOGO.png");
+            Image logo = Image.getInstance("D:\\THUW\\QLNhaHang\\DoAnJava2\\src\\GUIs\\images\\LOGO.png");
             logo.setAbsolutePosition(80, 750);
             logo.scaleAbsolute(60,60);
             doc.add(logo);
@@ -262,7 +263,8 @@ public class AdminReportController implements Initializable {
             Font fontTitle_6 = new Font(bfontContent,11);
             fontTitle_6.setColor(BaseColor.BLACK);
         
-            Image logo = Image.getInstance("G:\\app\\BTTH5 va Lab1\\DoAnJava2\\src\\GUIs\\images\\LOGO.png");
+            //Image logo = Image.getInstance("G:\\app\\BTTH5 va Lab1\\DoAnJava2\\src\\GUIs\\images\\LOGO.png");
+            Image logo = Image.getInstance("D:\\THUW\\QLNhaHang\\DoAnJava2\\src\\GUIs\\images\\LOGO.png");
             logo.setAbsolutePosition(80, 750);
             logo.scaleAbsolute(60,60);
             doc.add(logo);
@@ -434,7 +436,8 @@ public class AdminReportController implements Initializable {
             Font fontTitle_6 = new Font(bfontContent,12);
             fontTitle_6.setColor(BaseColor.BLACK);
         
-            Image logo = Image.getInstance("G:\\app\\BTTH5 va Lab1\\DoAnJava2\\src\\GUIs\\images\\LOGO.png");
+            //Image logo = Image.getInstance("G:\\app\\BTTH5 va Lab1\\DoAnJava2\\src\\GUIs\\images\\LOGO.png");
+            Image logo = Image.getInstance("D:\\THUW\\QLNhaHang\\DoAnJava2\\src\\GUIs\\images\\LOGO.png");
             logo.setAbsolutePosition(80, 750);
             logo.scaleAbsolute(60,60);
             doc.add(logo);
