@@ -63,6 +63,8 @@ public class MenuManagementController implements Initializable {
     
     ObservableList<ItemDTO> item_data = FXCollections.observableArrayList();
     ItemDAL item_dal = new ItemDAL();
+    @FXML
+    private Button btn_apply_clear;
 
     
     @Override
@@ -157,6 +159,13 @@ public class MenuManagementController implements Initializable {
             }
         }
         return true;
+    }
+
+    @FXML
+    private void Action_Con_Clear(ActionEvent event) {
+        txt_item_name.setText("");
+	txt_item_description.setText("");
+	txt_item_price.setText("");
     }
 
     

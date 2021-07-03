@@ -16,8 +16,8 @@
          </font>
       </Text>
       <Button fx:id="btn_delete_item" layoutX="781.0" layoutY="879.0" mnemonicParsing="false" onAction="#Action_Con_DelItem" prefHeight="42.0" prefWidth="312.0" style="-fx-background-color: orange; -fx-font-size: 18px; -fx-font-weight: bold;" text="DELETE CURRENT ITEM" textFill="WHITE" />
-      <Button fx:id="btn_apply_edit_item" layoutX="1452.0" layoutY="880.0" mnemonicParsing="false" onAction="#Action_Con_EditItem" prefHeight="42.0" prefWidth="312.0" style="-fx-background-color: green; -fx-font-size: 18px; -fx-font-weight: bold;" text="APPLY EDIT" textFill="WHITE" />
-      <TextField fx:id="txt_item_name" layoutX="1166.0" layoutY="337.0" prefHeight="48.0" prefWidth="337.0">
+      <Button fx:id="btn_apply_edit_item" layoutX="1435.0" layoutY="880.0" mnemonicParsing="false" onAction="#Action_Con_EditItem" prefHeight="42.0" prefWidth="312.0" style="-fx-background-color: green; -fx-font-size: 18px; -fx-font-weight: bold;" text="APPLY EDIT" textFill="WHITE" />
+      <TextField fx:id="txt_item_name" layoutX="1167.0" layoutY="337.0" prefHeight="48.0" prefWidth="337.0">
          <font>
             <Font size="24.0" />
          </font></TextField>
@@ -40,5 +40,6 @@
          </font>
       </Button>
       <TableView fx:id="tb_item" layoutX="167.0" layoutY="222.0" onMouseClicked="#displayItem" prefHeight="634.0" prefWidth="655.0" />
+      <Button fx:id="btn_apply_clear" layoutX="1779.0" layoutY="876.0" mnemonicParsing="false" onAction="#Action_Con_Clear" prefHeight="51.0" prefWidth="109.0" style="-fx-background-color: black; -fx-font-size: 18px; -fx-font-weight: bold;" text="CLEAR" textFill="WHITE" />
    </children>
 </AnchorPane>

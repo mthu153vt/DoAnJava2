@@ -147,7 +147,7 @@ public class BillingController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         
-        header="=================================\n" + "Sushimi Restautant\n" + "Time and date: "+ dateString +"  "+ localTimeString +"\n" + "============================";
+        header="=================================\n" + "Sushimi Restautant\n" + "Time and date: "+ dateString +"\n" + "============================";
         txt_bill.setText(header);
         txt_bill.setStyle("-fx-font-alignment: center");
         
@@ -254,10 +254,14 @@ public class BillingController implements Initializable {
         
     }
     
+    
+    
     @FXML
     private void Action_PrintBill(ActionEvent event) {
         if(CheckInput()){
             BillDTO bill = getBillInfoFromGUI();
+            double discount = Discount()*100;
+            
             if(bill_dal.Insert(bill)){
 //            for(BillDetailDTO b_temp : list_billDetail){
 //                billDetail_dal.Insert(b_temp);
@@ -265,18 +269,25 @@ public class BillingController implements Initializable {
                 list_billDetail.forEach((b_temp) -> {
                 billDetail_dal.Insert(b_temp);
             });
-            header = header+"\n================================="+"\nTotal:\t " + txt_total_sum.getText()
-                    +"\n---------------------------------"+"\nCustomer:\t " + customer.getUsername()
+            header = header+"\n================================="+"\nSubtotal:\t " + txt_total_sum.getText()
+                    +"\nDiscount:\t" + discount + "%"
+                    +"\nTotal:\t" + bill.getTotal()
+                    +"\n---------------------------------"+"\nCustomer:\t " + txt_username.getText()
                     +"\n---------------------------------"+"\nPayment method:\t " + paymentmethod;
             txt_bill.setText(header);
-            }        
+            }
+            saveBill(bill.getTotal());
         }
         
     }
-
+    
     private BillDTO getBillInfoFromGUI(){
+        double discount = Discount();
+
+        int sum = Integer.parseInt(txt_total_sum.getText());
         String date_String = datef.format(localDate);
-        int total = Integer.parseInt(txt_total_sum.getText());
+        //int total =  (int) (Integer.parseInt(txt_total_sum.getText()) - discount * Integer.parseInt(txt_total_sum.getText()));
+        int total =  (int) (sum - discount * sum);
         
         BillDTO bill_;
         bill_ = new BillDTO(0, customer.getCustomerID(), date_String, paymentmethod, total);
@@ -284,6 +295,33 @@ public class BillingController implements Initializable {
         return bill_;
     }
 
+    private double Discount(){
+        double discount = 0;
+        if(txt_membershipter.getText().equals("SILVER"))
+            discount = 0.05;
+        else if(txt_membershipter.getText().equals("GOLD"))
+            discount = 0.1;
+        else if(txt_membershipter.getText().equals("PLATINUM"))
+            discount = 0.2;
+        
+        return discount;
+    }
+    
+    private void saveBill(int id){
+        try {
+//   //Bước 1: Tạo đối tượng luồng và liên kết nguồn dữ liệu
+                FileOutputStream fos = new FileOutputStream("D:\\THUW\\QLNhaHang\\DoAnJava2\\bill" + dateString +"_"+ Integer.toString(id) + ".txt");
+                DataOutputStream dos = new DataOutputStream(fos);
+//   //Bước 2: Ghi dữ liệu
+                dos.writeChars(header);
+//   //Bước 3: Đóng luồng
+                fos.close();
+                dos.close();
+        }catch (IOException ex) {
+               ex.printStackTrace();
+        }
+    }
+    
     @FXML
     private void Action_NewBill(ActionEvent event) throws IOException {
         Stage stage = (Stage) btn_new_bill.getScene().getWindow();

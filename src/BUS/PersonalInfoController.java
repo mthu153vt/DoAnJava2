@@ -21,6 +21,7 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.control.RadioButton;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
@@ -49,6 +50,10 @@ public class PersonalInfoController implements Initializable {
     private Button btn_change;
     @FXML
     private Button btn_changepass;
+    @FXML
+    private Label lb_cusid;
+    @FXML
+    private Label lb_membershipter;
     /**
      * Initializes the controller class.
      */
@@ -59,6 +64,8 @@ public class PersonalInfoController implements Initializable {
     
     CustomerDTO customer;
     CustomerDAL cus_dal = new CustomerDAL();
+    
+    
 
     
     @Override
@@ -163,6 +170,8 @@ public class PersonalInfoController implements Initializable {
             btn_female.setSelected(true);
             gender = "FEMALE";
         }
+        lb_cusid.setText(Integer.toString(customer.getCustomerID()));
+        lb_membershipter.setText(customer.getMembershiptier());
     }
     
     public void getAccount(AccountDTO acc){

@@ -75,6 +75,8 @@ public class EmployeeManagementController implements Initializable {
     ObservableList<EmployeeDTO> emp_data = FXCollections.observableArrayList();
     EmployeeDAL emp_dal = new EmployeeDAL();
     String gender = null;
+    @FXML
+    private Button btn_apply_clear;
     
     
 
@@ -230,6 +232,17 @@ public class EmployeeManagementController implements Initializable {
 //        txt_emp_numberphone.setText(employee.getNumberphone());
 //        txt_emp_username.setText(employee.getUsername());
 //    }
+
+    @FXML
+    private void Action_Con_Clear(ActionEvent event) {
+        txt_emp_name.setText("");
+        txt_emp_birthday.setText("");
+        txt_emp_address.setText("");
+        txt_start_date.setText("");
+        txt_salary.setText("");
+        txt_emp_numberphone.setText("");
+        txt_emp_username.setText("");
+    }
 
     
 
